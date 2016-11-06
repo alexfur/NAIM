@@ -1,0 +1,101 @@
+# REMEMBER TO UPDATE THE PARSERS IN MAIN IF SETTINGS ADDED/UPDATED
+
+           ~~~~~~~~~~~~~~~~
+           ~~ Simulation ~~
+           ~~~~~~~~~~~~~~~~
+--------------------------------------------
+Controller (AIM/NEAT):                  NEAT
+NEAT setting (Demo/Train):              Demo
+Network to use from Saved Networks:     BestNetwork1.eg
+Simulation speed:                       7
+Lanes per road:                         1
+Size of GridMap (COLSxROWS):            1x1
+Traffic level (max 0.7):                0.7
+Show vehicle VINs on screen:            No
+Number of cars per simulation:          30
+Number of simulations:                  -1
+Timesteps per sim (-1 = unlimited):     50
+--------------------------------------------
+
+
+        ~~~~~~~~~~~~~~~~~~~~~~~
+        ~~   NEAT Training   ~~
+        ~~~~~~~~~~~~~~~~~~~~~~~
+--------------------------------------
+Checkpoint:                          (104,150),(104,156)
+Checkpoint:                          (157,100),(163,100)
+Checkpoint:                          (209,157),(209,163)
+Checkpoint:                          (150,208),(156,208)
+...
+--------------------------------------
+
+
+        ~~~~~~~~~~~~~~~~~~~~~~~
+        ~~ Drunk Pedestrians ~~
+        ~~~~~~~~~~~~~~~~~~~~~~~
+--------------------------------------
+Height of drunk pedestrian:          1
+Width of drunk pedestrian:           1
+Pedestrian waypoint#:                (167,155),(146,155)
+Pedestrian waypoint#:                (157,147),(157,167)
+...
+--------------------------------------
+
+
+        ~~~~~~~~~~~~~~~~~~~
+        ~~ Vehicle Specs ~~
+        ~~~~~~~~~~~~~~~~~~~
+--------------------------------------
+Custom or Random? (C / R):          C
+Max acceleration:                  100
+Max deceleration:                 -90
+Max velocity:                      60
+Min velocity:                   -17.0
+Length of car:                    4.0
+Width of car:                    1.75
+...
+#if Custom, all cars have above specs
+#if Random, all cars have random specs
+--------------------------------------
+
+
+        ~~~~~~~~~~~~~~~~~
+        ~~ FOV Sensors ~~
+        ~~~~~~~~~~~~~~~~~
+-----------------------------------------------
+Height of FOV:                              20
+Width of FOV:                               20
+Angle start:                                300
+Angle end:                                  60
+Degrees between each FOV point:             5
+Nearest obstruction precision (best = 0):   0.3
+Distance from intersection to activate:     25
+-----------------------------------------------
+
+
+# decent FOV values for AIM: 10, 10, 340, 20, 10
+
+# decent FOV values for NEAT: 20, 20, 315, 45, 15
+
+# the lower you set nearest obstruction precision, the slower the simulation --> decent value = 0.6
+
+# nice pedestrian waypoints for single intersection: (167,155),(146,155)
+                                                     (157,147),(157,167)
+
+# checkpoint at end of each road:           (28,150),(28,156)
+                                            (157,28),(163,28)
+                                            (285,157),(285,163)
+                                            (150,285),(156,285)
+
+
+
+# once a vehicle enters the intersection, notify its sensor that it's in the intersection. Then, if the vehicle exits the intersection successfully, notify the sensor of that.
+If the vehicle has entered the intersection but veers off onto the grass, the sensor must not register this as "successfully leaving the intersection", rather it must tell
+the car to get back into the section
+
+#NB: When testing AIM with reckless vehicles and/or pedestrians, only record a collision if a normal car
+#intersects the shape of the reckless car or the pedestrian.
+#--> this is necessary because the built-in Shape.intersects() method for Rectangle2D shapes seems to have
+#a precision error which is causing the simulator to think two vehicles are colliding when AIM is the controller
+#and no obstacles/obstructions are present... but, under non-obstructed conditions, it is not possible for a collision
+#if AIM is the controller.
