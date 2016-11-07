@@ -20,8 +20,8 @@ public class Neuroevolution
     final static private boolean VIEW_SIMULATION_OF_BEST_NETWORK = false;
     final static private int NUM_DEMO_SIMULATIONS_OF_BEST_NETWORK = 1000;
 
-    final static private int POPULATION_SIZE = 2;
-    final static private int NUMBER_OF_GENERATIONS = 1;
+    final static private int POPULATION_SIZE = 200;
+    final static private int NUMBER_OF_GENERATIONS = 200;
 
     public Neuroevolution()
     {
