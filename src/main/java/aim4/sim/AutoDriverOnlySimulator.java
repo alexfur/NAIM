@@ -40,16 +40,12 @@ import aim4.driver.ProxyDriver;
 import aim4.im.IntersectionManager;
 import aim4.im.RoadBasedIntersection;
 import aim4.im.v2i.V2IManager;
-import aim4.map.BasicMap;
-import aim4.map.GridMap;
-import aim4.map.Road;
-import aim4.map.SpawnPoint;
+import aim4.map.*;
 import aim4.map.SpawnPoint.SpawnSpec;
 import aim4.map.lane.Lane;
 import aim4.msg.i2v.I2VMessage;
 import aim4.msg.v2i.V2IMessage;
 import aim4.obstructions.DrunkPedestrian;
-import aim4.util.GeomUtil;
 import aim4.vehicle.*;
 import org.encog.neural.neat.NEATNetwork;
 
@@ -1077,10 +1073,7 @@ public class AutoDriverOnlySimulator implements Simulator
   //vehicle should turn on its sensor if it's close enough to the intersection
   public synchronized boolean closeEnoughToIntersection(VehicleSimView vehicle)
   {
-    if(vehicle.getDriver().distanceToNextIntersection() < Main.cfgDistFromIntActSensor || ((AutoDriver)vehicle.getDriver()).distanceFromPrevIntersection() < Main.cfgDistFromIntActSensor)
-      return true;
-    else
-      return false;
+    return vehicle.getDriver().distanceToNextIntersection() < Main.cfgDistFromIntActSensor || ((AutoDriver) vehicle.getDriver()).distanceFromPrevIntersection() < Main.cfgDistFromIntActSensor;
   }
 
   /*
@@ -1322,9 +1315,20 @@ public class AutoDriverOnlySimulator implements Simulator
             }
           }
 
+      Point2D posBeforeMove = vehicle.getPosition();                           //Vehicle's position before moving
       vehicle.move(timeStep);
-      sensorOn(vehicle).moveWithVehicle();                          //rudolf - make sensor move with vehicle
-    }
+      sensorOn(vehicle).moveWithVehicle();                                    //make sensor move with vehicle
+      Point2D posAfterMove = vehicle.getPosition();                           //vehicle's position after moving
+
+          for(DataCollectionLine line : basicMap.getDataCollectionLines())    //checkpoint lines on the map (1 at each end of each lane)
+          {
+            if(line.intersect(vehicle, currentTime, posBeforeMove, posAfterMove))
+            {
+              System.out.println("hit checkpoint");
+            }
+          }
+
+        }
   }
 
   /**

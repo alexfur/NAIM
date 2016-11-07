@@ -38,7 +38,6 @@ import org.encog.neural.neat.NEATNetwork;
 import org.encog.neural.neat.NEATPopulation;
 import org.encog.persist.EncogDirectoryPersistence;
 
-import java.awt.geom.Line2D;
 import java.awt.geom.Point2D;
 import java.io.BufferedReader;
 import java.io.File;
@@ -98,6 +97,7 @@ public class Main
   public static ArrayList<CheckPoint> cfgCheckPoints = new ArrayList<CheckPoint>();
   public static double cfgDistFromIntActSensor; //distance from the intersection at which a car should turn on its sensor
   public static String cfgNetwork;  //network to use from controller (must be in 'Saved Networks' folder)
+  public static double cfgLinePosition; //draw a checkpoint line on a lane at Nth (where N = this variable) metre along the lane
 
 
   public Main()
@@ -258,6 +258,10 @@ public class Main
         {
           cfgNetwork = s.split(":")[1].replace(" ","");
         }
+        if(s.contains("Metres along lane to draw checkpoint line:"))
+          cfgLinePosition = Integer.parseInt(s.split(":")[1].replace(" ",""));
+
+
 
         s = f.readLine();
       }

@@ -30,79 +30,46 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 package aim4.gui;
 
-import java.awt.BasicStroke;
-import java.awt.Color;
-import java.awt.Font;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.Image;
-import java.awt.RenderingHints;
-import java.awt.Shape;
-import java.awt.Stroke;
-import java.awt.TexturePaint;
-import java.awt.event.ComponentEvent;
-import java.awt.event.ComponentListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-import java.awt.event.MouseMotionListener;
-import java.awt.event.MouseWheelEvent;
-import java.awt.event.MouseWheelListener;
-import java.awt.geom.AffineTransform;
-import java.awt.geom.Arc2D;
-import java.awt.geom.Ellipse2D;
-import java.awt.geom.Line2D;
-import java.awt.geom.Point2D;
-import java.awt.geom.Rectangle2D;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
-import java.util.*;
-import java.awt.geom.Path2D;
-import java.awt.geom.*;
-import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
-import javax.imageio.ImageIO;
-import javax.swing.JPanel;
-import javax.swing.SwingUtilities;
-
 import aim4.CheckPoint;
 import aim4.Main;
-import aim4.im.Intersection;
-import aim4.im.RoadBasedIntersection;
-import aim4.map.GridMap;
-import aim4.util.ShapeUtils;
 import aim4.config.Debug;
 import aim4.config.DebugPoint;
 import aim4.driver.AutoDriver;
 import aim4.driver.coordinator.V2ICoordinator;
 import aim4.im.IntersectionManager;
-import aim4.im.v2i.V2IManager;
+import aim4.im.RoadBasedIntersection;
 import aim4.im.v2i.RequestHandler.TrafficSignalRequestHandler;
+import aim4.im.v2i.V2IManager;
 import aim4.im.v2i.policy.BasePolicy;
 import aim4.im.v2i.policy.Policy;
-import aim4.map.DataCollectionLine;
 import aim4.map.BasicMap;
+import aim4.map.DataCollectionLine;
+import aim4.map.GridMap;
 import aim4.map.Road;
 import aim4.map.lane.Lane;
-import aim4.map.track.ArcTrack;
-import aim4.map.track.LineTrack;
-import aim4.map.track.PathTrack;
-import aim4.map.track.TrackPosition;
-import aim4.map.track.WayPoint;
+import aim4.map.track.*;
 import aim4.msg.v2i.Request;
 import aim4.msg.v2i.V2IMessage;
+import aim4.obstructions.DrunkPedestrian;
 import aim4.sim.AutoDriverOnlySimulator;
 import aim4.sim.Simulator;
-import aim4.sim.setup.BasicSimSetup;
-import aim4.util.GeomMath;
-import aim4.util.GeomUtil;
 import aim4.util.Util;
-import aim4.vehicle.*;
-import aim4.obstructions.*;
+import aim4.vehicle.AutoVehicleSimView;
+import aim4.vehicle.NeatSensor;
+import aim4.vehicle.Sensor;
+import aim4.vehicle.VehicleSimView;
 
+import javax.imageio.ImageIO;
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+import java.awt.geom.*;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.io.InputStream;
+import java.util.Collection;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicBoolean;
 
@@ -574,7 +541,7 @@ public class Canvas extends JPanel implements ComponentListener,
       drawIntersectionManager(bgBuffer, im, asphaltTexture);
     }
     // Then draw the data collection lines
-    //drawDataCollectionLines(bgBuffer, map.getDataCollectionLines());
+    drawDataCollectionLines(bgBuffer, map.getDataCollectionLines());
 
     return bgImage;
   }
@@ -811,6 +778,8 @@ public class Canvas extends JPanel implements ComponentListener,
       if (isShowSimulationTime) {
         drawSimulationTime(displayBuffer, sim.getSimulationTime());
       }
+
+
 
       // draw the debug points
       drawDebugPoints(displayBuffer, Debug.getLongTermDebugPoints());

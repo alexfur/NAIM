@@ -30,16 +30,13 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 package aim4.map;
 
-import java.awt.Shape;
+import aim4.vehicle.VehicleSimView;
+
+import java.awt.*;
 import java.awt.geom.Line2D;
 import java.awt.geom.Point2D;
-import java.util.HashMap;
-import java.util.LinkedList;
+import java.util.*;
 import java.util.List;
-import java.util.Map;
-import java.util.Set;
-
-import aim4.vehicle.VehicleSimView;
 
 /**
  * The data collection line.
@@ -69,7 +66,7 @@ public class DataCollectionLine {
    * Whether vehicles should not be counted more than once when it passes
    * through the line more than once within the NO_REPEAT_TIME_PERIOD.
    */
-  private boolean isNoRepeat;
+  private boolean isNoRepeat = false;   //#rudolf - set to false
 
   /////////////////////////////////
   // CONSTRUCTORS
@@ -108,6 +105,16 @@ public class DataCollectionLine {
     return line;
   }
 
+
+  /**
+   * Get the actual line object
+   *
+   * @return Line2D object that is the line
+   */
+  public Line2D getLine() {
+    return line;
+  }
+
   /**
    * Whether the vehicle intersects the line.
    *
@@ -118,14 +125,17 @@ public class DataCollectionLine {
    * @return whether the vehicle intersects the line
    */
   public boolean intersect(VehicleSimView v, double time,
-                           Point2D p1, Point2D p2) {
+                           Point2D p1, Point2D p2)
+  {
     int vin = v.getVIN();
     if (!isNoRepeat
       || !vinToTime.containsKey(vin)
       || vinToTime.get(vin).get(vinToTime.get(vin).size()-1)
         + NO_REPEAT_TIME_PERIOD < time) {
-      if (line.intersectsLine(p1.getX(), p1.getY(), p2.getX(), p2.getY())) {
-        if (!vinToTime.containsKey(vin)) {
+      if (line.intersectsLine(p1.getX(), p1.getY(), p2.getX(), p2.getY()))
+      {
+        if (!vinToTime.containsKey(vin))
+        {
           List<Double> times = new LinkedList<Double>();
           times.add(time);
           vinToTime.put(vin, times);

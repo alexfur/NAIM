@@ -30,18 +30,6 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 package aim4.map;
 
-import java.awt.geom.Line2D;
-import java.awt.geom.Point2D;
-import java.awt.geom.Rectangle2D;
-import java.io.FileNotFoundException;
-import java.io.PrintStream;
-import java.lang.reflect.Array;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 import aim4.CheckPoint;
 import aim4.Main;
 import aim4.config.Debug;
@@ -52,6 +40,12 @@ import aim4.util.ArrayListRegistry;
 import aim4.util.GeomMath;
 import aim4.util.Registry;
 import aim4.vehicle.VinRegistry;
+
+import java.awt.geom.Point2D;
+import java.awt.geom.Rectangle2D;
+import java.io.FileNotFoundException;
+import java.io.PrintStream;
+import java.util.*;
 
 
 /**
@@ -68,8 +62,7 @@ public class GridMap implements BasicMap {
   // private static final double NO_VEHICLE_ZONE_LENGTH = 10.0;
 
   /** The position of the data collection line on a lane */
-  private static final double DATA_COLLECTION_LINE_POSITION =   //#rudolf
-    NO_VEHICLE_ZONE_LENGTH;
+  private static final double DATA_COLLECTION_LINE_POSITION = Main.cfgLinePosition;  //#rudolf
 
   /////////////////////////////////
   // PRIVATE FIELDS
@@ -113,8 +106,8 @@ public class GridMap implements BasicMap {
   /** Checkpoints which, if traversed during NEAT training, increase fitness */
   private ArrayList<CheckPoint> checkPoints = Main.cfgCheckPoints;
 
-  public HashMap<String,Rectangle2D> startAreas = new HashMap<String,Rectangle2D>();              // rudolf - Map for storing the grey start areas (east/west/north/south) - NOT USING
-  public HashMap<String,Rectangle2D> endAreas = new HashMap<String,Rectangle2D>();                // rudolf - Map for storing the grey end areas (east/west/north/south) - NOT USING
+  //public HashMap<String,Rectangle2D> startAreas = new HashMap<String,Rectangle2D>();              // rudolf - Map for storing the grey start areas (east/west/north/south) - NOT USING
+  //public HashMap<String,Rectangle2D> endAreas = new HashMap<String,Rectangle2D>();                // rudolf - Map for storing the grey end areas (east/west/north/south) - NOT USING
 
   /////////////////////////////////
   // CLASS CONSTRUCTORS
@@ -383,15 +376,6 @@ public class GridMap implements BasicMap {
   {
       return checkPoints;
   }
-
-  /**
-   Get the grey-coloured waypoints stored in a hashmap
-   */
-  synchronized public HashMap getWayPoints()
-  {
-    return startAreas;
-  }
-
 
 
   /**
