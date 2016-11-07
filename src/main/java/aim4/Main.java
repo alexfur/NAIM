@@ -94,7 +94,6 @@ public class Main
   public static double cfgTimestepsPerSim;
   public static double cfgNearestObstructionPrecision;
   public static String cfgNEATSetting;
-  public static ArrayList<CheckPoint> cfgCheckPoints = new ArrayList<CheckPoint>();
   public static double cfgDistFromIntActSensor; //distance from the intersection at which a car should turn on its sensor
   public static String cfgNetwork;  //network to use from controller (must be in 'Saved Networks' folder)
   public static double cfgLinePosition; //draw a checkpoint line on a lane at Nth (where N = this variable) metre along the lane
@@ -240,16 +239,6 @@ public class Main
           cfgNearestObstructionPrecision = Double.parseDouble(s.split(":")[1].replace(" ", ""));
         if(s.contains("NEAT setting (Demo/Train):"))
           cfgNEATSetting = s.split(":")[1].replace(" ", "");
-        if(s.contains("Checkpoint:"))
-        {
-          s = s.split(":")[1].replace(" ","").replace("(","").replace(")","");
-          double x1 = Double.parseDouble(s.split(",")[0]);
-          double y1 = Double.parseDouble(s.split(",")[1]);
-          double x2 = Double.parseDouble(s.split(",")[2]);
-          double y2 = Double.parseDouble(s.split(",")[3]);
-          CheckPoint checkPoint = new CheckPoint(x1,y1,x2,y2);
-          cfgCheckPoints.add(checkPoint);
-        }
         if(s.contains("Distance from intersection to activate:"))
         {
           cfgDistFromIntActSensor = Double.parseDouble(s.split(":")[1].replace(" ",""));

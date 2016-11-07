@@ -30,7 +30,6 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 package aim4.map;
 
-import aim4.CheckPoint;
 import aim4.Main;
 import aim4.config.Debug;
 import aim4.im.IntersectionManager;
@@ -102,12 +101,6 @@ public class GridMap implements BasicMap {
     new ArrayListRegistry<IntersectionManager>();
   /** A mapping form lanes to roads they belong */
   private Map<Lane,Road> laneToRoad = new HashMap<Lane,Road>();
-
-  /** Checkpoints which, if traversed during NEAT training, increase fitness */
-  private ArrayList<CheckPoint> checkPoints = Main.cfgCheckPoints;
-
-  //public HashMap<String,Rectangle2D> startAreas = new HashMap<String,Rectangle2D>();              // rudolf - Map for storing the grey start areas (east/west/north/south) - NOT USING
-  //public HashMap<String,Rectangle2D> endAreas = new HashMap<String,Rectangle2D>();                // rudolf - Map for storing the grey end areas (east/west/north/south) - NOT USING
 
   /////////////////////////////////
   // CLASS CONSTRUCTORS
@@ -368,15 +361,6 @@ public class GridMap implements BasicMap {
 
     Debug.currentMap = this;
   }
-
-
-  /** Checkpoints which, if traversed during NEAT training, increase fitness
-   * -------------------------------------------------------------------------*/
-  public ArrayList<CheckPoint> getCheckPoints()
-  {
-      return checkPoints;
-  }
-
 
   /**
    * Make spawn points.

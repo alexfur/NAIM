@@ -30,7 +30,6 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 package aim4.gui;
 
-import aim4.CheckPoint;
 import aim4.Main;
 import aim4.config.Debug;
 import aim4.config.DebugPoint;
@@ -44,7 +43,6 @@ import aim4.im.v2i.policy.BasePolicy;
 import aim4.im.v2i.policy.Policy;
 import aim4.map.BasicMap;
 import aim4.map.DataCollectionLine;
-import aim4.map.GridMap;
 import aim4.map.Road;
 import aim4.map.lane.Lane;
 import aim4.map.track.*;
@@ -840,8 +838,6 @@ public class Canvas extends JPanel implements ComponentListener,
   {
       buffer.setStroke(VEHICLE_STROKE);
 
-      drawCheckPoints(buffer);
-
       /* Draw pedestrians:
       ----------------------------------------- */
       if(Main.cfgNumPedestrians > 0)
@@ -900,23 +896,23 @@ public class Canvas extends JPanel implements ComponentListener,
     }
 
         Sensor sensor = Sensor.sensorOn(vehicle);
-        if(!sensor.hasCrashed().get())    //if vehicle hasn't crashed
+        if(!sensor.hasCrashed().get())                                            //if vehicle hasn't crashed
         {
-          //if vehicle is the correct distance away from the intersection
-          if(vehicle.getDriver().distanceToNextIntersection() < Main.cfgDistFromIntActSensor || ((AutoDriver)vehicle.getDriver()).distanceFromPrevIntersection() < Main.cfgDistFromIntActSensor)
+          System.out.println((!sensor.getPassedCheckPointTwo()));
+
+          if(sensor.getPassedCheckPointOne() && (!sensor.getPassedCheckPointTwo())) //if vehicle has passed the 1st (but not 2nd) checkpoint, its sensor FOV is activated
           {
             drawSensorFOV(vehicle, buffer);
-            if(Main.cfgController.equals("NEAT"))
+            if(Main.cfgController.equals("NEAT"))                                 //if NEAT is the controller, draw these extra sensor features that NEAT has
             {
-              drawFOVSlices(vehicle, buffer);                                   //draw lines separating the FOV into slices
-              drawRaysToObstructions(vehicle, buffer);                          //dray rays from the vehicle to all obstructions it's detecting
-              drawRaysToIntersectionEdges(vehicle,basicMap,buffer);
+              drawFOVSlices(vehicle, buffer);                                     //draw lines separating the FOV into slices
+              drawRaysToObstructions(vehicle, buffer);                            //draw rays from the vehicle to all obstructions it's detecting
+              drawRaysToIntersectionEdges(vehicle,basicMap,buffer);               //(distance to intersection fed as input to NN)
             }
           }
         }
     else                              //if car crashed
       buffer.setColor(Color.RED);     //colour car red
-
 
      //COLOUR IN LANE OUTLINES
 
@@ -945,18 +941,6 @@ public class Canvas extends JPanel implements ComponentListener,
       }
     }
 
-  }
-
-  public synchronized void drawCheckPoints(Graphics2D buffer)
-  {
-    Color oldColor = buffer.getColor();
-    buffer.setColor(Color.PINK);
-    for(CheckPoint checkPoint : ((GridMap)basicMap).getCheckPoints())
-    {
-      buffer.draw(checkPoint.getArea());
-      buffer.fill(checkPoint.getArea());
-    }
-    buffer.setColor(oldColor);
   }
 
   public synchronized void drawSensorFOV(VehicleSimView vehicle, Graphics2D buffer)

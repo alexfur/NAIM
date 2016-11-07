@@ -1,16 +1,17 @@
 package aim4.vehicle;
 
-import java.awt.geom.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.*;
-import java.awt.Shape;
-
 import aim4.Main;
 import aim4.config.Constants;
-import aim4.im.RoadBasedIntersection;
-import aim4.util.ShapeUtils;
 import aim4.obstructions.DrunkPedestrian;
+import aim4.util.ShapeUtils;
+
+import java.awt.*;
+import java.awt.geom.Arc2D;
+import java.awt.geom.Area;
+import java.awt.geom.Point2D;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 
@@ -28,12 +29,12 @@ public class Sensor
     private volatile int type = Arc2D.PIE;
     private volatile double distanceFOV;
     private AtomicBoolean obstructionDetected = new AtomicBoolean(false);
-    private volatile double timeStepsSurvived = -1;
     private List<Object> obstructionsInFOV = Collections.synchronizedList(new ArrayList<Object>());
     private AtomicBoolean hasCrashed = new AtomicBoolean(false);
-    private AtomicBoolean passedCheckPoint = new AtomicBoolean(false);
+    private AtomicBoolean passedCheckPointOne = new AtomicBoolean(false);
+    private AtomicBoolean passedCheckPointTwo = new AtomicBoolean(false);
 
-    private volatile boolean successfulTraversal;                                //boolean which tells NEAT if the car successfully traversed the intersection and reached its destination
+    private volatile boolean successfulTraversal;             //boolean which tells NEAT if the car successfully traversed the intersection and reached its destination
 
     //constructor allowing to alter some properties of sensor's arc shape
     public Sensor(VehicleSimView vehicle, double width, double height, double angleStart, double angleExtent)
@@ -85,14 +86,24 @@ public class Sensor
         this(sensor.getVehicle(),sensor.getWidth(),sensor.getHeight(),sensor.getAngleStart(),sensor.getAngleExtent());
     }
 
-    synchronized public boolean getPassedCheckPoint()
+    synchronized public boolean getPassedCheckPointOne()
     {
-        return this.passedCheckPoint.get();
+        return this.passedCheckPointOne.get();
     }
 
-    synchronized public void setPassedCheckPoint(boolean passedCheckPoint)
+    synchronized public boolean getPassedCheckPointTwo()
     {
-        this.passedCheckPoint.set(passedCheckPoint);
+        return this.passedCheckPointTwo.get();
+    }
+
+    synchronized public void setPassedCheckPointOne(boolean passedCheckPointOne)
+    {
+        this.passedCheckPointOne.set(passedCheckPointOne);
+    }
+
+    synchronized public void setPassedCheckPointTwo(boolean passedCheckPointTwo)
+    {
+        this.passedCheckPointTwo.set(passedCheckPointTwo);
     }
 
     synchronized public boolean detects(Object obstruction)

@@ -2,13 +2,10 @@ package aim4.vehicle;
 
 import aim4.Main;
 import aim4.config.Constants;
-import aim4.im.Intersection;
 import aim4.im.RoadBasedIntersection;
 import aim4.obstructions.DrunkPedestrian;
 import aim4.util.LineIterator;
-import aim4.util.ShapeUtils;
 
-import java.awt.geom.Area;
 import java.awt.geom.Line2D;
 import java.awt.geom.Point2D;
 import java.util.ArrayList;
@@ -89,7 +86,7 @@ public class NeatSensor extends Sensor
 
         if(obstruction.getClass().equals(BasicAutoVehicle.class))
         {
-            return ray.getP2();                                          //p1 = front mid of vehicle, p2 = nearest point on nearest obstruction
+            return ray.getP2();                                         //p1 = front mid of vehicle, p2 = nearest point on nearest obstruction
         }
 
         return null;

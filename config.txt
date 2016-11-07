@@ -18,19 +18,6 @@ Timesteps per sim (-1 = unlimited):         50
 Metres along lane to draw checkpoint line:  100
 --------------------------------------------
 
-
-        ~~~~~~~~~~~~~~~~~~~~~~~
-        ~~   NEAT Training   ~~
-        ~~~~~~~~~~~~~~~~~~~~~~~
---------------------------------------
-Checkpoint:                          (104,150),(104,156)
-Checkpoint:                          (157,100),(163,100)
-Checkpoint:                          (209,157),(209,163)
-Checkpoint:                          (150,208),(156,208)
-...
---------------------------------------
-
-
         ~~~~~~~~~~~~~~~~~~~~~~~
         ~~ Drunk Pedestrians ~~
         ~~~~~~~~~~~~~~~~~~~~~~~
@@ -70,7 +57,7 @@ Angle start:                                300
 Angle end:                                  60
 Degrees between each FOV point:             5
 Nearest obstruction precision (best = 0):   0.2
-Distance from intersection to activate:     25
+#TODO: Remove this (replaced by new checkpoint system) # Distance from intersection to activate:     25
 -----------------------------------------------
 
 
