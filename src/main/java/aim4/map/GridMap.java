@@ -68,7 +68,7 @@ public class GridMap implements BasicMap {
   // private static final double NO_VEHICLE_ZONE_LENGTH = 10.0;
 
   /** The position of the data collection line on a lane */
-  private static final double DATA_COLLECTION_LINE_POSITION =
+  private static final double DATA_COLLECTION_LINE_POSITION =   //#rudolf
     NO_VEHICLE_ZONE_LENGTH;
 
   /////////////////////////////////

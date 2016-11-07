@@ -64,7 +64,6 @@ public class Main
 
   // create the basic setup
 
-  static Viewer x;
   static BasicSimSetup simSetup;
 
   // config variables

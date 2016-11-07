@@ -41,6 +41,7 @@ import javax.swing.JComboBox;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
+import aim4.Main;
 import aim4.gui.parampanel.AutoDriverOnlyParamPanel;
 import aim4.gui.parampanel.TrafficSignalParamPanel;
 import aim4.sim.setup.ApproxStopSignSimSetup;
@@ -129,16 +130,20 @@ public class SimSetupPanel extends JPanel implements ItemListener {
    *
    * @return the simulation setup object
    */
-  public SimSetup getSimSetup() {
+  public SimSetup getSimSetup()       //#rudolf
+  {
     if (comboBox.getSelectedIndex() == 0) {
       AutoDriverOnlySimSetup simSetup2 = new AutoDriverOnlySimSetup(simSetup);
       simSetup2.setTrafficLevel(autoDriverOnlySetupPanel.getTrafficRate());
       simSetup2.setSpeedLimit(autoDriverOnlySetupPanel.getSpeedLimit());
       simSetup2.setStopDistBeforeIntersection(
         autoDriverOnlySetupPanel.getStopDistToIntersection());
-      simSetup2.setNumOfColumns(autoDriverOnlySetupPanel.getNumOfColumns());
-      simSetup2.setNumOfRows(autoDriverOnlySetupPanel.getNumOfRows());
-      simSetup2.setLanesPerRoad(autoDriverOnlySetupPanel.getLanesPerRoad());
+      //simSetup2.setNumOfColumns(autoDriverOnlySetupPanel.getNumOfColumns());
+      simSetup2.setNumOfColumns(Main.cfgColumns);                                     //changed - rudolf
+      //simSetup2.setNumOfRows(autoDriverOnlySetupPanel.getNumOfRows());
+      simSetup2.setNumOfRows(Main.cfgRows);                                           //changed - rudolf
+      //simSetup2.setLanesPerRoad(autoDriverOnlySetupPanel.getLanesPerRoad());
+      simSetup2.setLanesPerRoad(Main.cfgLanesPerRoad);
       return simSetup2;
     } else if (comboBox.getSelectedIndex() == 1) {
       // ApproxNPhasesTrafficSignalSimSetup simSetup2 =

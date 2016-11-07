@@ -916,7 +916,7 @@ public class AutoDriverOnlySimulator implements Simulator
                   sensorOn(vehicle1).setHasCrashed(true);
                   crashedVehicles.add(vehicle1);
                   if(Main.cfgNEATSetting.equals("Train"))
-                    score.addAndGet(-100);                                                //deduct 100 points for crashing into car
+                    score.addAndGet(-200);                                                //deduct 200 points for crashing into car
                 }
 
                 if (!crashedVehicles.contains(vehicle2))                                   //make extra sure the vehicle hasn't already crashed prior to this
@@ -925,7 +925,7 @@ public class AutoDriverOnlySimulator implements Simulator
                   sensorOn(vehicle2).setHasCrashed(true);
                   crashedVehicles.add(vehicle2);
                   if(Main.cfgController.equals("Train"))
-                    score.addAndGet(-100);                                                //deduct 100 points for crashing into car
+                    score.addAndGet(-200);                                                //deduct 200 points for crashing into car
                 }
 
               }
@@ -1351,18 +1351,21 @@ public class AutoDriverOnlySimulator implements Simulator
       AutoDriver driver = (AutoDriver)vehicle.getDriver();
       Sensor sensor = sensorOn(vehicle);
 
+      //if(driver.inCurrentIntersection()) vehicle.turnTowardPoint(new Point2D.Double(0,0));
+
+
       if(! sensor.hasCrashed().get())   //if car hasn't crashed
       {
-        if(! (driver.inCurrentIntersection())) //if car is not in intersection
+        if(! (driver.inCurrentIntersection()))  //if car is not in intersection
         {
-          if(! VehicleUtil.intersects(vehicle, new Area(driver.getCurrentLane().getShape())))  //and car is not in its correct lane
-          {
-            if(! sensor.getPassedCheckPoint())     //if the car hasn't reached its destination checkpoint       (prevent losing points when car drives the map after a successful traversal)
+            if (!VehicleUtil.intersects(vehicle, new Area(driver.getCurrentLane().getShape())))  //if it's not in its correct lane but is also within NEAT's allowed activation distance from the intersection
             {
-              score.addAndGet(-1);     // deduct 1 point for every timestep vehicle is veered off track
-              //System.out.println("Veering off track there boy !!! -50 points for you !!!");
+              if (!sensor.getPassedCheckPoint())     //if it hasn't reached its destination checkpoint       (prevent losing points when car drives the map after a successful traversal)
+              {
+                score.addAndGet(-1);     // deduct 1 point for every timestep vehicle is veered off track
+                System.out.println(score.get());
+              }
             }
-          }
         }
       }
     }
@@ -1387,7 +1390,7 @@ public class AutoDriverOnlySimulator implements Simulator
         {
           if (VehicleUtil.intersects(v, checkPoint.getArea()) && !sensor.getPassedCheckPoint()) //if vehicle touching checkpoint and hasn't previously touched a checkpoint
           {
-            score.addAndGet(200);                        //gain 500 points for hitting checkpoint
+            score.addAndGet(500);                        //gain 500 points for hitting checkpoint
             sensorOn(v).setPassedCheckPoint(true);
           }
         }
