@@ -6,24 +6,16 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6f150b2c-46dd-48b1-b563-347053e75363" name="Default" comment="Now using AIM's built-in DataCollectionLines as checkpoints instead of my pink rectangle shapes that have to be manually placed for each road">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/aim4/Main.class" afterPath="$PROJECT_DIR$/target/classes/aim4/Main.class" />
+    <list default="true" id="6f150b2c-46dd-48b1-b563-347053e75363" name="Default" comment="Finished implementing the new checkpoint system that uses DataCollectionLines, made some general optimisations to improve performance, and fixed some bugs that should produce more accurate fitness scores for NEAT.">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/aim4/gui/Canvas$1.class" afterPath="$PROJECT_DIR$/target/classes/aim4/gui/Canvas$1.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/aim4/gui/Canvas.class" afterPath="$PROJECT_DIR$/target/classes/aim4/gui/Canvas.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/aim4/map/DataCollectionLine.class" afterPath="$PROJECT_DIR$/target/classes/aim4/map/DataCollectionLine.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/aim4/map/GridMap.class" afterPath="$PROJECT_DIR$/target/classes/aim4/map/GridMap.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/aim4/sim/AutoDriverOnlySimulator$1.class" afterPath="$PROJECT_DIR$/target/classes/aim4/sim/AutoDriverOnlySimulator$1.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/aim4/sim/AutoDriverOnlySimulator$AutoDriverOnlySimStepResult.class" afterPath="$PROJECT_DIR$/target/classes/aim4/sim/AutoDriverOnlySimulator$AutoDriverOnlySimStepResult.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/aim4/sim/AutoDriverOnlySimulator.class" afterPath="$PROJECT_DIR$/target/classes/aim4/sim/AutoDriverOnlySimulator.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/aim4/vehicle/NeatSensor.class" afterPath="$PROJECT_DIR$/target/classes/aim4/vehicle/NeatSensor.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/aim4/vehicle/Sensor.class" afterPath="$PROJECT_DIR$/target/classes/aim4/vehicle/Sensor.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config.txt" afterPath="$PROJECT_DIR$/config.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/aim4/Main.java" afterPath="$PROJECT_DIR$/src/main/java/aim4/Main.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/aim4/gui/Canvas.java" afterPath="$PROJECT_DIR$/src/main/java/aim4/gui/Canvas.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/aim4/map/GridMap.java" afterPath="$PROJECT_DIR$/src/main/java/aim4/map/GridMap.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/aim4/sim/AutoDriverOnlySimulator.java" afterPath="$PROJECT_DIR$/src/main/java/aim4/sim/AutoDriverOnlySimulator.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/aim4/vehicle/NeatSensor.java" afterPath="$PROJECT_DIR$/src/main/java/aim4/vehicle/NeatSensor.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/aim4/vehicle/Sensor.java" afterPath="$PROJECT_DIR$/src/main/java/aim4/vehicle/Sensor.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/aim4/ScoreCalculator.java" afterPath="$PROJECT_DIR$/src/main/java/aim4/ScoreCalculator.java" />
     </list>
     <ignored path="NAIM.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -47,8 +39,18 @@
       <file leaf-file-name="config.txt" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/config.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="171">
-              <caret line="18" column="44" selection-start-line="18" selection-start-column="44" selection-end-line="18" selection-end-column="44" />
+            <state relative-caret-position="323">
+              <caret line="62" column="0" selection-start-line="62" selection-start-column="0" selection-end-line="62" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ScoreCalculator.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/aim4/ScoreCalculator.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="247">
+              <caret line="54" column="0" selection-start-line="54" selection-start-column="0" selection-end-line="54" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -64,13 +66,13 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AutoDriverOnlySimulator.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="AutoDriverOnlySimulator.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/aim4/sim/AutoDriverOnlySimulator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="82">
-              <caret line="1315" column="39" selection-start-line="1315" selection-start-column="39" selection-end-line="1315" selection-end-column="39" />
+            <state relative-caret-position="23655">
+              <caret line="1334" column="23" selection-start-line="1334" selection-start-column="23" selection-end-line="1334" selection-end-column="23" />
               <folding>
-                <element signature="e#0#51222#0" expanded="true" />
+                <element signature="e#0#51315#0" expanded="true" />
                 <element signature="imports" expanded="true" />
               </folding>
             </state>
@@ -80,11 +82,9 @@
       <file leaf-file-name="Canvas.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/aim4/gui/Canvas.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="265">
-              <caret line="901" column="29" selection-start-line="901" selection-start-column="29" selection-end-line="901" selection-end-column="29" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="15808">
+              <caret line="900" column="29" selection-start-line="900" selection-start-column="29" selection-end-line="900" selection-end-column="29" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -92,13 +92,13 @@
       <file leaf-file-name="Sensor.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/aim4/vehicle/Sensor.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="177">
-              <caret line="90" column="5" selection-start-line="90" selection-start-column="5" selection-end-line="90" selection-end-column="5" />
+            <state relative-caret-position="1444">
+              <caret line="91" column="5" selection-start-line="91" selection-start-column="5" selection-end-line="91" selection-end-column="5" />
               <folding>
-                <element signature="e#5760#5761#0" expanded="true" />
-                <element signature="e#5813#5814#0" expanded="true" />
-                <element signature="e#5877#5878#0" expanded="true" />
-                <element signature="e#5930#5931#0" expanded="true" />
+                <element signature="e#5789#5790#0" expanded="true" />
+                <element signature="e#5842#5843#0" expanded="true" />
+                <element signature="e#5906#5907#0" expanded="true" />
+                <element signature="e#5959#5960#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -107,8 +107,8 @@
       <file leaf-file-name="NeatSensor.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/aim4/vehicle/NeatSensor.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="19">
-              <caret line="79" column="16" selection-start-line="79" selection-start-column="16" selection-end-line="79" selection-end-column="16" />
+            <state relative-caret-position="1045">
+              <caret line="76" column="16" selection-start-line="76" selection-start-column="16" selection-end-line="76" selection-end-column="16" />
               <folding />
             </state>
           </provider>
@@ -117,7 +117,7 @@
       <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/aim4/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="132">
+            <state relative-caret-position="3819">
               <caret line="245" column="35" selection-start-line="245" selection-start-column="35" selection-end-line="245" selection-end-column="35" />
               <folding />
             </state>
@@ -149,10 +149,11 @@
         <option value="$PROJECT_DIR$/src/main/java/aim4/map/GridMap.java" />
         <option value="$PROJECT_DIR$/src/main/java/aim4/vehicle/NeatSensor.java" />
         <option value="$PROJECT_DIR$/src/main/java/aim4/gui/Canvas.java" />
-        <option value="$PROJECT_DIR$/src/main/java/aim4/sim/AutoDriverOnlySimulator.java" />
         <option value="$PROJECT_DIR$/src/main/java/aim4/vehicle/Sensor.java" />
-        <option value="$PROJECT_DIR$/config.txt" />
         <option value="$PROJECT_DIR$/src/main/java/aim4/Main.java" />
+        <option value="$PROJECT_DIR$/src/main/java/aim4/sim/AutoDriverOnlySimulator.java" />
+        <option value="$PROJECT_DIR$/config.txt" />
+        <option value="$PROJECT_DIR$/src/main/java/aim4/ScoreCalculator.java" />
       </list>
     </option>
   </component>
@@ -165,9 +166,9 @@
   </component>
   <component name="ProjectFrameBounds">
     <option name="x" value="65" />
-    <option name="y" value="24" />
+    <option name="y" value="-4" />
     <option name="width" value="1535" />
-    <option name="height" value="876" />
+    <option name="height" value="904" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -194,6 +195,9 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
+      <pane id="Scratches" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -242,13 +246,10 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="Scratches" />
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="SearchEverywhereHistoryKey" value="CANVAS&#9;FILE&#9;file:///home/alex/Desktop/CSC2005Z/NAIM/src/main/java/aim4/gui/Canvas.java&#10;sensor&#9;FILE&#9;file:///home/alex/Desktop/CSC2005Z/NAIM/src/main/java/aim4/vehicle/Sensor.java&#10;neatse&#9;PSI&#9;JAVA://aim4.vehicle.NeatSensor&#10;canvas&#9;FILE&#9;file:///home/alex/Desktop/CSC2005Z/NAIM/src/main/java/aim4/gui/Canvas.java&#10;gridmap&#9;FILE&#9;file:///home/alex/Desktop/CSC2005Z/NAIM/src/main/java/aim4/map/GridMap.java&#10;main&#9;FILE&#9;file:///home/alex/Desktop/CSC2005Z/NAIM/src/main/java/aim4/Main.java&#10;dataco&#9;FILE&#9;file:///home/alex/Desktop/CSC2005Z/NAIM/src/main/java/aim4/map/DataCollectionLine.java&#10;autodriveronlys&#9;PSI&#9;JAVA://aim4.sim.AutoDriverOnlySimulator&#10;config&#9;FILE&#9;file:///home/alex/Desktop/CSC2005Z/NAIM/config.txt&#10;neuro&#9;PSI&#9;JAVA://aim4.Neuroevolution" />
+    <property name="SearchEverywhereHistoryKey" value="score&#9;FILE&#9;file:///home/alex/Desktop/CSC2005Z/NAIM/src/main/java/aim4/ScoreCalculator.java&#10;scorecal&#9;PSI&#9;JAVA://aim4.ScoreCalculator&#10;CANVAS&#9;FILE&#9;file:///home/alex/Desktop/CSC2005Z/NAIM/src/main/java/aim4/gui/Canvas.java&#10;sensor&#9;FILE&#9;file:///home/alex/Desktop/CSC2005Z/NAIM/src/main/java/aim4/vehicle/Sensor.java&#10;neatse&#9;PSI&#9;JAVA://aim4.vehicle.NeatSensor&#10;canvas&#9;FILE&#9;file:///home/alex/Desktop/CSC2005Z/NAIM/src/main/java/aim4/gui/Canvas.java&#10;gridmap&#9;FILE&#9;file:///home/alex/Desktop/CSC2005Z/NAIM/src/main/java/aim4/map/GridMap.java&#10;main&#9;FILE&#9;file:///home/alex/Desktop/CSC2005Z/NAIM/src/main/java/aim4/Main.java&#10;dataco&#9;FILE&#9;file:///home/alex/Desktop/CSC2005Z/NAIM/src/main/java/aim4/map/DataCollectionLine.java&#10;autodriveronlys&#9;PSI&#9;JAVA://aim4.sim.AutoDriverOnlySimulator&#10;config&#9;FILE&#9;file:///home/alex/Desktop/CSC2005Z/NAIM/config.txt&#10;neuro&#9;PSI&#9;JAVA://aim4.Neuroevolution" />
     <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -571,37 +572,44 @@
       <option name="project" value="LOCAL" />
       <updated>1478549085340</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Finished implementing the new checkpoint system that uses DataCollectionLines, made some general optimisations to improve performance, and fixed some bugs that should produce more accurate fitness scores for NEAT.">
+      <created>1478556859926</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1478556859926</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="65" y="24" width="1535" height="876" extended-state="6" />
+    <frame x="65" y="-4" width="1535" height="904" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.09768637" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32904884" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20308483" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.218509" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.08226221" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.20308483" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3174807" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.0322364" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39974293" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.09768637" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -637,7 +645,8 @@
     <option name="CHECK_CODE_CLEANUP_BEFORE_PROJECT_COMMIT" value="true" />
     <MESSAGE value="Fixed bug that was broke config-specified number of rows/columns of intersections" />
     <MESSAGE value="Now using AIM's built-in DataCollectionLines as checkpoints instead of my pink rectangle shapes that have to be manually placed for each road" />
-    <option name="LAST_COMMIT_MESSAGE" value="Now using AIM's built-in DataCollectionLines as checkpoints instead of my pink rectangle shapes that have to be manually placed for each road" />
+    <MESSAGE value="Finished implementing the new checkpoint system that uses DataCollectionLines, made some general optimisations to improve performance, and fixed some bugs that should produce more accurate fitness scores for NEAT." />
+    <option name="LAST_COMMIT_MESSAGE" value="Finished implementing the new checkpoint system that uses DataCollectionLines, made some general optimisations to improve performance, and fixed some bugs that should produce more accurate fitness scores for NEAT." />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XDebuggerManager">
@@ -654,17 +663,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/aim4/sim/AutoDriverOnlySimulator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="7543">
-          <caret line="484" column="58" selection-start-line="484" selection-start-column="58" selection-end-line="484" selection-end-column="58" />
-          <folding>
-            <element signature="e#0#51222#0" expanded="true" />
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/aim4/map/GridMap.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="380">
@@ -700,35 +698,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1577">
           <caret line="112" column="56" selection-start-line="112" selection-start-column="56" selection-end-line="112" selection-end-column="56" />
-          <folding>
-            <element signature="e#0#7282#0" expanded="false" />
-            <element signature="e#4901#4902#0" expanded="false" />
-            <element signature="e#4927#4928#0" expanded="false" />
-            <element signature="e#5039#5040#0" expanded="false" />
-            <element signature="e#5065#5066#0" expanded="false" />
-            <element signature="e#5199#5200#0" expanded="false" />
-            <element signature="e#5226#5227#0" expanded="false" />
-            <element signature="e#5358#5359#0" expanded="false" />
-            <element signature="e#5387#5388#0" expanded="false" />
-            <element signature="e#5590#5591#0" expanded="false" />
-            <element signature="e#5617#5618#0" expanded="false" />
-            <element signature="e#5767#5768#0" expanded="false" />
-            <element signature="e#5799#5800#0" expanded="false" />
-            <element signature="e#5912#5913#0" expanded="false" />
-            <element signature="e#5941#5942#0" expanded="false" />
-            <element signature="e#6116#6117#0" expanded="false" />
-            <element signature="e#6159#6160#0" expanded="false" />
-            <element signature="e#6257#6258#0" expanded="false" />
-            <element signature="e#6299#6300#0" expanded="false" />
-            <element signature="e#6432#6433#0" expanded="false" />
-            <element signature="e#6470#6471#0" expanded="false" />
-            <element signature="e#6861#6862#0" expanded="false" />
-            <element signature="e#6903#6904#0" expanded="false" />
-            <element signature="e#7035#7036#0" expanded="false" />
-            <element signature="e#7071#7072#0" expanded="false" />
-            <element signature="e#7233#7234#0" expanded="false" />
-            <element signature="e#7275#7276#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -736,12 +705,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="171">
           <caret line="68" column="0" selection-start-line="68" selection-start-column="0" selection-end-line="68" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#23864#0" expanded="false" />
-            <element signature="imports" expanded="false" />
-            <element signature="e#3372#3373#0" expanded="false" />
-            <element signature="e#3423#3424#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -766,7 +729,7 @@
         <state relative-caret-position="399">
           <caret line="21" column="78" selection-start-line="21" selection-start-column="78" selection-end-line="21" selection-end-column="78" />
           <folding>
-            <element signature="e#0#51222#0" expanded="true" />
+            <element signature="e#0#51315#0" expanded="true" />
             <element signature="imports" expanded="true" />
           </folding>
         </state>
@@ -776,7 +739,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="28082">
           <caret line="1598" column="3" selection-start-line="1598" selection-start-column="3" selection-end-line="1598" selection-end-column="3" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -791,37 +753,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="6802">
           <caret line="438" column="41" selection-start-line="438" selection-start-column="41" selection-end-line="438" selection-end-column="41" />
-          <folding>
-            <element signature="e#0#14201#0" expanded="false" />
-            <element signature="e#7096#7097#0" expanded="false" />
-            <element signature="e#7119#7120#0" expanded="false" />
-            <element signature="e#7230#7231#0" expanded="false" />
-            <element signature="e#7260#7261#0" expanded="false" />
-            <element signature="e#8612#8613#0" expanded="false" />
-            <element signature="e#8646#8647#0" expanded="false" />
-            <element signature="e#8853#8854#0" expanded="false" />
-            <element signature="e#8886#8887#0" expanded="false" />
-            <element signature="e#8954#8955#0" expanded="false" />
-            <element signature="e#8977#8978#0" expanded="false" />
-            <element signature="e#9251#9252#0" expanded="false" />
-            <element signature="e#9285#9286#0" expanded="false" />
-            <element signature="e#9355#9356#0" expanded="false" />
-            <element signature="e#9379#9380#0" expanded="false" />
-            <element signature="e#9913#9914#0" expanded="false" />
-            <element signature="e#9942#9943#0" expanded="false" />
-            <element signature="e#10139#10140#0" expanded="false" />
-            <element signature="e#10171#10172#0" expanded="false" />
-            <element signature="e#10433#10434#0" expanded="false" />
-            <element signature="e#10465#10466#0" expanded="false" />
-            <element signature="e#10652#10653#0" expanded="false" />
-            <element signature="e#10691#10692#0" expanded="false" />
-            <element signature="e#10917#10918#0" expanded="false" />
-            <element signature="e#10950#10951#0" expanded="false" />
-            <element signature="e#11054#11055#0" expanded="false" />
-            <element signature="e#11094#11095#0" expanded="false" />
-            <element signature="e#11807#11808#0" expanded="false" />
-            <element signature="e#11846#11847#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -845,7 +776,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="380">
           <caret line="76" column="22" selection-start-line="76" selection-start-column="22" selection-end-line="76" selection-end-column="22" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -853,7 +783,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="361">
           <caret line="31" column="44" selection-start-line="31" selection-start-column="44" selection-end-line="31" selection-end-column="44" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -869,7 +798,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="380">
           <caret line="76" column="22" selection-start-line="76" selection-start-column="22" selection-end-line="76" selection-end-column="22" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -885,7 +813,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="361">
           <caret line="31" column="44" selection-start-line="31" selection-start-column="44" selection-end-line="31" selection-end-column="44" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -901,7 +828,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1444">
           <caret line="76" column="22" selection-start-line="76" selection-start-column="22" selection-end-line="76" selection-end-column="22" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -917,7 +843,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -933,7 +858,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="380">
           <caret line="76" column="22" selection-start-line="76" selection-start-column="22" selection-end-line="76" selection-end-column="22" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -956,7 +880,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="361">
           <caret line="31" column="44" selection-start-line="31" selection-start-column="44" selection-end-line="31" selection-end-column="44" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -971,7 +894,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1273">
           <caret line="76" column="22" selection-start-line="76" selection-start-column="22" selection-end-line="76" selection-end-column="22" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -986,7 +908,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="28082">
           <caret line="1598" column="3" selection-start-line="1598" selection-start-column="3" selection-end-line="1598" selection-end-column="3" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1001,37 +922,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="6802">
           <caret line="438" column="41" selection-start-line="438" selection-start-column="41" selection-end-line="438" selection-end-column="41" />
-          <folding>
-            <element signature="e#0#14201#0" expanded="false" />
-            <element signature="e#7096#7097#0" expanded="false" />
-            <element signature="e#7119#7120#0" expanded="false" />
-            <element signature="e#7230#7231#0" expanded="false" />
-            <element signature="e#7260#7261#0" expanded="false" />
-            <element signature="e#8612#8613#0" expanded="false" />
-            <element signature="e#8646#8647#0" expanded="false" />
-            <element signature="e#8853#8854#0" expanded="false" />
-            <element signature="e#8886#8887#0" expanded="false" />
-            <element signature="e#8954#8955#0" expanded="false" />
-            <element signature="e#8977#8978#0" expanded="false" />
-            <element signature="e#9251#9252#0" expanded="false" />
-            <element signature="e#9285#9286#0" expanded="false" />
-            <element signature="e#9355#9356#0" expanded="false" />
-            <element signature="e#9379#9380#0" expanded="false" />
-            <element signature="e#9913#9914#0" expanded="false" />
-            <element signature="e#9942#9943#0" expanded="false" />
-            <element signature="e#10139#10140#0" expanded="false" />
-            <element signature="e#10171#10172#0" expanded="false" />
-            <element signature="e#10433#10434#0" expanded="false" />
-            <element signature="e#10465#10466#0" expanded="false" />
-            <element signature="e#10652#10653#0" expanded="false" />
-            <element signature="e#10691#10692#0" expanded="false" />
-            <element signature="e#10917#10918#0" expanded="false" />
-            <element signature="e#10950#10951#0" expanded="false" />
-            <element signature="e#11054#11055#0" expanded="false" />
-            <element signature="e#11094#11095#0" expanded="false" />
-            <element signature="e#11807#11808#0" expanded="false" />
-            <element signature="e#11846#11847#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1046,35 +936,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1577">
           <caret line="112" column="56" selection-start-line="112" selection-start-column="56" selection-end-line="112" selection-end-column="56" />
-          <folding>
-            <element signature="e#0#7282#0" expanded="false" />
-            <element signature="e#4901#4902#0" expanded="false" />
-            <element signature="e#4927#4928#0" expanded="false" />
-            <element signature="e#5039#5040#0" expanded="false" />
-            <element signature="e#5065#5066#0" expanded="false" />
-            <element signature="e#5199#5200#0" expanded="false" />
-            <element signature="e#5226#5227#0" expanded="false" />
-            <element signature="e#5358#5359#0" expanded="false" />
-            <element signature="e#5387#5388#0" expanded="false" />
-            <element signature="e#5590#5591#0" expanded="false" />
-            <element signature="e#5617#5618#0" expanded="false" />
-            <element signature="e#5767#5768#0" expanded="false" />
-            <element signature="e#5799#5800#0" expanded="false" />
-            <element signature="e#5912#5913#0" expanded="false" />
-            <element signature="e#5941#5942#0" expanded="false" />
-            <element signature="e#6116#6117#0" expanded="false" />
-            <element signature="e#6159#6160#0" expanded="false" />
-            <element signature="e#6257#6258#0" expanded="false" />
-            <element signature="e#6299#6300#0" expanded="false" />
-            <element signature="e#6432#6433#0" expanded="false" />
-            <element signature="e#6470#6471#0" expanded="false" />
-            <element signature="e#6861#6862#0" expanded="false" />
-            <element signature="e#6903#6904#0" expanded="false" />
-            <element signature="e#7035#7036#0" expanded="false" />
-            <element signature="e#7071#7072#0" expanded="false" />
-            <element signature="e#7233#7234#0" expanded="false" />
-            <element signature="e#7275#7276#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1082,12 +943,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="171">
           <caret line="68" column="0" selection-start-line="68" selection-start-column="0" selection-end-line="68" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#23864#0" expanded="false" />
-            <element signature="imports" expanded="false" />
-            <element signature="e#3372#3373#0" expanded="false" />
-            <element signature="e#3423#3424#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1095,7 +950,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="388">
           <caret line="145" column="52" selection-start-line="145" selection-start-column="52" selection-end-line="145" selection-end-column="52" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1110,7 +964,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="196">
           <caret line="117" column="27" selection-start-line="117" selection-start-column="27" selection-end-line="117" selection-end-column="27" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1118,7 +971,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="152">
           <caret line="41" column="13" selection-start-line="41" selection-start-column="13" selection-end-line="41" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1126,53 +978,42 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="190">
           <caret line="45" column="35" selection-start-line="45" selection-start-column="35" selection-end-line="45" selection-end-column="35" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/aim4/vehicle/NeatSensor.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="19">
-          <caret line="79" column="16" selection-start-line="79" selection-start-column="16" selection-end-line="79" selection-end-column="16" />
+        <state relative-caret-position="1045">
+          <caret line="76" column="16" selection-start-line="76" selection-start-column="16" selection-end-line="76" selection-end-column="16" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/aim4/vehicle/Sensor.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="177">
-          <caret line="90" column="5" selection-start-line="90" selection-start-column="5" selection-end-line="90" selection-end-column="5" />
+        <state relative-caret-position="1444">
+          <caret line="91" column="5" selection-start-line="91" selection-start-column="5" selection-end-line="91" selection-end-column="5" />
           <folding>
-            <element signature="e#5760#5761#0" expanded="true" />
-            <element signature="e#5813#5814#0" expanded="true" />
-            <element signature="e#5877#5878#0" expanded="true" />
-            <element signature="e#5930#5931#0" expanded="true" />
+            <element signature="e#5789#5790#0" expanded="true" />
+            <element signature="e#5842#5843#0" expanded="true" />
+            <element signature="e#5906#5907#0" expanded="true" />
+            <element signature="e#5959#5960#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/aim4/gui/Canvas.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="265">
-          <caret line="901" column="29" selection-start-line="901" selection-start-column="29" selection-end-line="901" selection-end-column="29" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="15808">
+          <caret line="900" column="29" selection-start-line="900" selection-start-column="29" selection-end-line="900" selection-end-column="29" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/aim4/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="132">
+        <state relative-caret-position="3819">
           <caret line="245" column="35" selection-start-line="245" selection-start-column="35" selection-end-line="245" selection-end-column="35" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="171">
-          <caret line="18" column="44" selection-start-line="18" selection-start-column="44" selection-end-line="18" selection-end-column="44" />
           <folding />
         </state>
       </provider>
@@ -1187,12 +1028,28 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/aim4/sim/AutoDriverOnlySimulator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="82">
-          <caret line="1315" column="39" selection-start-line="1315" selection-start-column="39" selection-end-line="1315" selection-end-column="39" />
+        <state relative-caret-position="23655">
+          <caret line="1334" column="23" selection-start-line="1334" selection-start-column="23" selection-end-line="1334" selection-end-column="23" />
           <folding>
-            <element signature="e#0#51222#0" expanded="true" />
+            <element signature="e#0#51315#0" expanded="true" />
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="62" column="0" selection-start-line="62" selection-start-column="0" selection-end-line="62" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/aim4/ScoreCalculator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="247">
+          <caret line="54" column="0" selection-start-line="54" selection-start-column="0" selection-end-line="54" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>

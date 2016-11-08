@@ -24,11 +24,9 @@
 package aim4;
 
 
-import aim4.gui.Viewer;
-import aim4.sim.AutoDriverOnlySimulator;
 import org.encog.ml.CalculateScore;
 import org.encog.ml.MLMethod;
-import org.encog.neural.neat.*;
+import org.encog.neural.neat.NEATNetwork;
 
 
 public class ScoreCalculator implements CalculateScore
@@ -51,9 +49,9 @@ public class ScoreCalculator implements CalculateScore
             score = trainer.run(network);
         }
         System.out.println("NN score: " + score);
-        if(score < 0) score = 0;                                                    //NEAT requires non-negative scores
-                                                                                    //TODO: is this true? Ask Geoff
-        return score;
+                                                            //TODO: deal with negative fitness scores
+
+        return Math.pow(2,score);   //2^(score) --> circumvent lack of NEAT support for negative scores
     }
 
     @Override
