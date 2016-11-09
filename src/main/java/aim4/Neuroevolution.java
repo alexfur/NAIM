@@ -20,8 +20,8 @@ public class Neuroevolution
     final static private boolean VIEW_SIMULATION_OF_BEST_NETWORK = false;
     final static private int NUM_DEMO_SIMULATIONS_OF_BEST_NETWORK = 1000;
 
-    final static private int POPULATION_SIZE = 200;
-    final static private int NUMBER_OF_GENERATIONS = 200;
+    final static private int POPULATION_SIZE = 10;
+    final static private int NUMBER_OF_GENERATIONS = 10;
 
     public Neuroevolution()
     {
@@ -35,8 +35,8 @@ public class Neuroevolution
     {
         ScoreCalculator scoreCalculator = new ScoreCalculator();                         //fitness function
 
-        NEATPopulation pop = new NEATPopulation(3,2,POPULATION_SIZE);                                  //input neurons, output neurons, population size
-        //pop.setInitialConnectionDensity(20);
+        NEATPopulation pop = new NEATPopulation(3,2,POPULATION_SIZE);                    //inputs, outputs, population size
+        pop.setInitialConnectionDensity(1.0);
         pop.reset();
 
         TrainEA evolution = NEATUtil.constructNEATTrainer(pop,scoreCalculator);

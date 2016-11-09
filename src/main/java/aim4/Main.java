@@ -94,7 +94,6 @@ public class Main
   public static double cfgTimestepsPerSim;
   public static double cfgNearestObstructionPrecision;
   public static String cfgNEATSetting;
-  public static double cfgDistFromIntActSensor; //distance from the intersection at which a car should turn on its sensor
   public static String cfgNetwork;  //network to use from controller (must be in 'Saved Networks' folder)
   public static double cfgLinePosition; //draw a checkpoint line on a lane at Nth (where N = this variable) metre along the lane
 
@@ -239,10 +238,6 @@ public class Main
           cfgNearestObstructionPrecision = Double.parseDouble(s.split(":")[1].replace(" ", ""));
         if(s.contains("NEAT setting (Demo/Train):"))
           cfgNEATSetting = s.split(":")[1].replace(" ", "");
-        if(s.contains("Distance from intersection to activate:"))
-        {
-          cfgDistFromIntActSensor = Double.parseDouble(s.split(":")[1].replace(" ",""));
-        }
         if(s.contains("Network to use from Saved Networks:"))
         {
           cfgNetwork = s.split(":")[1].replace(" ","");

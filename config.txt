@@ -7,14 +7,14 @@
 Controller (AIM/NEAT):                      NEAT
 NEAT setting (Demo/Train):                  Demo
 Network to use from Saved Networks:         BestNetwork1.eg
-Simulation speed:                           6
+Simulation speed:                           7
 Lanes per road:                             1
 Size of GridMap (COLSxROWS):                1x1
 Traffic level (max 0.7):                    0.7
 Show vehicle VINs on screen:                No
-Number of cars per simulation:              1
+Number of cars per simulation:              30
 Number of simulations:                      -1
-Timesteps per sim (-1 = unlimited):         50
+Timesteps per sim (-1 = unlimited):         55
 Metres along lane to draw checkpoint line:  100
 --------------------------------------------
 
@@ -37,7 +37,7 @@ Pedestrian waypoint#:                (157,147),(157,167)
 Custom or Random? (C / R):          C
 Max acceleration:                  100
 Max deceleration:                 -85
-Max velocity:                      60
+Max velocity:                      80
 Min velocity:                   -17.0
 Length of car:                    4.0
 Width of car:                    1.75
@@ -57,7 +57,6 @@ Angle start:                                300
 Angle end:                                  60
 Degrees between each FOV point:             5
 Nearest obstruction precision (best = 0):   0.2
-#TODO: Remove this (replaced by new checkpoint system) # Distance from intersection to activate:     25
 -----------------------------------------------
 
 

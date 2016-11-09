@@ -168,8 +168,7 @@ public class AutoDriverOnlySimulator implements Simulator
     if(Main.cfgNumPedestrians>0)
       spawnDrunkPedestrians();    //only spawn pedestrians once (when the simulation starts) - we don't want a constant flow of pedestrians spawning each timestep
 
-    score = new AtomicInteger(0);
-
+    score = new AtomicInteger(20000);   //start score at 20000 so deducting points never gives us negative values
   }
 
   /////////////////////////////////
@@ -1069,12 +1068,6 @@ public class AutoDriverOnlySimulator implements Simulator
     }
   }
 
-  //vehicle should turn on its sensor if it's close enough to the intersection  - MAY NOT BE USING ANYMORE - KEEP HERE FOR NOW
-  public synchronized boolean closeEnoughToIntersection(VehicleSimView vehicle)
-  {
-    return vehicle.getDriver().distanceToNextIntersection() < Main.cfgDistFromIntActSensor || ((AutoDriver) vehicle.getDriver()).distanceFromPrevIntersection() < Main.cfgDistFromIntActSensor;
-  }
-
   /*
       Check if the intersection is in the FOV of a vehicle
       -------------------------------------------------------
@@ -1101,17 +1094,17 @@ public class AutoDriverOnlySimulator implements Simulator
     return false;
   }
 
-  synchronized public Sensor sensorOn(VehicleSimView vehicle)  //return a car's basic sensor (without aim or neat functionality)
+  synchronized public Sensor sensorOn(VehicleSimView vehicle)  //return a basic sensor (without aim or neat functionality)
   {
       return ((BasicAutoVehicle) vehicle).getSensor();
   }
 
-  synchronized public NeatSensor neatSensorOn(VehicleSimView vehicle)
+  synchronized public NeatSensor neatSensorOn(VehicleSimView vehicle) //return a NEAT sensor (without aim or neat functionality)
     {
       return (((NeatSensor)((BasicAutoVehicle) vehicle).getSensor()));
     }
 
-    synchronized public AimSensor aimSensorOn(VehicleSimView vehicle)
+    synchronized public AimSensor aimSensorOn(VehicleSimView vehicle) //return an AIM sensor
     {
         return (((AimSensor)((BasicAutoVehicle) vehicle).getSensor()));
     }
@@ -1334,7 +1327,7 @@ public class AutoDriverOnlySimulator implements Simulator
                       if (!sensor.hasCrashed().get())                               //then, if this vehicle is still alive (crashed vehicles don't get points for passing checkpoints)
                       {
                         sensor.setPassedCheckPointTwo(true);                        //then we successfully traversed the intersection! So tell the sensor.
-                        score.addAndGet(500);                                       //award the NEAT controller 500 points for passing this checkpoint.
+                        score.addAndGet(200);                                       //award the NEAT controller 200 points for passing this checkpoint.
                       }
                     }
                 }
@@ -1379,7 +1372,7 @@ public class AutoDriverOnlySimulator implements Simulator
             {
               if (!sensor.getPassedCheckPointTwo())     //if it hasn't reached checkpoint two
               {
-                score.addAndGet(-1);     // deduct 1 point for every timestep vehicle is veered off track
+                score.addAndGet(-1);     // deduct 0.1 point for every timestep vehicle is veered off track
                 //System.out.println(score.get());
               }
             }
@@ -1398,9 +1391,9 @@ public class AutoDriverOnlySimulator implements Simulator
   }
 
 
-
-  public synchronized double getScore()
+  public synchronized double getScore()   //return fitness score
   {
+    //NNUtil.normValue()
     return score.get();
   }
 

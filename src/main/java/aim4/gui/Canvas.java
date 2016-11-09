@@ -898,8 +898,6 @@ public class Canvas extends JPanel implements ComponentListener,
         Sensor sensor = Sensor.sensorOn(vehicle);
         if(!sensor.hasCrashed().get())                                            //if vehicle hasn't crashed
         {
-          System.out.println((!sensor.getPassedCheckPointTwo()));
-
           if(sensor.getPassedCheckPointOne() && (!sensor.getPassedCheckPointTwo())) //if vehicle has passed the 1st (but not 2nd) checkpoint, its sensor FOV is activated
           {
             drawSensorFOV(vehicle, buffer);
