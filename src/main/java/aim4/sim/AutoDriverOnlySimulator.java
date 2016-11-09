@@ -141,7 +141,8 @@ public class AutoDriverOnlySimulator implements Simulator
 
   public NEATNetwork network;
 
-  private AtomicInteger score;
+  //private AtomicInteger score;
+  private volatile double score;
 
 
     /////////////////////////////////
@@ -168,7 +169,8 @@ public class AutoDriverOnlySimulator implements Simulator
     if(Main.cfgNumPedestrians>0)
       spawnDrunkPedestrians();    //only spawn pedestrians once (when the simulation starts) - we don't want a constant flow of pedestrians spawning each timestep
 
-    score = new AtomicInteger(20000);   //start score at 20000 so deducting points never gives us negative values
+    //score = new AtomicInteger(20000);   //start score at 20000 so deducting points never gives us negative values
+    score = 0;
   }
 
   /////////////////////////////////
@@ -900,7 +902,7 @@ public class AutoDriverOnlySimulator implements Simulator
 
       for (VehicleSimView vehicle1 : getActiveVehicles())
         {
-          for (VehicleSimView vehicle2 : getActiveVehicles())                         //loop through all vehicle objects on screen except the one calling this method
+          for (VehicleSimView vehicle2 : getActiveVehicles())                             //loop through all vehicle objects on screen except the one calling this method
           {
             if (!sensorOn(vehicle1).hasCrashed().get() && !sensorOn(vehicle2).hasCrashed().get())   //if we aren't dealing with an already crashed vehicle
             {
@@ -913,7 +915,7 @@ public class AutoDriverOnlySimulator implements Simulator
                   sensorOn(vehicle1).setHasCrashed(true);
                   crashedVehicles.add(vehicle1);
                   if(Main.cfgNEATSetting.equals("Train"))
-                    score.addAndGet(-200);                                                //deduct 200 points for crashing into car
+                    score -= 0.2;                                        //deduct 2 points for crashing into car
                 }
 
                 if (!crashedVehicles.contains(vehicle2))                                   //make extra sure the vehicle hasn't already crashed prior to this
@@ -922,7 +924,7 @@ public class AutoDriverOnlySimulator implements Simulator
                   sensorOn(vehicle2).setHasCrashed(true);
                   crashedVehicles.add(vehicle2);
                   if(Main.cfgController.equals("Train"))
-                    score.addAndGet(-200);                                                //deduct 200 points for crashing into car
+                    score -= 0.2;                                        //deduct 2 points for crashing into car
                 }
 
               }
@@ -1327,7 +1329,7 @@ public class AutoDriverOnlySimulator implements Simulator
                       if (!sensor.hasCrashed().get())                               //then, if this vehicle is still alive (crashed vehicles don't get points for passing checkpoints)
                       {
                         sensor.setPassedCheckPointTwo(true);                        //then we successfully traversed the intersection! So tell the sensor.
-                        score.addAndGet(200);                                       //award the NEAT controller 200 points for passing this checkpoint.
+                        score += 0.25;                                                 //award the NEAT controller 0.25 points for passing this checkpoint.
                       }
                     }
                 }
@@ -1372,7 +1374,7 @@ public class AutoDriverOnlySimulator implements Simulator
             {
               if (!sensor.getPassedCheckPointTwo())     //if it hasn't reached checkpoint two
               {
-                score.addAndGet(-1);     // deduct 0.1 point for every timestep vehicle is veered off track
+                score -= 0.01;     // deduct 0.01 point for every timestep vehicle is veered off track
                 //System.out.println(score.get());
               }
             }
@@ -1394,7 +1396,7 @@ public class AutoDriverOnlySimulator implements Simulator
   public synchronized double getScore()   //return fitness score
   {
     //NNUtil.normValue()
-    return score.get();
+    return Math.pow(2,score);
   }
 
   /////////////////////////////////

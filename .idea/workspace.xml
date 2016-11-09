@@ -6,17 +6,13 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6f150b2c-46dd-48b1-b563-347053e75363" name="Default" comment="Now passing fitness score through an exponential function to prevent NEAT receiving nagative scores (since NEAT doesn't support negative fitness scores)">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/aim4/Main.class" afterPath="$PROJECT_DIR$/target/classes/aim4/Main.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/aim4/Neuroevolution.class" afterPath="$PROJECT_DIR$/target/classes/aim4/Neuroevolution.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/aim4/ScoreCalculator.class" afterPath="$PROJECT_DIR$/target/classes/aim4/ScoreCalculator.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/aim4/sim/AutoDriverOnlySimulator.class" afterPath="$PROJECT_DIR$/target/classes/aim4/sim/AutoDriverOnlySimulator.class" />
+    <list default="true" id="6f150b2c-46dd-48b1-b563-347053e75363" name="Default" comment="Passing score through exponential function wasn't working as anticipated, so the score variable now starts at 20000, such that deducting points should never cause it to drop below zero. &#10;&#10;(this won't be used in the final fitness function though as it's too hacky)">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/aim4/gui/Canvas$1.class" afterPath="$PROJECT_DIR$/target/classes/aim4/gui/Canvas$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/aim4/gui/Canvas.class" afterPath="$PROJECT_DIR$/target/classes/aim4/gui/Canvas.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/aim4/sim/AutoDriverOnlySimulator$1.class" afterPath="$PROJECT_DIR$/target/classes/aim4/sim/AutoDriverOnlySimulator$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/aim4/sim/AutoDriverOnlySimulator$AutoDriverOnlySimStepResult.class" afterPath="$PROJECT_DIR$/target/classes/aim4/sim/AutoDriverOnlySimulator$AutoDriverOnlySimStepResult.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config.txt" afterPath="$PROJECT_DIR$/config.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/aim4/Main.java" afterPath="$PROJECT_DIR$/src/main/java/aim4/Main.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/aim4/Neuroevolution.java" afterPath="$PROJECT_DIR$/src/main/java/aim4/Neuroevolution.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/aim4/ScoreCalculator.java" afterPath="$PROJECT_DIR$/src/main/java/aim4/ScoreCalculator.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/aim4/gui/Canvas.java" afterPath="$PROJECT_DIR$/src/main/java/aim4/gui/Canvas.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/aim4/sim/AutoDriverOnlySimulator.java" afterPath="$PROJECT_DIR$/src/main/java/aim4/sim/AutoDriverOnlySimulator.java" />
     </list>
     <ignored path="NAIM.iws" />
@@ -38,11 +34,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="config.txt" pinned="false" current-in-tab="true">
+      <file leaf-file-name="config.txt" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/config.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="171">
-              <caret line="9" column="27" selection-start-line="9" selection-start-column="27" selection-end-line="9" selection-end-column="27" />
+            <state relative-caret-position="-133">
+              <caret line="5" column="44" selection-start-line="5" selection-start-column="44" selection-end-line="5" selection-end-column="44" />
               <folding />
             </state>
           </provider>
@@ -78,12 +74,14 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AutoDriverOnlySimulator.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="AutoDriverOnlySimulator.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/aim4/sim/AutoDriverOnlySimulator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="181">
-              <caret line="173" column="113" selection-start-line="173" selection-start-column="113" selection-end-line="173" selection-end-column="113" />
-              <folding />
+            <state relative-caret-position="333">
+              <caret line="1385" column="8" selection-start-line="1385" selection-start-column="8" selection-end-line="1385" selection-end-column="8" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -116,8 +114,8 @@
         <option value="$PROJECT_DIR$/src/main/java/aim4/ScoreCalculator.java" />
         <option value="$PROJECT_DIR$/src/main/java/aim4/gui/Canvas.java" />
         <option value="$PROJECT_DIR$/src/main/java/aim4/Neuroevolution.java" />
-        <option value="$PROJECT_DIR$/src/main/java/aim4/sim/AutoDriverOnlySimulator.java" />
         <option value="$PROJECT_DIR$/config.txt" />
+        <option value="$PROJECT_DIR$/src/main/java/aim4/sim/AutoDriverOnlySimulator.java" />
       </list>
     </option>
   </component>
@@ -550,7 +548,14 @@
       <option name="project" value="LOCAL" />
       <updated>1478633502531</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Passing score through exponential function wasn't working as anticipated, so the score variable now starts at 20000, such that deducting points should never cause it to drop below zero. &#10;&#10;(this won't be used in the final fitness function though as it's too hacky)">
+      <created>1478708910391</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1478708910391</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -618,7 +623,8 @@
     <MESSAGE value="Now using AIM's built-in DataCollectionLines as checkpoints instead of my pink rectangle shapes that have to be manually placed for each road" />
     <MESSAGE value="Finished implementing the new checkpoint system that uses DataCollectionLines, made some general optimisations to improve performance, and fixed some bugs that should produce more accurate fitness scores for NEAT." />
     <MESSAGE value="Now passing fitness score through an exponential function to prevent NEAT receiving nagative scores (since NEAT doesn't support negative fitness scores)" />
-    <option name="LAST_COMMIT_MESSAGE" value="Now passing fitness score through an exponential function to prevent NEAT receiving nagative scores (since NEAT doesn't support negative fitness scores)" />
+    <MESSAGE value="Passing score through exponential function wasn't working as anticipated, so the score variable now starts at 20000, such that deducting points should never cause it to drop below zero. &#10;&#10;(this won't be used in the final fitness function though as it's too hacky)" />
+    <option name="LAST_COMMIT_MESSAGE" value="Passing score through exponential function wasn't working as anticipated, so the score variable now starts at 20000, such that deducting points should never cause it to drop below zero. &#10;&#10;(this won't be used in the final fitness function though as it's too hacky)" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XDebuggerManager">
@@ -995,14 +1001,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/aim4/Neuroevolution.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
-          <caret line="23" column="55" selection-start-line="23" selection-start-column="55" selection-end-line="23" selection-end-column="55" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/aim4/ScoreCalculator.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="213">
@@ -1011,19 +1009,29 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/aim4/sim/AutoDriverOnlySimulator.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/aim4/Neuroevolution.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="181">
-          <caret line="173" column="113" selection-start-line="173" selection-start-column="113" selection-end-line="173" selection-end-column="113" />
+        <state relative-caret-position="209">
+          <caret line="23" column="55" selection-start-line="23" selection-start-column="55" selection-end-line="23" selection-end-column="55" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/config.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="171">
-          <caret line="9" column="27" selection-start-line="9" selection-start-column="27" selection-end-line="9" selection-end-column="27" />
+        <state relative-caret-position="-133">
+          <caret line="5" column="44" selection-start-line="5" selection-start-column="44" selection-end-line="5" selection-end-column="44" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/aim4/sim/AutoDriverOnlySimulator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="333">
+          <caret line="1385" column="8" selection-start-line="1385" selection-start-column="8" selection-end-line="1385" selection-end-column="8" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
