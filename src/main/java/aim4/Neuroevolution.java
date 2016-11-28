@@ -20,8 +20,8 @@ public class Neuroevolution
     final static private boolean VIEW_SIMULATION_OF_BEST_NETWORK = false;
     final static private int NUM_DEMO_SIMULATIONS_OF_BEST_NETWORK = 1000;
 
-    final static private int POPULATION_SIZE = 8;
-    final static private int NUMBER_OF_GENERATIONS = 8;
+    final static private int POPULATION_SIZE = 2;
+    final static private int NUMBER_OF_GENERATIONS = 2;
 
     public Neuroevolution()
     {
@@ -49,17 +49,19 @@ public class Neuroevolution
 
         //this code just makes it easier for me to see how far training is (I ssh into lab PCs and check the currentGeneration txt file)
         //---------------------------
+        int resultSet = 1;
+        String path = "TrainingResults/Results"+resultSet;
+        File resultsDir = new File(path);
         try
         {
-            int num = 1;
-            String filename = "PC"+num+"output.txt";
-            while (new File("Saved Networks/"+filename).exists())   //Don't overwrite any existing networks in the 'Saved Networks' directory !
+            while (resultsDir.exists())         //if we already have a results folder with this name
             {
-                num++;
-                filename = "PC"+num+"output.txt";
+                path = "TrainingResults/Results"+(++resultSet);
+                resultsDir = new File(path);
             }
-        PrintStream currentGeneration = new PrintStream(new File("Saved Networks/"+filename));
-        System.setOut(currentGeneration);
+            resultsDir.mkdir();                 //create the directory which will store training results of this session
+        PrintStream consoleOutputTxt = new PrintStream(new File(resultsDir+"/ConsoleOutput.txt"));
+        System.setOut(consoleOutputTxt);
         }
         catch(Exception e){e.printStackTrace();}
         //---------------------------
@@ -86,25 +88,18 @@ public class Neuroevolution
                         "Number of cars per simulation: " + Main.cfgNumVehicles+"\n"+
                         "Best genome was "+evolution.getBestGenome();
 
-        System.out.println(trainingLog);                                                                //print results of training session
+        System.out.println(trainingLog);                                                       //print results of training session (append to ConsoleOutput.txt)
 
-        if(SAVE_BEST_NETWORK)   //save population of NNs, as well as the training log, to files
+        if(SAVE_BEST_NETWORK)   //Save the population of NNs, as well as the training log, to a subdirectory within TrainingResults
         {
             try
             {
-                int num = 1;
-                String filename = "BestNetwork"+num+".eg";
-                while (new File("Saved Networks/"+filename).exists())   //Don't overwrite any existing networks in the 'Saved Networks' directory !
-                {
-                    num++;
-                    filename = "BestNetwork"+num+".eg";
-                }
-                EncogDirectoryPersistence.saveObject(new File("Saved Networks/"+filename), pop);      //save population of NNs to file (can later load it and extract best NN)
-                PrintStream logStream = new PrintStream(new File("Saved Networks/NetworkLog"+num));   //save the training log (details) of this training session to file
+                EncogDirectoryPersistence.saveObject(new File(resultsDir+"/Population.eg"), pop);      //save population of NNs to file (can later load it and extract best NN)
+                PrintStream logStream = new PrintStream(new File(resultsDir+"/NetworkLog.txt"));       //save the training log (details) of this training session to file
                 System.setOut(logStream);                                                             //redirect 'System.out' to the log file
                 System.out.println(trainingLog);                                                      //write to log file
                 System.setOut(System.out);                                                            //redirect 'System.out' back to the console
-                System.out.println(filename+" saved in 'Saved Networks' directory.");
+                System.out.println("Population.eg saved in "+resultsDir);
             }
             catch(Exception e)
             {
