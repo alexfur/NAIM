@@ -143,7 +143,7 @@ public class Main
             1.0 // stop distance before intersection
     );
 
-    NEATPopulation pop = (NEATPopulation) EncogDirectoryPersistence.loadObject(new File("Saved Networks/"+cfgNetwork));  //get saved population
+    NEATPopulation pop = (NEATPopulation) EncogDirectoryPersistence.loadObject(new File(cfgNetwork));  //get saved population
 
     NEATNetwork bestNetwork = (NEATNetwork) new NEATCODEC().decode(pop.getBestGenome());        //extract best genome from saved population
 
@@ -238,7 +238,7 @@ public class Main
           cfgNearestObstructionPrecision = Double.parseDouble(s.split(":")[1].replace(" ", ""));
         if(s.contains("NEAT setting (Demo/Train):"))
           cfgNEATSetting = s.split(":")[1].replace(" ", "");
-        if(s.contains("Network to use from Saved Networks:"))
+        if(s.contains("Network to use:"))
         {
           cfgNetwork = s.split(":")[1].replace(" ","");
         }

@@ -5,10 +5,10 @@
            ~~~~~~~~~~~~~~~~
 --------------------------------------------
 Controller (AIM/NEAT):                      NEAT
-NEAT setting (Demo/Train):                  Train
-Network to use from Saved Networks:         BestNetwork1.eg
+NEAT setting (Demo/Train):                  Demo
+Network to use:                             TrainingResults/Population.eg
 Simulation speed:                           7
-Lanes per road:                             2
+Lanes per road:                             1
 Size of GridMap (COLSxROWS):                1x1
 Traffic level (max 0.7):                    0.7
 Show vehicle VINs on screen:                No
