@@ -20,8 +20,8 @@ public class Neuroevolution
     final static private boolean VIEW_SIMULATION_OF_BEST_NETWORK = false;
     final static private int NUM_DEMO_SIMULATIONS_OF_BEST_NETWORK = 1000;
 
-    final static private int POPULATION_SIZE = 10;
-    final static private int NUMBER_OF_GENERATIONS = 10;
+    final static private int POPULATION_SIZE = 8;
+    final static private int NUMBER_OF_GENERATIONS = 8;
 
     public Neuroevolution()
     {
@@ -47,7 +47,7 @@ public class Neuroevolution
         //number of scores printed =  (populationSize * numGenerations) + 2
 
 
-        //this code just lets me see how far training is (I ssh into lab PCs and check the currentGeneration txt file)
+        //this code just makes it easier for me to see how far training is (I ssh into lab PCs and check the currentGeneration txt file)
         //---------------------------
         try
         {

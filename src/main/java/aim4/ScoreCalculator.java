@@ -42,12 +42,8 @@ public class ScoreCalculator implements CalculateScore
     {
         network = (NEATNetwork)mlMethod;                                            //a NEAT neural network
         SimRunner trainer = new SimRunner(network);
-        double score = -1;
 
-        while(score == -1)                                                          //keep looping till we're not getting an error in sim (AIM loves to crash)
-        {
-            score = trainer.run(network);
-        }
+        double score = trainer.run(network);
 
         System.out.println("NN score: "+score);                                     //fitness score of the neural network that just had its turn
 

@@ -8,13 +8,13 @@ Controller (AIM/NEAT):                      NEAT
 NEAT setting (Demo/Train):                  Train
 Network to use from Saved Networks:         BestNetwork1.eg
 Simulation speed:                           7
-Lanes per road:                             1
+Lanes per road:                             2
 Size of GridMap (COLSxROWS):                1x1
 Traffic level (max 0.7):                    0.7
 Show vehicle VINs on screen:                No
-Number of cars per simulation:              30
+Number of cars per simulation:              40
 Number of simulations:                      -1
-Timesteps per sim (-1 = unlimited):         55
+Timesteps per sim (-1 = unlimited):         85
 Metres along lane to draw checkpoint line:  100
 --------------------------------------------
 

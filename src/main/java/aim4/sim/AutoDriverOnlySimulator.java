@@ -329,7 +329,11 @@ public class AutoDriverOnlySimulator implements Simulator
              / numOfCompletedVehicles;
     } else {
       return 0.0;
+
     }
+
+
+
   }
 
 
