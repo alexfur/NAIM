@@ -97,6 +97,14 @@ public class Main
   public static String cfgNetwork;  //network to use from controller (must be in 'Saved Networks' folder)
   public static double cfgLinePosition; //draw a checkpoint line on a lane at Nth (where N = this variable) metre along the lane
 
+  public static double cfgCompatibilityThreshold;
+  public static int cfgNumGensAllowedNoImprovement;
+  public static int cfgMaxNumberOfSpecies;
+  public static int cfgPOPULATION_SIZE;
+  public static int cfgNUMBER_OF_GENERATIONS;
+  public static double cfgINITIAL_POP_DENSITY;
+
+
 
   public Main()
   {
@@ -244,6 +252,18 @@ public class Main
         }
         if(s.contains("Metres along lane to draw checkpoint line:"))
           cfgLinePosition = Integer.parseInt(s.split(":")[1].replace(" ",""));
+        if(s.contains("compatibilityThreshold:"))
+          cfgCompatibilityThreshold = Double.parseDouble(s.split(":")[1].replace(" ",""));
+        if(s.contains("numGensAllowedNoImprovement:"))
+          cfgNumGensAllowedNoImprovement = Integer.parseInt(s.split(":")[1].replace(" ",""));
+        if(s.contains("maxNumberOfSpecies:"))
+          cfgMaxNumberOfSpecies = Integer.parseInt(s.split(":")[1].replace(" ",""));
+        if(s.contains("POPULATION_SIZE:"))
+          cfgPOPULATION_SIZE = Integer.parseInt(s.split(":")[1].replace(" ",""));
+        if(s.contains("NUMBER_OF_GENERATIONS:"))
+          cfgNUMBER_OF_GENERATIONS = Integer.parseInt(s.split(":")[1].replace(" ",""));
+        if(s.contains("INITIAL_POP_DENSITY:"))
+          cfgINITIAL_POP_DENSITY = Double.parseDouble(s.split(":")[1].replace(" ",""));
 
 
 

@@ -5,7 +5,7 @@
            ~~~~~~~~~~~~~~~~
 --------------------------------------------
 Controller (AIM/NEAT):                      NEAT
-NEAT setting (Demo/Train):                  Demo
+NEAT setting (Demo/Train):                  Train
 Network to use:                             TrainingResults/Population.eg
 Simulation speed:                           7
 Lanes per road:                             1
@@ -17,6 +17,22 @@ Number of simulations:                      -1
 Timesteps per sim (-1 = unlimited):         85
 Metres along lane to draw checkpoint line:  100
 --------------------------------------------
+
+        ~~~~~~~~~~~~~~~~~~~~~~~
+        ~~ Encog Parameters ~~
+        ~~~~~~~~~~~~~~~~~~~~~~~
+--------------------------------------
+*** speciation ***
+compatibilityThreshold:              0.75
+numGensAllowedNoImprovement:         15
+maxNumberOfSpecies:                  40
+
+*** training ***
+POPULATION_SIZE:                     150
+NUMBER_OF_GENERATIONS:               150
+INITIAL_POP_DENSITY:                 0.75
+...
+--------------------------------------
 
         ~~~~~~~~~~~~~~~~~~~~~~~
         ~~ Drunk Pedestrians ~~

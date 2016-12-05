@@ -23,11 +23,7 @@
  */
 package org.encog.ml.ea.species;
 
-import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-
+import aim4.Main;
 import org.encog.Encog;
 import org.encog.EncogError;
 import org.encog.ml.ea.genome.Genome;
@@ -36,6 +32,11 @@ import org.encog.ml.ea.sort.SortGenomesForSpecies;
 import org.encog.ml.ea.sort.SpeciesComparator;
 import org.encog.ml.ea.train.EvolutionaryAlgorithm;
 import org.encog.ml.genetic.GeneticError;
+
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 /**
  * Speciate based on threshold. Any genomes with a compatibility score below a
@@ -56,14 +57,14 @@ public abstract class ThresholdSpeciation implements Speciation, Serializable {
 	 * The minimum compatibility that two genes must have to be in the same
 	 * species.
 	 */
-	private double compatibilityThreshold = 1.0;
+	private double compatibilityThreshold = Main.cfgCompatibilityThreshold;
 
 	/**
 	 * The maximum number of generations allows with no improvement. After this
 	 * the genomes in this species are not allowed to reproduce or continue.
 	 * This does not apply to top species.
 	 */
-	private int numGensAllowedNoImprovement = 15;
+	private int numGensAllowedNoImprovement = Main.cfgNumGensAllowedNoImprovement;
 
 	/**
 	 * The maximum number of species. This is just a target. If the number of
@@ -71,7 +72,7 @@ public abstract class ThresholdSpeciation implements Speciation, Serializable {
 	 * increased to decrease the number of species.
 	 * 
 	 */
-	private int maxNumberOfSpecies = 40;
+	private int maxNumberOfSpecies = Main.cfgMaxNumberOfSpecies;
 
 	/**
 	 * The method used to sort the genomes in the species. More desirable
