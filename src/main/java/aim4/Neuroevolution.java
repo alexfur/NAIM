@@ -12,6 +12,8 @@ import org.encog.persist.EncogDirectoryPersistence;
 import org.encog.util.Stopwatch;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.PrintStream;
 
 public class Neuroevolution
@@ -123,6 +125,30 @@ public class Neuroevolution
 
             new Viewer(simSetup,bestPerformingNetwork,true).runSim();
         }
+
+        //copy the config that was used for this training session to the folder containing results of this training session
+        try
+        {
+            File sourceFile = new File("config.txt");
+            File destinationFile = new File(resultsDir+"/"+sourceFile.getName());
+
+            FileInputStream fileInputStream = new FileInputStream(sourceFile);
+            FileOutputStream fileOutputStream = new FileOutputStream(destinationFile);
+
+            int bufferSize;
+            byte[] bufffer = new byte[512];
+            while ((bufferSize = fileInputStream.read(bufffer)) > 0)
+            {
+                fileOutputStream.write(bufffer, 0, bufferSize);
+            }
+            fileInputStream.close();
+            fileOutputStream.close();
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+        }
+
 
         Encog.getInstance().shutdown();
     }

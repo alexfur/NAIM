@@ -5,7 +5,7 @@
            ~~~~~~~~~~~~~~~~
 --------------------------------------------
 Controller (AIM/NEAT):                      NEAT
-NEAT setting (Demo/Train):                  Demo
+NEAT setting (Demo/Train):                  Train
 Network to use:                             TrainingResults/Population.eg
 Simulation speed:                           7
 Lanes per road:                             1
@@ -28,8 +28,8 @@ numGensAllowedNoImprovement:         15
 maxNumberOfSpecies:                  40
 
 *** training ***
-POPULATION_SIZE:                     150
-NUMBER_OF_GENERATIONS:               150
+POPULATION_SIZE:                     2
+NUMBER_OF_GENERATIONS:               2
 INITIAL_POP_DENSITY:                 0.75
 ...
 --------------------------------------
