@@ -5,7 +5,7 @@
            ~~~~~~~~~~~~~~~~
 --------------------------------------------
 Controller (AIM/NEAT):                      NEAT
-NEAT setting (Demo/Train):                  Train
+NEAT setting (Demo/Train):                  Demo
 Network to use:                             TrainingResults/Population.eg
 Simulation speed:                           7
 Lanes per road:                             1
