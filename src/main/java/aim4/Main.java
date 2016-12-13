@@ -96,6 +96,7 @@ public class Main
   public static String cfgNEATSetting;
   public static String cfgNetwork;  //network to use from controller (must be in 'Saved Networks' folder)
   public static double cfgLinePosition; //draw a checkpoint line on a lane at Nth (where N = this variable) metre along the lane
+  public static boolean cfgDrawSensorFOVs;
 
   public static double cfgCompatibilityThreshold;
   public static int cfgNumGensAllowedNoImprovement;
@@ -264,6 +265,16 @@ public class Main
           cfgNUMBER_OF_GENERATIONS = Integer.parseInt(s.split(":")[1].replace(" ",""));
         if(s.contains("INITIAL_POP_DENSITY:"))
           cfgINITIAL_POP_DENSITY = Double.parseDouble(s.split(":")[1].replace(" ",""));
+        if(s.contains("Draw Sensor FOVs (yes/no):"))
+        {
+          if ((s.split(":")[1].replace(" ","")).contains("yes"))
+            cfgDrawSensorFOVs = true;
+          else if ((s.split(":")[1].replace(" ","")).contains("no"))
+            cfgDrawSensorFOVs = false;
+
+        }
+
+
 
 
 

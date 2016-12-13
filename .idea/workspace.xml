@@ -5,14 +5,16 @@
       <artifact name="AIM4:jar" />
     </artifacts-to-build>
   </component>
-  <component name="BookmarkManager">
-    <bookmark url="file://$PROJECT_DIR$/src/main/java/aim4/sim/AutoDriverOnlySimulator.java" description="            score += NNUtil.normValue(distToInters..." line="1022" />
-  </component>
   <component name="ChangeListManager">
-    <list default="true" id="6f150b2c-46dd-48b1-b563-347053e75363" name="Default" comment="config.txt is now copied to TrainingResults when a training session completes">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/aim4/Neuroevolution.class" afterPath="$PROJECT_DIR$/target/classes/aim4/Neuroevolution.class" />
+    <list default="true" id="6f150b2c-46dd-48b1-b563-347053e75363" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/aim4/sim/AutoDriverOnlySimulator$1.class" afterPath="$PROJECT_DIR$/target/classes/aim4/sim/AutoDriverOnlySimulator$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/aim4/sim/AutoDriverOnlySimulator$AutoDriverOnlySimStepResult.class" afterPath="$PROJECT_DIR$/target/classes/aim4/sim/AutoDriverOnlySimulator$AutoDriverOnlySimStepResult.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/aim4/sim/AutoDriverOnlySimulator.class" afterPath="$PROJECT_DIR$/target/classes/aim4/sim/AutoDriverOnlySimulator.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TrainingResults/Population.eg" afterPath="$PROJECT_DIR$/TrainingResults/Population.eg" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config.txt" afterPath="$PROJECT_DIR$/config.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/aim4/Main.java" afterPath="$PROJECT_DIR$/src/main/java/aim4/Main.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/aim4/gui/Canvas.java" afterPath="$PROJECT_DIR$/src/main/java/aim4/gui/Canvas.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/aim4/sim/AutoDriverOnlySimulator.java" afterPath="$PROJECT_DIR$/src/main/java/aim4/sim/AutoDriverOnlySimulator.java" />
     </list>
     <ignored path="NAIM.iws" />
@@ -34,24 +36,12 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="config.txt" pinned="false" current-in-tab="false">
+      <file leaf-file-name="config.txt" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/config.txt">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="285">
-              <caret line="15" column="27" selection-start-line="15" selection-start-column="27" selection-end-line="15" selection-end-column="27" />
+              <caret line="18" column="47" selection-start-line="18" selection-start-column="47" selection-end-line="18" selection-end-column="47" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Neuroevolution.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/aim4/Neuroevolution.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="475">
-              <caret line="41" column="53" selection-start-line="41" selection-start-column="53" selection-end-line="41" selection-end-column="53" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -59,72 +49,29 @@
       <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/aim4/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1254">
-              <caret line="107" column="0" selection-start-line="107" selection-start-column="0" selection-end-line="107" selection-end-column="0" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="371">
+              <caret line="272" column="38" selection-start-line="272" selection-start-column="38" selection-end-line="272" selection-end-column="38" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ScoreCalculator.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/aim4/ScoreCalculator.java">
+      <file leaf-file-name="NeatSensor.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/aim4/vehicle/NeatSensor.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="475">
-              <caret line="49" column="21" selection-start-line="49" selection-start-column="21" selection-end-line="49" selection-end-column="21" />
-              <folding>
-                <element signature="e#0#1931#0" expanded="false" />
-                <element signature="imports" expanded="false" />
-                <element signature="e#1759#1760#0" expanded="false" />
-                <element signature="e#1787#1788#0" expanded="false" />
-                <element signature="e#1851#1852#0" expanded="false" />
-                <element signature="e#1879#1880#0" expanded="false" />
-              </folding>
+            <state relative-caret-position="1501">
+              <caret line="100" column="38" selection-start-line="100" selection-start-column="38" selection-end-line="100" selection-end-column="38" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SimRunner.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/aim4/SimRunner.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="665">
-              <caret line="40" column="42" selection-start-line="40" selection-start-column="42" selection-end-line="40" selection-end-column="42" />
-              <folding>
-                <element signature="imports" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Canvas.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/aim4/gui/Canvas.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="15808">
-              <caret line="900" column="0" selection-start-line="900" selection-start-column="0" selection-end-line="900" selection-end-column="0" />
-              <folding>
-                <element signature="e#0#49268#0" expanded="false" />
-                <element signature="imports" expanded="false" />
-                <element signature="e#35132#35140#0" expanded="false" />
-                <element signature="e#47178#47179#0" expanded="false" />
-                <element signature="e#47212#47213#0" expanded="false" />
-                <element signature="e#47360#47361#0" expanded="false" />
-                <element signature="e#47383#47384#0" expanded="false" />
-                <element signature="e#47601#47602#0" expanded="false" />
-                <element signature="e#47654#47655#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AutoDriverOnlySimulator.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="AutoDriverOnlySimulator.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/aim4/sim/AutoDriverOnlySimulator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="232">
-              <caret line="1415" column="39" selection-start-line="1415" selection-start-column="39" selection-end-line="1415" selection-end-column="39" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="342">
+              <caret line="1354" column="3" selection-start-line="1354" selection-start-column="3" selection-end-line="1354" selection-end-column="3" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -132,18 +79,18 @@
       <file leaf-file-name="Sensor.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/aim4/vehicle/Sensor.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-720">
+            <state relative-caret-position="2907">
               <caret line="177" column="182" selection-start-line="177" selection-start-column="176" selection-end-line="177" selection-end-column="182" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="IntersectionManager.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/aim4/im/IntersectionManager.java">
+      <file leaf-file-name="Canvas.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/aim4/gui/Canvas.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="200">
-              <caret line="237" column="23" selection-start-line="237" selection-start-column="23" selection-end-line="237" selection-end-column="23" />
+            <state relative-caret-position="383">
+              <caret line="911" column="13" selection-start-line="911" selection-start-column="13" selection-end-line="911" selection-end-column="13" />
               <folding />
             </state>
           </provider>
@@ -173,14 +120,14 @@
         <option value="$PROJECT_DIR$/src/main/java/aim4/map/GridMap.java" />
         <option value="$PROJECT_DIR$/src/main/java/aim4/vehicle/NeatSensor.java" />
         <option value="$PROJECT_DIR$/src/main/java/aim4/vehicle/Sensor.java" />
-        <option value="$PROJECT_DIR$/src/main/java/aim4/gui/Canvas.java" />
         <option value="$PROJECT_DIR$/src/main/java/aim4/ScoreCalculator.java" />
         <option value="$PROJECT_DIR$/src/main/java/aim4/SimRunner.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/encog/util/file/Directory.java" />
-        <option value="$PROJECT_DIR$/src/main/java/aim4/Main.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/encog/ml/ea/species/ThresholdSpeciation.java" />
         <option value="$PROJECT_DIR$/src/main/java/aim4/Neuroevolution.java" />
         <option value="$PROJECT_DIR$/src/main/java/aim4/sim/AutoDriverOnlySimulator.java" />
+        <option value="$PROJECT_DIR$/src/main/java/aim4/Main.java" />
+        <option value="$PROJECT_DIR$/src/main/java/aim4/gui/Canvas.java" />
         <option value="$PROJECT_DIR$/config.txt" />
       </list>
     </option>
@@ -223,6 +170,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -271,13 +220,11 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="PackagesPane" />
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="SearchEverywhereHistoryKey" value="sensor&#9;FILE&#9;file:///home/alex/Desktop/CSC2005Z/NAIM/src/main/java/aim4/vehicle/Sensor.java&#10;neat&#9;FILE&#9;file:///home/alex/Desktop/CSC2005Z/NAIM/src/main/java/org/encog/neural/neat/NEATPopulation.java&#10;speci&#9;FILE&#9;file:///home/alex/Desktop/CSC2005Z/NAIM/src/main/java/org/encog/neural/neat/training/species/OriginalNEATSpeciation.java&#10;simru&#9;FILE&#9;file:///home/alex/Desktop/CSC2005Z/NAIM/src/main/java/aim4/SimRunner.java&#10;main&#9;FILE&#9;file:///home/alex/Desktop/CSC2005Z/NAIM/src/main/java/aim4/Main.java&#10;boxes&#9;FILE&#9;file:///home/alex/Desktop/CSC2005Z/NAIM/src/main/java/aim4/ignore/boxes/VisualizeBoxesMain.java&#10;encogut&#9;PSI&#9;JAVA://org.encog.util.simple.EncogUtility&#10;datacoll&#9;FILE&#9;file:///home/alex/Desktop/CSC2005Z/NAIM/src/main/java/aim4/map/DataCollectionLine.java&#10;sens&#9;FILE&#9;file:///home/alex/Desktop/CSC2005Z/NAIM/src/main/java/aim4/vehicle/Sensor.java&#10;neuro&#9;FILE&#9;file:///home/alex/Desktop/CSC2005Z/NAIM/src/main/java/aim4/Neuroevolution.java&#10;score&#9;FILE&#9;file:///home/alex/Desktop/CSC2005Z/NAIM/src/main/java/aim4/ScoreCalculator.java&#10;scorecal&#9;PSI&#9;JAVA://aim4.ScoreCalculator&#10;CANVAS&#9;FILE&#9;file:///home/alex/Desktop/CSC2005Z/NAIM/src/main/java/aim4/gui/Canvas.java&#10;neatse&#9;PSI&#9;JAVA://aim4.vehicle.NeatSensor&#10;canvas&#9;FILE&#9;file:///home/alex/Desktop/CSC2005Z/NAIM/src/main/java/aim4/gui/Canvas.java&#10;gridmap&#9;FILE&#9;file:///home/alex/Desktop/CSC2005Z/NAIM/src/main/java/aim4/map/GridMap.java&#10;dataco&#9;FILE&#9;file:///home/alex/Desktop/CSC2005Z/NAIM/src/main/java/aim4/map/DataCollectionLine.java&#10;autodriveronlys&#9;PSI&#9;JAVA://aim4.sim.AutoDriverOnlySimulator&#10;config&#9;FILE&#9;file:///home/alex/Desktop/CSC2005Z/NAIM/config.txt" />
+    <property name="SearchEverywhereHistoryKey" value="main&#9;FILE&#9;file:///home/alex/Desktop/CSC2005Z/NAIM/src/main/java/aim4/Main.java&#10;canvas&#9;FILE&#9;file:///home/alex/Desktop/CSC2005Z/NAIM/src/main/java/aim4/gui/Canvas.java&#10;gridmap&#9;FILE&#9;file:///home/alex/Desktop/CSC2005Z/NAIM/src/main/java/aim4/map/GridMap.java&#10;neatcontr&#9;PSI&#9;JAVA://aim4.vehicle.NEATController&#10;sensor&#9;FILE&#9;file:///home/alex/Desktop/CSC2005Z/NAIM/src/main/java/aim4/vehicle/Sensor.java&#10;neat&#9;FILE&#9;file:///home/alex/Desktop/CSC2005Z/NAIM/src/main/java/org/encog/neural/neat/NEATPopulation.java&#10;speci&#9;FILE&#9;file:///home/alex/Desktop/CSC2005Z/NAIM/src/main/java/org/encog/neural/neat/training/species/OriginalNEATSpeciation.java&#10;simru&#9;FILE&#9;file:///home/alex/Desktop/CSC2005Z/NAIM/src/main/java/aim4/SimRunner.java&#10;boxes&#9;FILE&#9;file:///home/alex/Desktop/CSC2005Z/NAIM/src/main/java/aim4/ignore/boxes/VisualizeBoxesMain.java&#10;encogut&#9;PSI&#9;JAVA://org.encog.util.simple.EncogUtility&#10;datacoll&#9;FILE&#9;file:///home/alex/Desktop/CSC2005Z/NAIM/src/main/java/aim4/map/DataCollectionLine.java&#10;sens&#9;FILE&#9;file:///home/alex/Desktop/CSC2005Z/NAIM/src/main/java/aim4/vehicle/Sensor.java&#10;neuro&#9;FILE&#9;file:///home/alex/Desktop/CSC2005Z/NAIM/src/main/java/aim4/Neuroevolution.java&#10;score&#9;FILE&#9;file:///home/alex/Desktop/CSC2005Z/NAIM/src/main/java/aim4/ScoreCalculator.java&#10;scorecal&#9;PSI&#9;JAVA://aim4.ScoreCalculator&#10;CANVAS&#9;FILE&#9;file:///home/alex/Desktop/CSC2005Z/NAIM/src/main/java/aim4/gui/Canvas.java&#10;neatse&#9;PSI&#9;JAVA://aim4.vehicle.NeatSensor&#10;dataco&#9;FILE&#9;file:///home/alex/Desktop/CSC2005Z/NAIM/src/main/java/aim4/map/DataCollectionLine.java&#10;autodriveronlys&#9;PSI&#9;JAVA://aim4.sim.AutoDriverOnlySimulator&#10;config&#9;FILE&#9;file:///home/alex/Desktop/CSC2005Z/NAIM/config.txt" />
     <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -670,7 +617,14 @@
       <option name="project" value="LOCAL" />
       <updated>1480939102463</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Cars are too often 'cheating' by driving onto the grass to avoid collisions. So, I am now adding the average normalised distance from cars to the inside borders of the intersection to the score. If cars attempt to maximise this distance while inside the intersection (ie: try and stay close to the middle of the intersection while traversing it), then fitness scores will be higher.">
+      <created>1481206959193</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1481206959193</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -685,16 +639,16 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.1966581" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24807198" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.14267352" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.12982005" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.042310275" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.018132975" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.09640103" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -745,7 +699,8 @@
     <MESSAGE value="Updated the way training results are read from disk (much neater now)." />
     <MESSAGE value="Added some Encog NEAT parameters to config" />
     <MESSAGE value="config.txt is now copied to TrainingResults when a training session completes" />
-    <option name="LAST_COMMIT_MESSAGE" value="config.txt is now copied to TrainingResults when a training session completes" />
+    <MESSAGE value="Cars are too often 'cheating' by driving onto the grass to avoid collisions. So, I am now adding the average normalised distance from cars to the inside borders of the intersection to the score. If cars attempt to maximise this distance while inside the intersection (ie: try and stay close to the middle of the intersection while traversing it), then fitness scores will be higher." />
+    <option name="LAST_COMMIT_MESSAGE" value="Cars are too often 'cheating' by driving onto the grass to avoid collisions. So, I am now adding the average normalised distance from cars to the inside borders of the intersection to the score. If cars attempt to maximise this distance while inside the intersection (ie: try and stay close to the middle of the intersection while traversing it), then fitness scores will be higher." />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XDebuggerManager">
@@ -762,21 +717,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/config.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="190">
-          <caret line="10" column="41" selection-start-line="10" selection-start-column="41" selection-end-line="10" selection-end-column="41" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/aim4/Neuroevolution.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="361">
-          <caret line="31" column="44" selection-start-line="31" selection-start-column="44" selection-end-line="31" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/aim4/Main.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="627">
@@ -926,20 +866,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/aim4/map/GridMap.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="57">
-          <caret line="32" column="17" selection-start-line="32" selection-start-column="17" selection-end-line="32" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/aim4/vehicle/NeatSensor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="223">
-          <caret line="58" column="13" selection-start-line="58" selection-start-column="13" selection-end-line="58" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/org/encog/neural/neat/NEATUtil.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-877">
@@ -1024,24 +950,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/aim4/gui/Canvas.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15808">
-          <caret line="900" column="0" selection-start-line="900" selection-start-column="0" selection-end-line="900" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#49268#0" expanded="false" />
-            <element signature="imports" expanded="false" />
-            <element signature="e#35132#35140#0" expanded="false" />
-            <element signature="e#47178#47179#0" expanded="false" />
-            <element signature="e#47212#47213#0" expanded="false" />
-            <element signature="e#47360#47361#0" expanded="false" />
-            <element signature="e#47383#47384#0" expanded="false" />
-            <element signature="e#47601#47602#0" expanded="false" />
-            <element signature="e#47654#47655#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/org/encog/util/file/Directory.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2508">
@@ -1060,7 +968,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-2051">
           <caret line="393" column="7" selection-start-line="393" selection-start-column="7" selection-end-line="393" selection-end-column="7" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1071,63 +978,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/aim4/ScoreCalculator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="475">
-          <caret line="49" column="21" selection-start-line="49" selection-start-column="21" selection-end-line="49" selection-end-column="21" />
-          <folding>
-            <element signature="e#0#1931#0" expanded="false" />
-            <element signature="imports" expanded="false" />
-            <element signature="e#1759#1760#0" expanded="false" />
-            <element signature="e#1787#1788#0" expanded="false" />
-            <element signature="e#1851#1852#0" expanded="false" />
-            <element signature="e#1879#1880#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/aim4/SimRunner.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="665">
-          <caret line="40" column="42" selection-start-line="40" selection-start-column="42" selection-end-line="40" selection-end-column="42" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/aim4/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1254">
-          <caret line="107" column="0" selection-start-line="107" selection-start-column="0" selection-end-line="107" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/aim4/Neuroevolution.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="475">
           <caret line="41" column="53" selection-start-line="41" selection-start-column="53" selection-end-line="41" selection-end-column="53" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/aim4/vehicle/Sensor.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-720">
+        <state relative-caret-position="2907">
           <caret line="177" column="182" selection-start-line="177" selection-start-column="176" selection-end-line="177" selection-end-column="182" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/aim4/im/IntersectionManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="237" column="23" selection-start-line="237" selection-start-column="23" selection-end-line="237" selection-end-column="23" />
           <folding />
         </state>
       </provider>
@@ -1136,6 +997,79 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="457">
           <caret line="201" column="10" selection-start-line="201" selection-start-column="10" selection-end-line="201" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/aim4/SimRunner.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="665">
+          <caret line="40" column="42" selection-start-line="40" selection-start-column="42" selection-end-line="40" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/aim4/vehicle/NEATController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-475">
+          <caret line="29" column="31" selection-start-line="29" selection-start-column="31" selection-end-line="29" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/aim4/map/GridMap.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-570">
+          <caret line="32" column="17" selection-start-line="32" selection-start-column="17" selection-end-line="32" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/aim4/im/IntersectionManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="178">
+          <caret line="237" column="17" selection-start-line="237" selection-start-column="17" selection-end-line="237" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/aim4/driver/AutoDriver.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="203">
+          <caret line="239" column="17" selection-start-line="239" selection-start-column="17" selection-end-line="239" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/aim4/ScoreCalculator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="247">
+          <caret line="37" column="5" selection-start-line="37" selection-start-column="5" selection-end-line="37" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/aim4/vehicle/NeatSensor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1501">
+          <caret line="100" column="38" selection-start-line="100" selection-start-column="38" selection-end-line="100" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/aim4/sim/AutoDriverOnlySimulator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="342">
+          <caret line="1354" column="3" selection-start-line="1354" selection-start-column="3" selection-end-line="1354" selection-end-column="3" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/aim4/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="371">
+          <caret line="272" column="38" selection-start-line="272" selection-start-column="38" selection-end-line="272" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/aim4/gui/Canvas.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="383">
+          <caret line="911" column="13" selection-start-line="911" selection-start-column="13" selection-end-line="911" selection-end-column="13" />
           <folding />
         </state>
       </provider>
@@ -1143,18 +1077,8 @@
     <entry file="file://$PROJECT_DIR$/config.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="285">
-          <caret line="15" column="27" selection-start-line="15" selection-start-column="27" selection-end-line="15" selection-end-column="27" />
+          <caret line="18" column="47" selection-start-line="18" selection-start-column="47" selection-end-line="18" selection-end-column="47" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/aim4/sim/AutoDriverOnlySimulator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="232">
-          <caret line="1415" column="39" selection-start-line="1415" selection-start-column="39" selection-end-line="1415" selection-end-column="39" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>

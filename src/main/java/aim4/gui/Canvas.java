@@ -900,27 +900,30 @@ public class Canvas extends JPanel implements ComponentListener,
         {
           if(sensor.getPassedCheckPointOne() && (!sensor.getPassedCheckPointTwo())) //if vehicle has passed the 1st (but not 2nd) checkpoint, its sensor FOV is activated
           {
-            drawSensorFOV(vehicle, buffer);
-            if(Main.cfgController.equals("NEAT"))                                 //if NEAT is the controller, draw these extra sensor features that NEAT has
+            if(Main.cfgDrawSensorFOVs)
             {
-              drawFOVSlices(vehicle, buffer);                                     //draw lines separating the FOV into slices
-              drawRaysToObstructions(vehicle, buffer);                            //draw rays from the vehicle to all obstructions it's detecting
-              drawRaysToIntersectionEdges(vehicle,basicMap,buffer);               //(distance to intersection fed as input to NN)
+              drawSensorFOV(vehicle, buffer);
+              if (Main.cfgController.equals("NEAT"))                                 //if NEAT is the controller, draw these extra sensor features that NEAT has
+              {
+                drawFOVSlices(vehicle, buffer);                                     //draw lines separating the FOV into slices
+                drawRaysToObstructions(vehicle, buffer);                            //draw rays from the vehicle to all obstructions it's detecting
+                drawRaysToIntersectionEdges(vehicle, basicMap, buffer);               //(distance to intersection fed as input to NN)
+              }
             }
           }
         }
     else                              //if car crashed
       buffer.setColor(Color.RED);     //colour car red
 
-     //COLOUR IN LANE OUTLINES
 
-      /*
+     //COLOUR IN LANE OUTLINES
+    /*
     Color temp = buffer.getColor();
     buffer.setColor(Color.cyan);
-    buffer.draw(vehicle.getDriver().getCurrentLane().rightBorder().getBounds());
-    //vehicle.getDriver().get
+    buffer.draw(vehicle.getDriver().);
     buffer.setColor(temp);
     */
+
 
 
 
@@ -966,7 +969,7 @@ public class Canvas extends JPanel implements ComponentListener,
         FOV.intersect(new Area(basicMap.getIntersectionManagers().get(i).getIntersection().getArea()));
         return !FOV.isEmpty();
       }
-      return false;                                   //will jump to here if sensor not detecting IM or there are no IMs to loop through
+      return false;        //will jump to here if sensor not detecting IM or there are no IMs to loop through
   }
 
   public synchronized void drawRaysToIntersectionEdges(VehicleSimView vehicle, BasicMap basicMap, Graphics2D buffer)  // - rudolf

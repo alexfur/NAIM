@@ -143,11 +143,6 @@ public class AutoDriverOnlySimulator implements Simulator
 
   private volatile double score;
 
-  private volatile double averageDistToIntersection;
-
-  private volatile int counterForAvDistToIntersection;
-
-
     /////////////////////////////////
     // CLASS CONSTRUCTORS
     /////////////////////////////////
@@ -172,8 +167,6 @@ public class AutoDriverOnlySimulator implements Simulator
     if(Main.cfgNumPedestrians>0)
       spawnDrunkPedestrians();    //only spawn pedestrians once (when the simulation starts) - we don't want a constant flow of pedestrians spawning each timestep
 
-    averageDistToIntersection = 0;
-    counterForAvDistToIntersection = 0;
     score = 0;
   }
 
@@ -295,18 +288,6 @@ public class AutoDriverOnlySimulator implements Simulator
   @Override
   public synchronized int getNumCompletedVehicles() {
     return numOfCompletedVehicles;
-  }
-
-  public synchronized int getNumCollisions() {return crashedVehicles.size();}
-
-  public synchronized int getNumSurvivors()
-  {
-    return numVehiclesToSpawn.get() - crashedVehicles.size();
-  }
-
-  public synchronized int getNumVehiclesToSpawn()
-  {
-    return this.numVehiclesToSpawn.get();
   }
 
   /**
@@ -922,7 +903,7 @@ public class AutoDriverOnlySimulator implements Simulator
                   sensorOn(vehicle1).setHasCrashed(true);
                   crashedVehicles.add(vehicle1);
                   if(Main.cfgNEATSetting.equals("Train"))
-                    score -= 0.2;                                        //deduct 2 points for crashing into car
+                    score -= 0.25;                                        //deduct 2 points for crashing into car
                 }
 
                 if (!crashedVehicles.contains(vehicle2))                                   //make extra sure the vehicle hasn't already crashed prior to this
@@ -931,7 +912,7 @@ public class AutoDriverOnlySimulator implements Simulator
                   sensorOn(vehicle2).setHasCrashed(true);
                   crashedVehicles.add(vehicle2);
                   if(Main.cfgController.equals("Train"))
-                    score -= 0.2;                                        //deduct 2 points for crashing into car
+                    score -= 0.25;                                        //deduct 2 points for crashing into car
                 }
 
               }
@@ -1012,19 +993,19 @@ public class AutoDriverOnlySimulator implements Simulator
         if(im.semiContains(vehicle))
         {
           sensor.setInIntersection(true);  //tell the sensor its car is in the intersection, so the NEAT controller will be allowed to turnToAngle in addition to controlling acceleration
-          counterForAvDistToIntersection++;
           RoadBasedIntersection intersection = ((RoadBasedIntersection)im.getIntersection());
           try
           {
             double distToIntersection = sensor.getDistanceToObstruction(intersection);      //distance from front of vehicle to the edge of the intersection
             sensor.setDistanceToIntersectionEdge(distToIntersection);                       //provide sensor with knowledge of how far vehicle is to edge of intersection
 
-            averageDistToIntersection += distToIntersection;  //distance to intersection border/edge
-                                                                                          //if distToIntersection is added to score, NNs can get higher scores if they maximise distance from the border/edge of the intersection
-            //NNUtil.normValue(distToIntersection,0,sensor.getDistanceFOV(),0,1)
+            //score += NNUtil.normValue(distToIntersection,0,sensor.getDistanceFOV(),0,0.01);
+            //System.out.println(NNUtil.normValue(distToIntersection,0,sensor.getDistanceFOV(),0,0.01));
+            //System.out.println("distance: " + distToIntersection);
 
-          } catch(Exception e){}
-          break;
+
+          } catch(Exception e){e.printStackTrace();}
+          break;  //no need to check if this vehicle is in other intersections if we found it was in this one
         }
         else
         {
@@ -1243,7 +1224,7 @@ public class AutoDriverOnlySimulator implements Simulator
 
 
         if(Main.cfgController.equals("NEAT"))       //rudolf - added this in
-        {
+          {
           txDistance = 1;
         }
         else
@@ -1296,13 +1277,12 @@ public class AutoDriverOnlySimulator implements Simulator
    */
       synchronized private void moveVehicles(double timeStep) //#moveVehicles
       {
-
         for(VehicleSimView vehicle : vinToVehicles.values())
         {
           if(Main.cfgController.equals("NEAT"))
             {
                   NeatSensor sensor = neatSensorOn(vehicle);
-                  if(! sensor.hasCrashed().get())         //only use NEAT controller if vehicle hasn't crashed
+                  if(! sensor.hasCrashed().get())            //only use NEAT controller if vehicle hasn't crashed
                   {
                     if(sensor.getObstructionDetected())
                     {
@@ -1344,7 +1324,7 @@ public class AutoDriverOnlySimulator implements Simulator
                       if (!sensor.hasCrashed().get())                               //then, if this vehicle is still alive (crashed vehicles don't get points for passing checkpoints)
                       {
                         sensor.setPassedCheckPointTwo(true);                        //then we successfully traversed the intersection! So tell the sensor.
-                        score += 0.25;                                                 //award the NEAT controller 0.25 points for passing this checkpoint.
+                        score += 0.5;                                                 //award the NEAT controller 0.25 points for passing this checkpoint.
                       }
                     }
                 }
@@ -1368,7 +1348,7 @@ public class AutoDriverOnlySimulator implements Simulator
   }
 
   /**
-   * Deduct a point for every timestep that a vehicle is touching the grass or out of its correct lane
+   * Deduct points for every timestep that a vehicle is touching the grass or is out of its correct lane
    */
   public synchronized void deductPointsForLeavingTrack()      // - rudolf
   {
@@ -1376,8 +1356,6 @@ public class AutoDriverOnlySimulator implements Simulator
     {
       AutoDriver driver = (AutoDriver) vehicle.getDriver();
       Sensor sensor = sensorOn(vehicle);
-
-      //if(driver.inCurrentIntersection()) vehicle.turnTowardPoint(new Point2D.Double(0,0));
 
       if (sensor.getPassedCheckPointOne())                //if the car has passed checkpoint one
       {
@@ -1389,8 +1367,9 @@ public class AutoDriverOnlySimulator implements Simulator
             {
               if (!sensor.getPassedCheckPointTwo())     //if it hasn't reached checkpoint two
               {
-                score -= 0.1;     // deduct 0.01 point for every timestep vehicle is veered off track
-                //System.out.println(score.get());
+                score -= 0.25;                               //deduct points for leaving intersection illegally
+                sensorOn(vehicle).setHasCrashed(true);
+                crashedVehicles.add(vehicle);
               }
             }
           }
@@ -1410,9 +1389,6 @@ public class AutoDriverOnlySimulator implements Simulator
 
   public synchronized double getScore()   //return fitness score
   {
-    averageDistToIntersection = averageDistToIntersection / counterForAvDistToIntersection;
-    System.out.println(averageDistToIntersection);
-    score += averageDistToIntersection;
     return Math.pow(2,score);   //exponential function ensures we don't feed negative scores to NEAT
   }
 
