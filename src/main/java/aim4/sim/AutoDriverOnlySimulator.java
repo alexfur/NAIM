@@ -934,7 +934,10 @@ public class AutoDriverOnlySimulator implements Simulator
               sensorOn(vehicle).setObstructionDetected(false);                        //we're not detecting the obstruction because we hit the obstruction !
               sensorOn(vehicle).setHasCrashed(true);
               if (!crashedVehicles.contains(vehicle))
+              {
                 crashedVehicles.add(vehicle);
+                score -= 0.5;
+              }
             }
           }
         }
