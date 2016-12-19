@@ -182,6 +182,8 @@ public class AutoDriverOnlySimulator implements Simulator
   @Override
   public synchronized AutoDriverOnlySimStepResult step(double timeStep)
   {
+    //basicMap.printDataCollectionLinesData("data.txt");
+
     this.timestep = timeStep;
 
     if (Debug.PRINT_SIMULATOR_STAGE)
@@ -1280,26 +1282,26 @@ public class AutoDriverOnlySimulator implements Simulator
    */
       synchronized private void moveVehicles(double timeStep) //#moveVehicles
       {
-        for(VehicleSimView vehicle : vinToVehicles.values())
+        for (VehicleSimView vehicle : vinToVehicles.values())
         {
-          if(Main.cfgController.equals("NEAT"))
-            {
-                  NeatSensor sensor = neatSensorOn(vehicle);
-                  if(! sensor.hasCrashed().get())            //only use NEAT controller if vehicle hasn't crashed
-                  {
-                    if(sensor.getObstructionDetected())
-                    {
-                      NEATControllerIn(vehicle).control();
-                      sensor.setObstructionDetected(false);  //we'll check obstructions from a "clean slate" in next timestep
-                    }
-                  }
-            }
-
-          if(Main.cfgController.equals("AIM"))
+          if (Main.cfgController.equals("NEAT"))
           {
-            for(VehicleSimView v : getActiveVehicles())
+            NeatSensor sensor = neatSensorOn(vehicle);
+            if (!sensor.hasCrashed().get())            //only use NEAT controller if vehicle hasn't crashed
             {
-              if(aimSensorOn(v).isWaitingForObstruction().get() && intersectionInFOV(v))
+              if (sensor.getObstructionDetected())
+              {
+                NEATControllerIn(vehicle).control();
+                sensor.setObstructionDetected(false);  //we'll check obstructions from a "clean slate" in next timestep
+              }
+            }
+          }
+
+          if (Main.cfgController.equals("AIM"))
+          {
+            for (VehicleSimView v : getActiveVehicles())
+            {
+              if (aimSensorOn(v).isWaitingForObstruction().get() && intersectionInFOV(v))
               {
                 aimSensorOn(v).avoidCollisionHeuristic();                             //slow down to stop --> heuristic to avoid crashing
                 aimSensorOn(v).setWaitingForObstruction(new AtomicBoolean(false));
@@ -1307,34 +1309,34 @@ public class AutoDriverOnlySimulator implements Simulator
             }
           }
 
-      Point2D posBeforeMove = vehicle.getPosition();                          //Vehicle's position before moving
-      vehicle.move(timeStep);
-      sensorOn(vehicle).moveWithVehicle();                                    //make sensor move with vehicle
-      Point2D posAfterMove = vehicle.getPosition();                           //vehicle's position after moving
+          Point2D posBeforeMove = vehicle.getPosition();                          //Vehicle's position before moving
+          vehicle.move(timeStep);
+          sensorOn(vehicle).moveWithVehicle();                                    //make sensor move with vehicle
+          Point2D posAfterMove = vehicle.getPosition();                           //vehicle's position after moving
 
-      Sensor sensor = sensorOn(vehicle);                                      //has general sensor functionality (that both AIM and NEAT have)
+          Sensor sensor = sensorOn(vehicle);                                      //has general sensor functionality (that both AIM and NEAT have)
 
-          for(DataCollectionLine line : basicMap.getDataCollectionLines())    //checkpoint lines on the map (1 at each end of each lane)
+          for (DataCollectionLine line : basicMap.getDataCollectionLines())    //checkpoint lines on the map (1 at each end of each lane)
           {
+            if (!sensor.hasCrashed().get())                                           //if vehicle hasn't crashed
+            {
               if (line.intersect(vehicle, currentTime, posBeforeMove, posAfterMove))   //if vehicle hits this checkpoint
               {
-                  if (!sensor.getPassedCheckPointOne())                           //if checkpoint one (before entering intersection) has not been passed
-                  {
-                    sensor.setPassedCheckPointOne(true);                          //then this must be the first checkpoint, so tell the sensor we've passed checkpoint one
-                  }
-                  else                                                            //otherwise, if checkpoint one has been passed...
-                    {
-                      if (!sensor.hasCrashed().get())                               //then, if this vehicle is still alive (crashed vehicles don't get points for passing checkpoints)
-                      {
-                        sensor.setPassedCheckPointTwo(true);                        //then we successfully traversed the intersection! So tell the sensor.
-                        score += 0.5;                                                 //award the NEAT controller 0.25 points for passing this checkpoint.
-                      }
-                    }
+                if (!sensor.getPassedCheckPointOne())                           //if checkpoint one (before entering intersection) has not been passed
+                {
+                  sensor.setPassedCheckPointOne(true);                          //then this must be the first checkpoint, so tell the sensor we've passed checkpoint one
+                } else                                                            //otherwise, if checkpoint one has been passed...
+                {
+                  sensor.setPassedCheckPointTwo(true);                        //then we successfully traversed the intersection! So tell the sensor.
+                  score += 0.5;                                               //award the NEAT controller 0.5 points for passing this checkpoint.
                 }
+              }
+
             }
 
+          }
         }
-  }
+      }
 
   /**
    * Move all the drunk pedestrians - ie: make them walk.
