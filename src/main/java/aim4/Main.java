@@ -98,6 +98,7 @@ public class Main
   public static double cfgLinePosition; //draw a checkpoint line on a lane at Nth (where N = this variable) metre along the lane
   public static boolean cfgDrawSensorFOVs;
   public static double cfgTimeStepsPedestriansWalk;
+  public static boolean cfgAIMAntiCrashHeuristicEnabled;
 
   public static double cfgCompatibilityThreshold;
   public static int cfgNumGensAllowedNoImprovement;
@@ -276,6 +277,14 @@ public class Main
         }
         if(s.contains("Stop walking after this many timesteps:"))
           cfgTimeStepsPedestriansWalk = Double.parseDouble(s.split(":")[1].replace(" ",""));
+        if(s.contains("Enable AIM anti-crash heuristic: (yes/no):"))
+        {
+          if ((s.split(":")[1].replace(" ","")).contains("yes"))
+            cfgAIMAntiCrashHeuristicEnabled = true;
+          else if ((s.split(":")[1].replace(" ","")).contains("no"))
+            cfgAIMAntiCrashHeuristicEnabled = false;
+        }
+
 
 
 

@@ -4,7 +4,7 @@
            ~~ Simulation ~~
            ~~~~~~~~~~~~~~~~
 --------------------------------------------
-Controller (AIM/NEAT):                      NEAT
+Controller (AIM/NEAT):                      AIM
 NEAT setting (Demo/Train):                  Demo
 Network to use:                             TrainingResults/Population.eg
 Simulation speed:                           14
@@ -16,7 +16,8 @@ Number of cars per simulation:              300
 Number of simulations:                      -1
 Timesteps per sim (-1 = unlimited):         1000
 Metres along lane to draw checkpoint line:  125
-Draw Sensor FOVs (yes/no):                  no
+Draw Sensor FOVs (yes/no):                  yes
+Enable AIM anti-crash heuristic: (yes/no):  yes
 --------------------------------------------
 
         ~~~~~~~~~~~~~~~~~~~~~~~
@@ -41,7 +42,7 @@ INITIAL_POP_DENSITY:                 0.75
 --------------------------------------
 Height of drunk pedestrian:             1
 Width of drunk pedestrian:              1
-Pedestrian waypoint#:                    (164, 147),(164, 179)
+Pedestrian waypoint:                    (157, 147),(157, 168)
 Pedestrian waypoint#:                    (147, 162),(180, 162)
 Stop walking after this many timesteps: -1
 ...

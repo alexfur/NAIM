@@ -1004,11 +1004,6 @@ public class AutoDriverOnlySimulator implements Simulator
             double distToIntersection = sensor.getDistanceToObstruction(intersection);      //distance from front of vehicle to the edge of the intersection
             sensor.setDistanceToIntersectionEdge(distToIntersection);                       //provide sensor with knowledge of how far vehicle is to edge of intersection
 
-            //score += NNUtil.normValue(distToIntersection,0,sensor.getDistanceFOV(),0,0.01);
-            //System.out.println(NNUtil.normValue(distToIntersection,0,sensor.getDistanceFOV(),0,0.01));
-            //System.out.println("distance: " + distToIntersection);
-
-
           } catch(Exception e){e.printStackTrace();}
           break;  //no need to check if this vehicle is in other intersections if we found it was in this one
         }
@@ -1022,8 +1017,9 @@ public class AutoDriverOnlySimulator implements Simulator
 
   synchronized private void checkSensorsAIM()
   {
-    /*          SENSORS SCANNING FOR VEHICLES
-    --------------------------------------------------------*/
+    /*
+    //          SENSORS SCANNING FOR VEHICLES
+    //--------------------------------------------------------
       for (VehicleSimView vehicle1 : getActiveVehicles())
       {
         AimSensor sensor1 = aimSensorOn(vehicle1);
@@ -1043,6 +1039,7 @@ public class AutoDriverOnlySimulator implements Simulator
             }
           }
       }
+    */
 
     /*          SENSORS SCANNING FOR PEDESTRIANS
     --------------------------------------------------------*/
@@ -1303,8 +1300,11 @@ public class AutoDriverOnlySimulator implements Simulator
             {
               if (aimSensorOn(v).isWaitingForObstruction().get() && intersectionInFOV(v))
               {
-                aimSensorOn(v).avoidCollisionHeuristic();                             //slow down to stop --> heuristic to avoid crashing
-                aimSensorOn(v).setWaitingForObstruction(new AtomicBoolean(false));
+                if (Main.cfgAIMAntiCrashHeuristicEnabled)
+                {
+                  aimSensorOn(v).avoidCollisionHeuristic();                             //slow down to stop --> heuristic to avoid crashing
+                  aimSensorOn(v).setWaitingForObstruction(new AtomicBoolean(false));
+                }
               }
             }
           }
