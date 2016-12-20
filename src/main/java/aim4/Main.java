@@ -97,6 +97,7 @@ public class Main
   public static String cfgNetwork;  //network to use from controller (must be in 'Saved Networks' folder)
   public static double cfgLinePosition; //draw a checkpoint line on a lane at Nth (where N = this variable) metre along the lane
   public static boolean cfgDrawSensorFOVs;
+  public static double cfgTimeStepsPedestriansWalk;
 
   public static double cfgCompatibilityThreshold;
   public static int cfgNumGensAllowedNoImprovement;
@@ -273,6 +274,10 @@ public class Main
             cfgDrawSensorFOVs = false;
 
         }
+        if(s.contains("Stop walking after this many timesteps:"))
+          cfgTimeStepsPedestriansWalk = Double.parseDouble(s.split(":")[1].replace(" ",""));
+
+
 
 
 

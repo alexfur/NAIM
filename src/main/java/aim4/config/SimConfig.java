@@ -49,8 +49,8 @@ public class SimConfig {
    * The length of a time step (simulation time) in the simulator
    * ({@value} seconds).
    */
-  //public static final double TIME_STEP = 1 / CYCLES_PER_SECOND;
-  public static final double TIME_STEP = 0.01;  //rudolf - changed from 0.02 to 0.01
+  public static final double TIME_STEP = 1 / CYCLES_PER_SECOND;
+  //public static final double TIME_STEP = 0.01;  //rudolf - changed from 0.02 to 0.01
 
   /**
    * The length of a time step (simulation time) in the reservation grid
@@ -61,7 +61,7 @@ public class SimConfig {
   /**
    * How often the simulator should consider spawning vehicles.
    */
-  public static final double SPAWN_TIME_STEP = TIME_STEP / 5.0; //rudolf
+  public static final double SPAWN_TIME_STEP = TIME_STEP / 1; //rudolf
 
   /**
    * Whether or not the vehicle must stop before an intersection

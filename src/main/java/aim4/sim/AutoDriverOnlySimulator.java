@@ -905,7 +905,7 @@ public class AutoDriverOnlySimulator implements Simulator
                   sensorOn(vehicle1).setHasCrashed(true);
                   crashedVehicles.add(vehicle1);
                   if(Main.cfgNEATSetting.equals("Train"))
-                    score -= 0.25;                                        //deduct 2 points for crashing into car
+                    score -= 0.025;                                        //deduct 2 points for crashing into car
                 }
 
                 if (!crashedVehicles.contains(vehicle2))                                   //make extra sure the vehicle hasn't already crashed prior to this
@@ -914,7 +914,7 @@ public class AutoDriverOnlySimulator implements Simulator
                   sensorOn(vehicle2).setHasCrashed(true);
                   crashedVehicles.add(vehicle2);
                   if(Main.cfgController.equals("Train"))
-                    score -= 0.25;                                        //deduct 2 points for crashing into car
+                    score -= 0.025;                                        //deduct 2 points for crashing into car
                 }
 
               }
@@ -938,7 +938,7 @@ public class AutoDriverOnlySimulator implements Simulator
               if (!crashedVehicles.contains(vehicle))
               {
                 crashedVehicles.add(vehicle);
-                score -= 0.5;
+                score -= 0.05;
               }
             }
           }
@@ -1328,7 +1328,7 @@ public class AutoDriverOnlySimulator implements Simulator
                 } else                                                            //otherwise, if checkpoint one has been passed...
                 {
                   sensor.setPassedCheckPointTwo(true);                        //then we successfully traversed the intersection! So tell the sensor.
-                  score += 0.5;                                               //award the NEAT controller 0.5 points for passing this checkpoint.
+                  score += 0.05;                                               //award the NEAT controller 0.5 points for passing this checkpoint.
                 }
               }
 
@@ -1347,7 +1347,15 @@ public class AutoDriverOnlySimulator implements Simulator
     {
       for(DrunkPedestrian drunkPedestrian: drunkPedestrians)  //loop through pedestrian list
       {
-        drunkPedestrian.walk(timeStep);                       //and make each one walk an additional time step
+        if(Main.cfgTimeStepsPedestriansWalk == -1)
+        {
+          drunkPedestrian.walk(timeStep);
+        }
+        else if(getSimulationTime() < Main.cfgTimeStepsPedestriansWalk)   //after this many timesteps have passed, pedestrians must stop walking and stand still
+        {
+          drunkPedestrian.walk(timeStep);                       //and make each one walk an additional time step
+        }
+
       }
     }
   }
@@ -1372,7 +1380,7 @@ public class AutoDriverOnlySimulator implements Simulator
             {
               if (!sensor.getPassedCheckPointTwo())     //if it hasn't reached checkpoint two
               {
-                score -= 0.25;                               //deduct points for leaving intersection illegally
+                score -= 0.025;                               //deduct points for leaving intersection illegally
                 sensorOn(vehicle).setHasCrashed(true);
                 crashedVehicles.add(vehicle);
               }
