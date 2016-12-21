@@ -30,35 +30,6 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 package aim4.gui;
 
-import java.awt.CardLayout;
-import java.awt.Container;
-import java.awt.Dimension;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
-import java.awt.Insets;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.ItemEvent;
-import java.awt.event.ItemListener;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-import java.awt.geom.Point2D;
-import java.io.IOException;
-import java.util.concurrent.atomic.AtomicBoolean;
-import java.util.concurrent.atomic.AtomicInteger;
-
-import javax.swing.GroupLayout;
-import javax.swing.JButton;
-import javax.swing.JCheckBoxMenuItem;
-import javax.swing.JFileChooser;
-import javax.swing.JFrame;
-import javax.swing.JMenu;
-import javax.swing.JMenuBar;
-import javax.swing.JMenuItem;
-import javax.swing.JPanel;
-
 import aim4.Main;
 import aim4.config.Constants;
 import aim4.config.Debug;
@@ -68,23 +39,25 @@ import aim4.im.IntersectionManager;
 import aim4.map.Road;
 import aim4.map.lane.Lane;
 import aim4.sim.AutoDriverOnlySimulator;
-import aim4.sim.Simulator;
-import aim4.sim.UdpListener;
 import aim4.sim.AutoDriverOnlySimulator.AutoDriverOnlySimStepResult;
+import aim4.sim.Simulator;
 import aim4.sim.Simulator.SimStepResult;
+import aim4.sim.UdpListener;
 import aim4.sim.setup.BasicSimSetup;
 import aim4.sim.setup.SimFactory;
 import aim4.sim.setup.SimSetup;
 import aim4.util.Util;
-import aim4.vehicle.NEATController;
 import aim4.vehicle.VehicleSimView;
-
-import aim4.ScoreCalculator;
 import org.encog.neural.neat.NEATNetwork;
-import org.encog.neural.neat.NEATUtil;
-import org.encog.neural.networks.BasicNetwork;
 import org.encog.neural.neat.NEATPopulation;
-import org.encog.ml.ea.train.basic.TrainEA;
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+import java.awt.geom.Point2D;
+import java.io.IOException;
+import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.concurrent.atomic.AtomicInteger;
 
 
 
@@ -1170,7 +1143,7 @@ public class Viewer extends JFrame implements ActionListener, KeyListener,
       }
 
     Debug.clearShortTermDebugPoints();
-    SimStepResult simStepResult = sim.step(SimConfig.TIME_STEP);
+    SimStepResult simStepResult = sim.step(SimConfig.TIME_STEP);        //run another timestep of the current simulation
 
     if (simStepResult instanceof AutoDriverOnlySimStepResult)
     {

@@ -33,6 +33,9 @@ public class Sensor
     private AtomicBoolean hasCrashed = new AtomicBoolean(false);
     private AtomicBoolean passedCheckPointOne = new AtomicBoolean(false);
     private AtomicBoolean passedCheckPointTwo = new AtomicBoolean(false);
+    private double timePassedCheckPointOne;
+    private double timePassedCheckPointTwo;
+    private double timeTakenToTraverseCheckPoints;
 
     private volatile boolean successfulTraversal;             //boolean which tells NEAT if the car successfully traversed the intersection and reached its destination
 
@@ -96,14 +99,21 @@ public class Sensor
         return this.passedCheckPointTwo.get();
     }
 
-    synchronized public void setPassedCheckPointOne(boolean passedCheckPointOne)
+    synchronized public void setPassedCheckPointOne(boolean passedCheckPointOne, double currentTime)
     {
         this.passedCheckPointOne.set(passedCheckPointOne);
+        this.timePassedCheckPointOne = currentTime;
     }
 
-    synchronized public void setPassedCheckPointTwo(boolean passedCheckPointTwo)
+    synchronized public void setPassedCheckPointTwo(boolean passedCheckPointTwo, double currentTime)
     {
         this.passedCheckPointTwo.set(passedCheckPointTwo);
+        this.timePassedCheckPointTwo = currentTime;
+    }
+
+    synchronized public double getTraversalTimeTaken()
+    {
+        return timePassedCheckPointTwo - timePassedCheckPointOne;
     }
 
     synchronized public boolean detects(Object obstruction)

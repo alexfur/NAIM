@@ -158,7 +158,7 @@ public class Main
 
     NEATNetwork bestNetwork = (NEATNetwork) new NEATCODEC().decode(pop.getBestGenome());        //extract best genome from saved population
 
-    new Viewer(simSetup,bestNetwork,true).runSim();                                         //convert best genome to NEATNetwork that can control a vehicle
+    new Viewer(simSetup,bestNetwork,true).runSim();                                             //convert best genome to NEATNetwork that can control a vehicle
   }
 
   public synchronized void demoAIM()
@@ -284,9 +284,6 @@ public class Main
           else if ((s.split(":")[1].replace(" ","")).contains("no"))
             cfgAIMAntiCrashHeuristicEnabled = false;
         }
-
-
-
 
 
 

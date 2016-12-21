@@ -143,6 +143,12 @@ public class AutoDriverOnlySimulator implements Simulator
 
   private volatile double score;
 
+  private volatile int numIntersectionTraversals;
+
+  private List<Double> traversalTimes = Collections.synchronizedList(new ArrayList<Double>());
+
+  private volatile boolean printSimResults = true;
+
     /////////////////////////////////
     // CLASS CONSTRUCTORS
     /////////////////////////////////
@@ -167,6 +173,7 @@ public class AutoDriverOnlySimulator implements Simulator
     if(Main.cfgNumPedestrians>0)
       spawnDrunkPedestrians();    //only spawn pedestrians once (when the simulation starts) - we don't want a constant flow of pedestrians spawning each timestep
 
+    numIntersectionTraversals = 0;
     score = 0;
   }
 
@@ -182,7 +189,28 @@ public class AutoDriverOnlySimulator implements Simulator
   @Override
   public synchronized AutoDriverOnlySimStepResult step(double timeStep)
   {
-    //basicMap.printDataCollectionLinesData("data.txt");
+
+    if(printSimResults)                                               //if sim results still need to be printed (ie: the simulation hasn't finished yet)
+    {
+      if((numIntersectionTraversals + crashedVehicles.size()) == numVehiclesToSpawn.get())
+      {
+        double averageTraversalTime = 0;
+        for (double traversalTime : traversalTimes)
+        {
+          averageTraversalTime += traversalTime;
+        }
+        averageTraversalTime /= numIntersectionTraversals;
+
+        System.out.println("Average timesteps taken for a vehicle to traverse intersection: " + averageTraversalTime);
+
+        double x = numIntersectionTraversals;
+        double y = numVehiclesToSpawn.get();
+        double percentageThroughput =  ((x / y) * 100);
+        System.out.println("Percentage throughput of intersection: " + percentageThroughput);
+        printSimResults = false;                                    //don't print sim results again for this simulation
+      }
+    }
+
 
     this.timestep = timeStep;
 
@@ -1316,19 +1344,21 @@ public class AutoDriverOnlySimulator implements Simulator
 
           Sensor sensor = sensorOn(vehicle);                                      //has general sensor functionality (that both AIM and NEAT have)
 
-          for (DataCollectionLine line : basicMap.getDataCollectionLines())    //checkpoint lines on the map (1 at each end of each lane)
+          for (DataCollectionLine line : basicMap.getDataCollectionLines())       //checkpoint lines on the map (1 at each end of each lane)
           {
             if (!sensor.hasCrashed().get())                                           //if vehicle hasn't crashed
             {
-              if (line.intersect(vehicle, currentTime, posBeforeMove, posAfterMove))   //if vehicle hits this checkpoint
+              if (line.intersect(vehicle, currentTime, posBeforeMove, posAfterMove))  //if vehicle hits this checkpoint
               {
                 if (!sensor.getPassedCheckPointOne())                           //if checkpoint one (before entering intersection) has not been passed
                 {
-                  sensor.setPassedCheckPointOne(true);                          //then this must be the first checkpoint, so tell the sensor we've passed checkpoint one
-                } else                                                            //otherwise, if checkpoint one has been passed...
+                  sensor.setPassedCheckPointOne(true, currentTime);                          //then this must be the first checkpoint, so tell the sensor we've passed checkpoint one
+                } else                                                          //otherwise, if checkpoint one has been passed...
                 {
-                  sensor.setPassedCheckPointTwo(true);                        //then we successfully traversed the intersection! So tell the sensor.
+                  sensor.setPassedCheckPointTwo(true, currentTime);                         //then we successfully traversed the intersection! So tell the sensor.
                   score += 0.05;                                               //award the NEAT controller 0.5 points for passing this checkpoint.
+                  numIntersectionTraversals++;                                 //record this additional intersection traversal
+                  traversalTimes.add(sensor.getTraversalTimeTaken());          //record how long it took this vehicle to traverse the intersection
                 }
               }
 
@@ -1343,7 +1373,7 @@ public class AutoDriverOnlySimulator implements Simulator
    */
   public synchronized void moveDrunkPedestrians(double timeStep)
   {
-    if(Main.cfgNumPedestrians>0)                              //if there are more than 0 pedestrians on screen
+    if(Main.cfgNumPedestrians > 0)                              //if there are more than 0 pedestrians on screen
     {
       for(DrunkPedestrian drunkPedestrian: drunkPedestrians)  //loop through pedestrian list
       {
@@ -1390,13 +1420,6 @@ public class AutoDriverOnlySimulator implements Simulator
       }
     }
 
-      /*
-      if(VehicleUtil.intersects(vehicle,new Area(driver.getCurrentLane().rightBorder()))            //if vehicle touches right border of lane
-              || VehicleUtil.intersects(vehicle,new Area(driver.getCurrentLane().leftBorder())))    //if vehicle touches left border of lane
-      {
-        System.out.println("Veering off road there boy !!! -50 points for you !!!");
-      }
-      */
   }
 
 

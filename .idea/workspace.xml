@@ -6,13 +6,18 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6f150b2c-46dd-48b1-b563-347053e75363" name="Default" comment="Added option to make pedestrians stop walking and stand still in the intersection after some number of timesteps have passed.">
+    <list default="true" id="6f150b2c-46dd-48b1-b563-347053e75363" name="Default" comment="added option to toggle AIM anti-crash heuristic (slow down for obstruction) to config">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/aim4/Main.class" afterPath="$PROJECT_DIR$/target/classes/aim4/Main.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/aim4/vehicle/VehicleSpec.class" afterPath="$PROJECT_DIR$/target/classes/aim4/vehicle/VehicleSpec.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/aim4/sim/AutoDriverOnlySimulator.class" afterPath="$PROJECT_DIR$/target/classes/aim4/sim/AutoDriverOnlySimulator.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TrainingResults/Population.eg" afterPath="$PROJECT_DIR$/TrainingResults/Population.eg" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config.txt" afterPath="$PROJECT_DIR$/config.txt" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/aim4/Main.java" afterPath="$PROJECT_DIR$/src/main/java/aim4/Main.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/aim4/Neuroevolution.java" afterPath="$PROJECT_DIR$/src/main/java/aim4/Neuroevolution.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/aim4/gui/Canvas.java" afterPath="$PROJECT_DIR$/src/main/java/aim4/gui/Canvas.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/aim4/gui/Viewer.java" afterPath="$PROJECT_DIR$/src/main/java/aim4/gui/Viewer.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/aim4/sim/AutoDriverOnlySimulator.java" afterPath="$PROJECT_DIR$/src/main/java/aim4/sim/AutoDriverOnlySimulator.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/aim4/vehicle/Sensor.java" afterPath="$PROJECT_DIR$/src/main/java/aim4/vehicle/Sensor.java" />
     </list>
     <ignored path="NAIM.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -33,11 +38,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="config.txt" pinned="false" current-in-tab="true">
+      <file leaf-file-name="config.txt" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/config.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="361">
-              <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="42" />
+            <state relative-caret-position="380">
+              <caret line="20" column="44" selection-start-line="20" selection-start-column="44" selection-end-line="20" selection-end-column="44" />
               <folding />
             </state>
           </provider>
@@ -46,41 +51,46 @@
       <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/aim4/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="123">
-              <caret line="280" column="9" selection-start-line="280" selection-start-column="9" selection-end-line="280" selection-end-column="9" />
+            <state relative-caret-position="58">
+              <caret line="161" column="139" selection-start-line="161" selection-start-column="139" selection-end-line="161" selection-end-column="139" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="NeatSensor.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/aim4/vehicle/NeatSensor.java">
+      <file leaf-file-name="Neuroevolution.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/aim4/Neuroevolution.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1501">
-              <caret line="100" column="38" selection-start-line="100" selection-start-column="38" selection-end-line="100" selection-end-column="38" />
+            <state relative-caret-position="182">
+              <caret line="133" column="21" selection-start-line="133" selection-start-column="17" selection-end-line="133" selection-end-column="21" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AutoDriverOnlySimulator.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/aim4/sim/AutoDriverOnlySimulator.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="2014">
+              <caret line="197" column="7" selection-start-line="197" selection-start-column="7" selection-end-line="197" selection-end-column="7" />
               <folding>
-                <element signature="imports" expanded="false" />
-                <element signature="e#738#739#0" expanded="false" />
-                <element signature="e#768#769#0" expanded="false" />
-                <element signature="e#1069#1070#0" expanded="false" />
-                <element signature="e#1122#1123#0" expanded="false" />
-                <element signature="e#1174#1175#0" expanded="false" />
-                <element signature="e#1223#1224#0" expanded="false" />
-                <element signature="e#4435#4452#0" expanded="false" />
-                <element signature="e#11473#11489#0" expanded="false" />
-                <element signature="e#12698#12699#0" expanded="false" />
-                <element signature="e#12752#12753#0" expanded="false" />
+                <element signature="e#9600#9601#0" expanded="true" />
+                <element signature="e#9628#9629#0" expanded="true" />
+                <marker date="1482315753412" expanded="false" signature="9479:9486" ph=" { " />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AutoDriverOnlySimulator.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/aim4/sim/AutoDriverOnlySimulator.java">
+      <file leaf-file-name="Sensor.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/aim4/vehicle/Sensor.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="209">
-              <caret line="1302" column="0" selection-start-line="1302" selection-start-column="0" selection-end-line="1302" selection-end-column="0" />
-              <folding />
+            <state relative-caret-position="254">
+              <caret line="111" column="5" selection-start-line="111" selection-start-column="5" selection-end-line="111" selection-end-column="5" />
+              <folding>
+                <element signature="e#6610#6611#0" expanded="true" />
+                <element signature="e#6682#6683#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -88,8 +98,18 @@
       <file leaf-file-name="Viewer.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/aim4/gui/Viewer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="128">
-              <caret line="1108" column="37" selection-start-line="1108" selection-start-column="37" selection-end-line="1108" selection-end-column="37" />
+            <state relative-caret-position="334">
+              <caret line="1172" column="110" selection-start-line="1172" selection-start-column="110" selection-end-line="1172" selection-end-column="110" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="NEATController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/aim4/vehicle/NEATController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="209">
+              <caret line="72" column="18" selection-start-line="72" selection-start-column="18" selection-end-line="72" selection-end-column="18" />
               <folding />
             </state>
           </provider>
@@ -98,8 +118,8 @@
       <file leaf-file-name="SimConfig.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/aim4/config/SimConfig.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="246">
-              <caret line="56" column="24" selection-start-line="56" selection-start-column="24" selection-end-line="56" selection-end-column="24" />
+            <state relative-caret-position="265">
+              <caret line="45" column="50" selection-start-line="45" selection-start-column="50" selection-end-line="45" selection-end-column="50" />
               <folding />
             </state>
           </provider>
@@ -108,9 +128,21 @@
       <file leaf-file-name="Canvas.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/aim4/gui/Canvas.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="16017">
-              <caret line="911" column="13" selection-start-line="911" selection-start-column="13" selection-end-line="911" selection-end-column="13" />
+            <state relative-caret-position="-692">
+              <caret line="667" column="52" selection-start-line="667" selection-start-column="52" selection-end-line="667" selection-end-column="52" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="GridMap.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/aim4/map/GridMap.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="432">
+              <caret line="624" column="33" selection-start-line="624" selection-start-column="33" selection-end-line="624" selection-end-column="33" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -137,20 +169,20 @@
         <option value="$PROJECT_DIR$/src/main/java/aim4/gui/SimSetupPanel.java" />
         <option value="$PROJECT_DIR$/src/main/java/aim4/map/GridMap.java" />
         <option value="$PROJECT_DIR$/src/main/java/aim4/vehicle/NeatSensor.java" />
-        <option value="$PROJECT_DIR$/src/main/java/aim4/vehicle/Sensor.java" />
         <option value="$PROJECT_DIR$/src/main/java/aim4/ScoreCalculator.java" />
         <option value="$PROJECT_DIR$/src/main/java/aim4/SimRunner.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/encog/util/file/Directory.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/encog/ml/ea/species/ThresholdSpeciation.java" />
-        <option value="$PROJECT_DIR$/src/main/java/aim4/Neuroevolution.java" />
-        <option value="$PROJECT_DIR$/src/main/java/aim4/gui/Canvas.java" />
         <option value="$PROJECT_DIR$/src/main/java/aim4/map/DataCollectionLine.java" />
         <option value="$PROJECT_DIR$/src/main/java/aim4/gui/statuspanel/SimControlPanel.java" />
-        <option value="$PROJECT_DIR$/src/main/java/aim4/gui/Viewer.java" />
         <option value="$PROJECT_DIR$/src/main/java/aim4/config/SimConfig.java" />
-        <option value="$PROJECT_DIR$/config.txt" />
-        <option value="$PROJECT_DIR$/src/main/java/aim4/sim/AutoDriverOnlySimulator.java" />
+        <option value="$PROJECT_DIR$/src/main/java/aim4/gui/Canvas.java" />
+        <option value="$PROJECT_DIR$/src/main/java/aim4/Neuroevolution.java" />
         <option value="$PROJECT_DIR$/src/main/java/aim4/Main.java" />
+        <option value="$PROJECT_DIR$/src/main/java/aim4/gui/Viewer.java" />
+        <option value="$PROJECT_DIR$/src/main/java/aim4/vehicle/Sensor.java" />
+        <option value="$PROJECT_DIR$/src/main/java/aim4/sim/AutoDriverOnlySimulator.java" />
+        <option value="$PROJECT_DIR$/config.txt" />
       </list>
     </option>
   </component>
@@ -246,7 +278,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="SearchEverywhereHistoryKey" value="viewer&#9;PSI&#9;JAVA://aim4.gui.Viewer&#10;main&#9;FILE&#9;file:///home/alex/Desktop/CSC2005Z/NAIM/src/main/java/aim4/Main.java&#10;canvas&#9;FILE&#9;file:///home/alex/Desktop/CSC2005Z/NAIM/src/main/java/aim4/gui/Canvas.java&#10;gridmap&#9;FILE&#9;file:///home/alex/Desktop/CSC2005Z/NAIM/src/main/java/aim4/map/GridMap.java&#10;neatcontr&#9;PSI&#9;JAVA://aim4.vehicle.NEATController&#10;sensor&#9;FILE&#9;file:///home/alex/Desktop/CSC2005Z/NAIM/src/main/java/aim4/vehicle/Sensor.java&#10;neat&#9;FILE&#9;file:///home/alex/Desktop/CSC2005Z/NAIM/src/main/java/org/encog/neural/neat/NEATPopulation.java&#10;speci&#9;FILE&#9;file:///home/alex/Desktop/CSC2005Z/NAIM/src/main/java/org/encog/neural/neat/training/species/OriginalNEATSpeciation.java&#10;simru&#9;FILE&#9;file:///home/alex/Desktop/CSC2005Z/NAIM/src/main/java/aim4/SimRunner.java&#10;boxes&#9;FILE&#9;file:///home/alex/Desktop/CSC2005Z/NAIM/src/main/java/aim4/ignore/boxes/VisualizeBoxesMain.java&#10;encogut&#9;PSI&#9;JAVA://org.encog.util.simple.EncogUtility&#10;datacoll&#9;FILE&#9;file:///home/alex/Desktop/CSC2005Z/NAIM/src/main/java/aim4/map/DataCollectionLine.java&#10;sens&#9;FILE&#9;file:///home/alex/Desktop/CSC2005Z/NAIM/src/main/java/aim4/vehicle/Sensor.java&#10;neuro&#9;FILE&#9;file:///home/alex/Desktop/CSC2005Z/NAIM/src/main/java/aim4/Neuroevolution.java&#10;score&#9;FILE&#9;file:///home/alex/Desktop/CSC2005Z/NAIM/src/main/java/aim4/ScoreCalculator.java&#10;scorecal&#9;PSI&#9;JAVA://aim4.ScoreCalculator&#10;CANVAS&#9;FILE&#9;file:///home/alex/Desktop/CSC2005Z/NAIM/src/main/java/aim4/gui/Canvas.java&#10;neatse&#9;PSI&#9;JAVA://aim4.vehicle.NeatSensor&#10;dataco&#9;FILE&#9;file:///home/alex/Desktop/CSC2005Z/NAIM/src/main/java/aim4/map/DataCollectionLine.java&#10;autodriveronlys&#9;PSI&#9;JAVA://aim4.sim.AutoDriverOnlySimulator&#10;config&#9;FILE&#9;file:///home/alex/Desktop/CSC2005Z/NAIM/config.txt" />
+    <property name="SearchEverywhereHistoryKey" value="sensor&#9;FILE&#9;file:///home/alex/Desktop/CSC2005Z/NAIM/src/main/java/aim4/vehicle/Sensor.java&#10;printsim&#9;PSI&#9;JAVA://aim4.sim.AutoDriverOnlySimulator#printSimResults&#10;gridm&#9;FILE&#9;file:///home/alex/Desktop/CSC2005Z/NAIM/src/main/java/aim4/map/GridMap.java&#10;neuro&#9;FILE&#9;file:///home/alex/Desktop/CSC2005Z/NAIM/src/main/java/aim4/Neuroevolution.java&#10;neatcon&#9;FILE&#9;file:///home/alex/Desktop/CSC2005Z/NAIM/src/main/java/aim4/vehicle/NEATController.java&#10;gridmap&#9;FILE&#9;file:///home/alex/Desktop/CSC2005Z/NAIM/src/main/java/aim4/map/GridMap.java&#10;viewer&#9;PSI&#9;JAVA://aim4.gui.Viewer&#10;main&#9;FILE&#9;file:///home/alex/Desktop/CSC2005Z/NAIM/src/main/java/aim4/Main.java&#10;canvas&#9;FILE&#9;file:///home/alex/Desktop/CSC2005Z/NAIM/src/main/java/aim4/gui/Canvas.java&#10;neatcontr&#9;PSI&#9;JAVA://aim4.vehicle.NEATController&#10;neat&#9;FILE&#9;file:///home/alex/Desktop/CSC2005Z/NAIM/src/main/java/org/encog/neural/neat/NEATPopulation.java&#10;speci&#9;FILE&#9;file:///home/alex/Desktop/CSC2005Z/NAIM/src/main/java/org/encog/neural/neat/training/species/OriginalNEATSpeciation.java&#10;simru&#9;FILE&#9;file:///home/alex/Desktop/CSC2005Z/NAIM/src/main/java/aim4/SimRunner.java&#10;boxes&#9;FILE&#9;file:///home/alex/Desktop/CSC2005Z/NAIM/src/main/java/aim4/ignore/boxes/VisualizeBoxesMain.java&#10;encogut&#9;PSI&#9;JAVA://org.encog.util.simple.EncogUtility&#10;datacoll&#9;FILE&#9;file:///home/alex/Desktop/CSC2005Z/NAIM/src/main/java/aim4/map/DataCollectionLine.java&#10;sens&#9;FILE&#9;file:///home/alex/Desktop/CSC2005Z/NAIM/src/main/java/aim4/vehicle/Sensor.java&#10;score&#9;FILE&#9;file:///home/alex/Desktop/CSC2005Z/NAIM/src/main/java/aim4/ScoreCalculator.java&#10;scorecal&#9;PSI&#9;JAVA://aim4.ScoreCalculator&#10;CANVAS&#9;FILE&#9;file:///home/alex/Desktop/CSC2005Z/NAIM/src/main/java/aim4/gui/Canvas.java&#10;neatse&#9;PSI&#9;JAVA://aim4.vehicle.NeatSensor&#10;dataco&#9;FILE&#9;file:///home/alex/Desktop/CSC2005Z/NAIM/src/main/java/aim4/map/DataCollectionLine.java&#10;autodriveronlys&#9;PSI&#9;JAVA://aim4.sim.AutoDriverOnlySimulator&#10;config&#9;FILE&#9;file:///home/alex/Desktop/CSC2005Z/NAIM/config.txt" />
     <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -854,7 +886,14 @@
       <option name="project" value="LOCAL" />
       <updated>1482260132249</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="added option to toggle AIM anti-crash heuristic (slow down for obstruction) to config">
+      <created>1482261922891</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1482261922891</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -868,15 +907,15 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.08868895" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22622108" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.20565553" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.27506426" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.12982005" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.018132975" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.0" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.09640103" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
@@ -933,7 +972,8 @@
     <MESSAGE value="* Added option to toggle drawing the field of view for each car's sensor during simulation.&#10;* Now experimenting with smaller sensor FOVs - results are significantly better thus far." />
     <MESSAGE value="Changed some code in the moveVehicles() method in AutoDriverOnlySimulator such that vehicles are only registered as having passed checkpoints (DataCollectionLines) if they haven't had an accident. This way, DataCollectionLines can be used to measure throughput of the intersection - but ignoring all crashed vehicles." />
     <MESSAGE value="Added option to make pedestrians stop walking and stand still in the intersection after some number of timesteps have passed." />
-    <option name="LAST_COMMIT_MESSAGE" value="Added option to make pedestrians stop walking and stand still in the intersection after some number of timesteps have passed." />
+    <MESSAGE value="added option to toggle AIM anti-crash heuristic (slow down for obstruction) to config" />
+    <option name="LAST_COMMIT_MESSAGE" value="added option to toggle AIM anti-crash heuristic (slow down for obstruction) to config" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XDebuggerManager">
@@ -1004,13 +1044,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="28082">
           <caret line="1598" column="3" selection-start-line="1598" selection-start-column="3" selection-end-line="1598" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/aim4/im/RoadBasedTrackModel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="171">
-          <caret line="53" column="44" selection-start-line="53" selection-start-column="44" selection-end-line="53" selection-end-column="44" />
         </state>
       </provider>
     </entry>
@@ -1175,76 +1208,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/aim4/Neuroevolution.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="475">
-          <caret line="41" column="53" selection-start-line="41" selection-start-column="53" selection-end-line="41" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/aim4/vehicle/Sensor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2907">
-          <caret line="177" column="182" selection-start-line="177" selection-start-column="176" selection-end-line="177" selection-end-column="182" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#5789#5790#0" expanded="false" />
-            <element signature="e#5842#5843#0" expanded="false" />
-            <element signature="e#5906#5907#0" expanded="false" />
-            <element signature="e#5959#5960#0" expanded="false" />
-            <element signature="e#8224#8225#0" expanded="false" />
-            <element signature="e#8269#8270#0" expanded="false" />
-            <element signature="e#8333#8334#0" expanded="false" />
-            <element signature="e#8386#8387#0" expanded="false" />
-            <element signature="e#10741#10742#0" expanded="false" />
-            <element signature="e#10788#10789#0" expanded="false" />
-            <element signature="e#10858#10859#0" expanded="false" />
-            <element signature="e#10905#10906#0" expanded="false" />
-            <element signature="e#10963#10964#0" expanded="false" />
-            <element signature="e#10996#10997#0" expanded="false" />
-            <element signature="e#11044#11045#0" expanded="false" />
-            <element signature="e#11072#11073#0" expanded="false" />
-            <element signature="e#11125#11126#0" expanded="false" />
-            <element signature="e#11153#11154#0" expanded="false" />
-            <element signature="e#11199#11200#0" expanded="false" />
-            <element signature="e#11226#11227#0" expanded="false" />
-            <element signature="e#11278#11279#0" expanded="false" />
-            <element signature="e#11311#11312#0" expanded="false" />
-            <element signature="e#11370#11371#0" expanded="false" />
-            <element signature="e#11394#11395#0" expanded="false" />
-            <element signature="e#11439#11440#0" expanded="false" />
-            <element signature="e#11463#11464#0" expanded="false" />
-            <element signature="e#11508#11509#0" expanded="false" />
-            <element signature="e#11532#11533#0" expanded="false" />
-            <element signature="e#11581#11582#0" expanded="false" />
-            <element signature="e#11609#11610#0" expanded="false" />
-            <element signature="e#11659#11660#0" expanded="false" />
-            <element signature="e#11688#11689#0" expanded="false" />
-            <element signature="e#11742#11743#0" expanded="false" />
-            <element signature="e#11775#11776#0" expanded="false" />
-            <element signature="e#11830#11831#0" expanded="false" />
-            <element signature="e#11864#11865#0" expanded="false" />
-            <element signature="e#11909#11910#0" expanded="false" />
-            <element signature="e#11936#11937#0" expanded="false" />
-            <element signature="e#11996#11997#0" expanded="false" />
-            <element signature="e#12053#12054#0" expanded="false" />
-            <element signature="e#12464#12465#0" expanded="false" />
-            <element signature="e#12503#12504#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/aim4/SimRunner.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="665">
           <caret line="40" column="42" selection-start-line="40" selection-start-column="42" selection-end-line="40" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/aim4/vehicle/NEATController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-475">
-          <caret line="29" column="31" selection-start-line="29" selection-start-column="31" selection-end-line="29" selection-end-column="31" />
         </state>
       </provider>
     </entry>
@@ -1266,44 +1233,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="247">
           <caret line="37" column="5" selection-start-line="37" selection-start-column="5" selection-end-line="37" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/aim4/gui/Canvas.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="16017">
-          <caret line="911" column="13" selection-start-line="911" selection-start-column="13" selection-end-line="911" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/aim4/vehicle/NeatSensor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1501">
-          <caret line="100" column="38" selection-start-line="100" selection-start-column="38" selection-end-line="100" selection-end-column="38" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#738#739#0" expanded="false" />
-            <element signature="e#768#769#0" expanded="false" />
-            <element signature="e#1069#1070#0" expanded="false" />
-            <element signature="e#1122#1123#0" expanded="false" />
-            <element signature="e#1174#1175#0" expanded="false" />
-            <element signature="e#1223#1224#0" expanded="false" />
-            <element signature="e#4435#4452#0" expanded="false" />
-            <element signature="e#11473#11489#0" expanded="false" />
-            <element signature="e#12698#12699#0" expanded="false" />
-            <element signature="e#12752#12753#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/aim4/map/GridMap.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="103">
-          <caret line="613" column="19" selection-start-line="613" selection-start-column="19" selection-end-line="613" selection-end-column="19" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1339,43 +1268,108 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/aim4/gui/Viewer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="128">
-          <caret line="1108" column="37" selection-start-line="1108" selection-start-column="37" selection-end-line="1108" selection-end-column="37" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/aim4/config/SimConfig.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="246">
-          <caret line="56" column="24" selection-start-line="56" selection-start-column="24" selection-end-line="56" selection-end-column="24" />
+        <state relative-caret-position="265">
+          <caret line="45" column="50" selection-start-line="45" selection-start-column="50" selection-end-line="45" selection-end-column="50" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/aim4/sim/AutoDriverOnlySimulator.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/aim4/vehicle/NeatSensor.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
-          <caret line="1302" column="0" selection-start-line="1302" selection-start-column="0" selection-end-line="1302" selection-end-column="0" />
+        <state relative-caret-position="-1988">
+          <caret line="130" column="21" selection-start-line="130" selection-start-column="21" selection-end-line="130" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/aim4/gui/Canvas.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-692">
+          <caret line="667" column="52" selection-start-line="667" selection-start-column="52" selection-end-line="667" selection-end-column="52" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/aim4/im/RoadBasedTrackModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-6414">
+          <caret line="54" column="0" selection-start-line="54" selection-start-column="0" selection-end-line="54" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/aim4/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="123">
-          <caret line="280" column="9" selection-start-line="280" selection-start-column="9" selection-end-line="280" selection-end-column="9" />
+        <state relative-caret-position="58">
+          <caret line="161" column="139" selection-start-line="161" selection-start-column="139" selection-end-line="161" selection-end-column="139" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/aim4/vehicle/NEATController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="209">
+          <caret line="72" column="18" selection-start-line="72" selection-start-column="18" selection-end-line="72" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/aim4/gui/Viewer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="334">
+          <caret line="1172" column="110" selection-start-line="1172" selection-start-column="110" selection-end-line="1172" selection-end-column="110" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/aim4/map/GridMap.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="432">
+          <caret line="624" column="33" selection-start-line="624" selection-start-column="33" selection-end-line="624" selection-end-column="33" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/aim4/Neuroevolution.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="182">
+          <caret line="133" column="21" selection-start-line="133" selection-start-column="17" selection-end-line="133" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/aim4/vehicle/Sensor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="254">
+          <caret line="111" column="5" selection-start-line="111" selection-start-column="5" selection-end-line="111" selection-end-column="5" />
+          <folding>
+            <element signature="e#6610#6611#0" expanded="true" />
+            <element signature="e#6682#6683#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/config.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="361">
-          <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="42" />
+        <state relative-caret-position="380">
+          <caret line="20" column="44" selection-start-line="20" selection-start-column="44" selection-end-line="20" selection-end-column="44" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/aim4/sim/AutoDriverOnlySimulator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2014">
+          <caret line="197" column="7" selection-start-line="197" selection-start-column="7" selection-end-line="197" selection-end-column="7" />
+          <folding>
+            <element signature="e#9600#9601#0" expanded="true" />
+            <element signature="e#9628#9629#0" expanded="true" />
+            <marker date="1482315753412" expanded="false" signature="9479:9486" ph=" { " />
+          </folding>
         </state>
       </provider>
     </entry>

@@ -617,26 +617,6 @@ public class Canvas extends JPanel implements ComponentListener,
     bgBuffer.fill(lane.getShape());
 
 
-
-
-    /* rudolf - draw grey start/end area
-     --------------------------------
-    Rectangle2D areaGreyLaneStart =
-            lane.getShape(lane.normalizedDistance(0), lane.normalizedDistance(28)).getBounds2D();
-
-    Rectangle2D areaGreyLaneEnd =
-            lane.getShape(lane.normalizedDistance(285), lane.normalizedDistance(313)).getBounds2D();
-
-    bgBuffer.setColor(Color.gray);
-    bgBuffer.draw(areaGreyLaneStart);
-    bgBuffer.draw(areaGreyLaneEnd);
-    bgBuffer.fill(areaGreyLaneStart);
-    bgBuffer.fill(areaGreyLaneEnd);
-
-*/
-
-
-
     // Draw the left boundary
     if (lane.hasLeftNeighbor()) {
       bgBuffer.setPaint(LANE_SEPARATOR_COLOR);
