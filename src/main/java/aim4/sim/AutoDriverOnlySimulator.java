@@ -189,8 +189,7 @@ public class AutoDriverOnlySimulator implements Simulator
   @Override
   public synchronized AutoDriverOnlySimStepResult step(double timeStep)
   {
-
-    if(printSimResults)                                               //if sim results still need to be printed (ie: the simulation hasn't finished yet)
+    if(printSimResults)                                                         //if sim results still need to be printed (ie: the simulation hasn't finished yet)
     {
       if((numIntersectionTraversals + crashedVehicles.size()) == numVehiclesToSpawn.get())
       {
@@ -210,7 +209,6 @@ public class AutoDriverOnlySimulator implements Simulator
         printSimResults = false;                                    //don't print sim results again for this simulation
       }
     }
-
 
     this.timestep = timeStep;
 
@@ -267,6 +265,7 @@ public class AutoDriverOnlySimulator implements Simulator
         checkSensorsNEAT();
         checkDistancesToIntersectionEdges();
         deductPointsForLeavingTrack();
+        //calcDistancesOfVehiclesToIntersectionExitPoints();
       }
 
     moveVehicles(timeStep);
@@ -454,7 +453,7 @@ public class AutoDriverOnlySimulator implements Simulator
               //if(!(spawnPoint.getLane().getId()==2)) continue;                  //force vehicles to spawn from West road
 
             VehicleSimView vehicle = makeVehicle(spawnPoint, spawnSpec);
-              ((BasicAutoVehicle)vehicle).setSpawnTime(spawnSpec.getSpawnTime());                         //store vehicle's spawntime in the vehicle itself
+            ((BasicAutoVehicle)vehicle).setSpawnTime(spawnSpec.getSpawnTime());                         //store vehicle's spawntime in the vehicle itself
 
             Sensor sensor;
             Controller controller;
@@ -475,10 +474,10 @@ public class AutoDriverOnlySimulator implements Simulator
               ((BasicAutoVehicle)vehicle).installController(controller);
             }
 
-
             VinRegistry.registerVehicle(vehicle); // Get vehicle a VIN number
             vinToVehicles.put(vehicle.getVIN(), vehicle);
             numVehiclesSpawned.incrementAndGet();         //rudolf - increment number of spawned vehicles
+
             break; // only handle the first spawn vehicle
                    // TODO: need to fix this
           }
@@ -1300,6 +1299,29 @@ public class AutoDriverOnlySimulator implements Simulator
   /////////////////////////////////
 
 
+    //Calculate the distance from the centres of vehicles to the intersection exit points that they must reach
+    //NEAT will try to minimise this value - ie: try get vehicles as close to their destinations as possible
+    synchronized public void calcDistancesOfVehiclesToIntersectionExitPoints()
+    {
+        for(VehicleSimView vehicle : vinToVehicles.values())
+        {
+            for(IntersectionManager im : basicMap.getIntersectionManagers())
+            {
+                //if(im.semiContains(vehicle))
+                {
+                    NeatSensor sensor = NeatSensor.sensorOn(vehicle);
+                    Point2D.Double intersectionExitPoint = (im.getIntersection().getExitPoint(vehicle.getDriver().getCurrentLane()));
+                    double distanceToIntersectionExit = intersectionExitPoint.distance(vehicle.getPosition());                        //vehicles want to minimise this distance
+                    sensor.setDistToIntersectionExitPoint(distanceToIntersectionExit);
+                    sensor.setIntersectionExitPoint(intersectionExitPoint);
+                }
+            }
+
+        }
+
+    }
+
+
   /**
    * Move all the vehicles.
    *
@@ -1309,7 +1331,7 @@ public class AutoDriverOnlySimulator implements Simulator
       {
         for (VehicleSimView vehicle : vinToVehicles.values())
         {
-          if (Main.cfgController.equals("NEAT"))
+         if (Main.cfgController.equals("NEAT"))
           {
             NeatSensor sensor = neatSensorOn(vehicle);
             if (!sensor.hasCrashed().get())            //only use NEAT controller if vehicle hasn't crashed
@@ -1330,7 +1352,7 @@ public class AutoDriverOnlySimulator implements Simulator
               {
                 if (Main.cfgAIMAntiCrashHeuristicEnabled)
                 {
-                  aimSensorOn(v).avoidCollisionHeuristic();                             //slow down to stop --> heuristic to avoid crashing
+                  aimSensorOn(v).avoidCollisionHeuristic();                            //slow down to stop --> heuristic to avoid crashing
                   aimSensorOn(v).setWaitingForObstruction(new AtomicBoolean(false));
                 }
               }

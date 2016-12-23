@@ -6,18 +6,38 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6f150b2c-46dd-48b1-b563-347053e75363" name="Default" comment="added option to toggle AIM anti-crash heuristic (slow down for obstruction) to config">
+    <list default="true" id="6f150b2c-46dd-48b1-b563-347053e75363" name="Default" comment="Added the following post-simulation statistics:&#10;* Percentage throughput of intersection&#10;* Average vehicle traversal time through intersection">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/aim4/Main.class" afterPath="$PROJECT_DIR$/target/classes/aim4/Main.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/aim4/Neuroevolution.class" afterPath="$PROJECT_DIR$/target/classes/aim4/Neuroevolution.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/aim4/driver/AutoDriver.class" afterPath="$PROJECT_DIR$/target/classes/aim4/driver/AutoDriver.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/aim4/driver/CrashTestDummy.class" afterPath="$PROJECT_DIR$/target/classes/aim4/driver/CrashTestDummy.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/aim4/driver/coordinator/V2ICoordinator$V2IAwaitingResponseStateHandler.class" afterPath="$PROJECT_DIR$/target/classes/aim4/driver/coordinator/V2ICoordinator$V2IAwaitingResponseStateHandler.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/aim4/driver/coordinator/V2ICoordinator$V2IClearingStateHandler.class" afterPath="$PROJECT_DIR$/target/classes/aim4/driver/coordinator/V2ICoordinator$V2IClearingStateHandler.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/aim4/driver/coordinator/V2ICoordinator$V2IMaintainingReservationStateHandler.class" afterPath="$PROJECT_DIR$/target/classes/aim4/driver/coordinator/V2ICoordinator$V2IMaintainingReservationStateHandler.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/aim4/driver/coordinator/V2ICoordinator$V2IPreparingReservationStateHandler.class" afterPath="$PROJECT_DIR$/target/classes/aim4/driver/coordinator/V2ICoordinator$V2IPreparingReservationStateHandler.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/aim4/driver/coordinator/V2ICoordinator$V2ITraversingStateHandler.class" afterPath="$PROJECT_DIR$/target/classes/aim4/driver/coordinator/V2ICoordinator$V2ITraversingStateHandler.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/aim4/driver/coordinator/V2ICoordinator.class" afterPath="$PROJECT_DIR$/target/classes/aim4/driver/coordinator/V2ICoordinator.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/aim4/driver/pilot/BasicPilot.class" afterPath="$PROJECT_DIR$/target/classes/aim4/driver/pilot/BasicPilot.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/aim4/gui/Canvas$1.class" afterPath="$PROJECT_DIR$/target/classes/aim4/gui/Canvas$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/aim4/gui/Canvas.class" afterPath="$PROJECT_DIR$/target/classes/aim4/gui/Canvas.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/aim4/gui/Viewer$1.class" afterPath="$PROJECT_DIR$/target/classes/aim4/gui/Viewer$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/aim4/gui/Viewer$SimThread.class" afterPath="$PROJECT_DIR$/target/classes/aim4/gui/Viewer$SimThread.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/aim4/gui/Viewer.class" afterPath="$PROJECT_DIR$/target/classes/aim4/gui/Viewer.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/aim4/im/v2i/reservation/ReservationGridManager.class" afterPath="$PROJECT_DIR$/target/classes/aim4/im/v2i/reservation/ReservationGridManager.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/aim4/sim/AutoDriverOnlySimulator$1.class" afterPath="$PROJECT_DIR$/target/classes/aim4/sim/AutoDriverOnlySimulator$1.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/aim4/sim/AutoDriverOnlySimulator.class" afterPath="$PROJECT_DIR$/target/classes/aim4/sim/AutoDriverOnlySimulator.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/aim4/vehicle/NEATController.class" afterPath="$PROJECT_DIR$/target/classes/aim4/vehicle/NEATController.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/aim4/vehicle/NeatSensor.class" afterPath="$PROJECT_DIR$/target/classes/aim4/vehicle/NeatSensor.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/aim4/vehicle/Sensor.class" afterPath="$PROJECT_DIR$/target/classes/aim4/vehicle/Sensor.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TrainingResults/Population.eg" afterPath="$PROJECT_DIR$/TrainingResults/Population.eg" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config.txt" afterPath="$PROJECT_DIR$/config.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/aim4/Main.java" afterPath="$PROJECT_DIR$/src/main/java/aim4/Main.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/aim4/Neuroevolution.java" afterPath="$PROJECT_DIR$/src/main/java/aim4/Neuroevolution.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/aim4/gui/Canvas.java" afterPath="$PROJECT_DIR$/src/main/java/aim4/gui/Canvas.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/aim4/driver/AutoDriver.java" afterPath="$PROJECT_DIR$/src/main/java/aim4/driver/AutoDriver.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/aim4/driver/coordinator/V2ICoordinator.java" afterPath="$PROJECT_DIR$/src/main/java/aim4/driver/coordinator/V2ICoordinator.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/aim4/driver/pilot/BasicPilot.java" afterPath="$PROJECT_DIR$/src/main/java/aim4/driver/pilot/BasicPilot.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/aim4/gui/Viewer.java" afterPath="$PROJECT_DIR$/src/main/java/aim4/gui/Viewer.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/aim4/sim/AutoDriverOnlySimulator.java" afterPath="$PROJECT_DIR$/src/main/java/aim4/sim/AutoDriverOnlySimulator.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/aim4/vehicle/Sensor.java" afterPath="$PROJECT_DIR$/src/main/java/aim4/vehicle/Sensor.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/aim4/vehicle/NEATController.java" afterPath="$PROJECT_DIR$/src/main/java/aim4/vehicle/NEATController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/aim4/vehicle/NeatSensor.java" afterPath="$PROJECT_DIR$/src/main/java/aim4/vehicle/NeatSensor.java" />
     </list>
     <ignored path="NAIM.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -41,75 +61,8 @@
       <file leaf-file-name="config.txt" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/config.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="380">
-              <caret line="20" column="44" selection-start-line="20" selection-start-column="44" selection-end-line="20" selection-end-column="44" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/aim4/Main.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="58">
-              <caret line="161" column="139" selection-start-line="161" selection-start-column="139" selection-end-line="161" selection-end-column="139" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Neuroevolution.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/aim4/Neuroevolution.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="182">
-              <caret line="133" column="21" selection-start-line="133" selection-start-column="17" selection-end-line="133" selection-end-column="21" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AutoDriverOnlySimulator.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/aim4/sim/AutoDriverOnlySimulator.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2014">
-              <caret line="197" column="7" selection-start-line="197" selection-start-column="7" selection-end-line="197" selection-end-column="7" />
-              <folding>
-                <element signature="e#9600#9601#0" expanded="true" />
-                <element signature="e#9628#9629#0" expanded="true" />
-                <marker date="1482315753412" expanded="false" signature="9479:9486" ph=" { " />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Sensor.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/aim4/vehicle/Sensor.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="254">
-              <caret line="111" column="5" selection-start-line="111" selection-start-column="5" selection-end-line="111" selection-end-column="5" />
-              <folding>
-                <element signature="e#6610#6611#0" expanded="true" />
-                <element signature="e#6682#6683#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Viewer.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/aim4/gui/Viewer.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="334">
-              <caret line="1172" column="110" selection-start-line="1172" selection-start-column="110" selection-end-line="1172" selection-end-column="110" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="NEATController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/aim4/vehicle/NEATController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="209">
-              <caret line="72" column="18" selection-start-line="72" selection-start-column="18" selection-end-line="72" selection-end-column="18" />
+            <state relative-caret-position="178">
+              <caret line="11" column="45" selection-start-line="11" selection-start-column="45" selection-end-line="11" selection-end-column="45" />
               <folding />
             </state>
           </provider>
@@ -118,31 +71,93 @@
       <file leaf-file-name="SimConfig.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/aim4/config/SimConfig.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="265">
-              <caret line="45" column="50" selection-start-line="45" selection-start-column="50" selection-end-line="45" selection-end-column="50" />
+            <state relative-caret-position="266">
+              <caret line="51" column="2" selection-start-line="51" selection-start-column="2" selection-end-line="51" selection-end-column="2" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Canvas.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/aim4/gui/Canvas.java">
+      <file leaf-file-name="V2ICoordinator.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/aim4/driver/coordinator/V2ICoordinator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-692">
-              <caret line="667" column="52" selection-start-line="667" selection-start-column="52" selection-end-line="667" selection-end-column="52" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="GridMap.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/aim4/map/GridMap.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="432">
-              <caret line="624" column="33" selection-start-line="624" selection-start-column="33" selection-end-line="624" selection-end-column="33" />
+            <state relative-caret-position="-1147">
+              <caret line="1153" column="21" selection-start-line="1153" selection-start-column="21" selection-end-line="1153" selection-end-column="21" />
               <folding>
-                <element signature="imports" expanded="true" />
+                <element signature="e#0#71685#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AutoDriver.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/aim4/driver/AutoDriver.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="90">
+              <caret line="240" column="40" selection-start-line="240" selection-start-column="40" selection-end-line="240" selection-end-column="40" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AutoDriverOnlySimulator.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/aim4/sim/AutoDriverOnlySimulator.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="23655">
+              <caret line="1328" column="5" selection-start-line="1328" selection-start-column="5" selection-end-line="1328" selection-end-column="5" />
+              <folding>
+                <element signature="e#3157#3158#0" expanded="false" />
+                <element signature="e#3205#3206#0" expanded="false" />
+                <element signature="e#3381#3382#0" expanded="false" />
+                <element signature="e#3415#3416#0" expanded="false" />
+                <element signature="e#9492#9493#0" expanded="false" />
+                <element signature="e#9517#9518#0" expanded="false" />
+                <element signature="e#9612#9613#0" expanded="false" />
+                <element signature="e#9640#9641#0" expanded="false" />
+                <element signature="e#9705#9706#0" expanded="false" />
+                <element signature="e#9739#9740#0" expanded="false" />
+                <element signature="e#9791#9792#0" expanded="false" />
+                <element signature="e#9822#9823#0" expanded="false" />
+                <element signature="e#9920#9921#0" expanded="false" />
+                <element signature="e#9959#9960#0" expanded="false" />
+                <element signature="e#10624#10625#0" expanded="false" />
+                <element signature="e#10662#10663#0" expanded="false" />
+                <element signature="e#11707#11708#0" expanded="false" />
+                <element signature="e#11746#11747#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Driver.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/aim4/driver/Driver.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="2546">
+              <caret line="178" column="45" selection-start-line="178" selection-start-column="34" selection-end-line="178" selection-end-column="45" />
+              <folding>
+                <element signature="e#0#8027#0" expanded="false" />
+                <element signature="imports" expanded="false" />
+                <element signature="e#4840#4841#0" expanded="false" />
+                <element signature="e#4878#4879#0" expanded="false" />
+                <element signature="e#5275#5276#0" expanded="false" />
+                <element signature="e#5315#5316#0" expanded="false" />
+                <element signature="e#5602#5603#0" expanded="false" />
+                <element signature="e#5630#5631#0" expanded="false" />
+                <element signature="e#6145#6146#0" expanded="false" />
+                <element signature="e#6213#6214#0" expanded="false" />
+                <element signature="e#6424#6425#0" expanded="false" />
+                <element signature="e#6466#6467#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BasePolicy.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/aim4/im/v2i/policy/BasePolicy.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="8265">
+              <caret line="517" column="0" selection-start-line="517" selection-start-column="0" selection-end-line="517" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -168,21 +183,29 @@
         <option value="$PROJECT_DIR$/src/main/java/aim4/sim/setup/BasicSimSetup.java" />
         <option value="$PROJECT_DIR$/src/main/java/aim4/gui/SimSetupPanel.java" />
         <option value="$PROJECT_DIR$/src/main/java/aim4/map/GridMap.java" />
-        <option value="$PROJECT_DIR$/src/main/java/aim4/vehicle/NeatSensor.java" />
         <option value="$PROJECT_DIR$/src/main/java/aim4/ScoreCalculator.java" />
         <option value="$PROJECT_DIR$/src/main/java/aim4/SimRunner.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/encog/util/file/Directory.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/encog/ml/ea/species/ThresholdSpeciation.java" />
         <option value="$PROJECT_DIR$/src/main/java/aim4/map/DataCollectionLine.java" />
         <option value="$PROJECT_DIR$/src/main/java/aim4/gui/statuspanel/SimControlPanel.java" />
-        <option value="$PROJECT_DIR$/src/main/java/aim4/config/SimConfig.java" />
         <option value="$PROJECT_DIR$/src/main/java/aim4/gui/Canvas.java" />
         <option value="$PROJECT_DIR$/src/main/java/aim4/Neuroevolution.java" />
         <option value="$PROJECT_DIR$/src/main/java/aim4/Main.java" />
-        <option value="$PROJECT_DIR$/src/main/java/aim4/gui/Viewer.java" />
         <option value="$PROJECT_DIR$/src/main/java/aim4/vehicle/Sensor.java" />
+        <option value="$PROJECT_DIR$/src/main/java/aim4/driver/Driver.java" />
+        <option value="$PROJECT_DIR$/src/main/java/aim4/vehicle/NeatSensor.java" />
+        <option value="$PROJECT_DIR$/src/main/java/aim4/vehicle/NEATController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/aim4/gui/Viewer.java" />
+        <option value="$PROJECT_DIR$/src/main/java/aim4/driver/pilot/BasicPilot.java" />
+        <option value="$PROJECT_DIR$/src/main/java/aim4/im/v2i/reservation/ReservationGridManager.java" />
         <option value="$PROJECT_DIR$/src/main/java/aim4/sim/AutoDriverOnlySimulator.java" />
+        <option value="$PROJECT_DIR$/src/main/java/aim4/driver/CrashTestDummy.java" />
+        <option value="$PROJECT_DIR$/src/main/java/aim4/im/v2i/policy/BasePolicy.java" />
+        <option value="$PROJECT_DIR$/src/main/java/aim4/driver/coordinator/V2ICoordinator.java" />
         <option value="$PROJECT_DIR$/config.txt" />
+        <option value="$PROJECT_DIR$/src/main/java/aim4/config/SimConfig.java" />
+        <option value="$PROJECT_DIR$/src/main/java/aim4/driver/AutoDriver.java" />
       </list>
     </option>
   </component>
@@ -195,9 +218,9 @@
   </component>
   <component name="ProjectFrameBounds">
     <option name="x" value="65" />
-    <option name="y" value="24" />
+    <option name="y" value="-4" />
     <option name="width" value="1535" />
-    <option name="height" value="876" />
+    <option name="height" value="904" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -225,52 +248,7 @@
     </navigator>
     <panes>
       <pane id="ProjectPane">
-        <subPane>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="NAIM" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="NAIM" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="NAIM" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="NAIM" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="NAIM" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="target" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="NAIM" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="NAIM" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
+        <subPane />
       </pane>
       <pane id="PackagesPane" />
       <pane id="Scratches" />
@@ -278,199 +256,12 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="SearchEverywhereHistoryKey" value="sensor&#9;FILE&#9;file:///home/alex/Desktop/CSC2005Z/NAIM/src/main/java/aim4/vehicle/Sensor.java&#10;printsim&#9;PSI&#9;JAVA://aim4.sim.AutoDriverOnlySimulator#printSimResults&#10;gridm&#9;FILE&#9;file:///home/alex/Desktop/CSC2005Z/NAIM/src/main/java/aim4/map/GridMap.java&#10;neuro&#9;FILE&#9;file:///home/alex/Desktop/CSC2005Z/NAIM/src/main/java/aim4/Neuroevolution.java&#10;neatcon&#9;FILE&#9;file:///home/alex/Desktop/CSC2005Z/NAIM/src/main/java/aim4/vehicle/NEATController.java&#10;gridmap&#9;FILE&#9;file:///home/alex/Desktop/CSC2005Z/NAIM/src/main/java/aim4/map/GridMap.java&#10;viewer&#9;PSI&#9;JAVA://aim4.gui.Viewer&#10;main&#9;FILE&#9;file:///home/alex/Desktop/CSC2005Z/NAIM/src/main/java/aim4/Main.java&#10;canvas&#9;FILE&#9;file:///home/alex/Desktop/CSC2005Z/NAIM/src/main/java/aim4/gui/Canvas.java&#10;neatcontr&#9;PSI&#9;JAVA://aim4.vehicle.NEATController&#10;neat&#9;FILE&#9;file:///home/alex/Desktop/CSC2005Z/NAIM/src/main/java/org/encog/neural/neat/NEATPopulation.java&#10;speci&#9;FILE&#9;file:///home/alex/Desktop/CSC2005Z/NAIM/src/main/java/org/encog/neural/neat/training/species/OriginalNEATSpeciation.java&#10;simru&#9;FILE&#9;file:///home/alex/Desktop/CSC2005Z/NAIM/src/main/java/aim4/SimRunner.java&#10;boxes&#9;FILE&#9;file:///home/alex/Desktop/CSC2005Z/NAIM/src/main/java/aim4/ignore/boxes/VisualizeBoxesMain.java&#10;encogut&#9;PSI&#9;JAVA://org.encog.util.simple.EncogUtility&#10;datacoll&#9;FILE&#9;file:///home/alex/Desktop/CSC2005Z/NAIM/src/main/java/aim4/map/DataCollectionLine.java&#10;sens&#9;FILE&#9;file:///home/alex/Desktop/CSC2005Z/NAIM/src/main/java/aim4/vehicle/Sensor.java&#10;score&#9;FILE&#9;file:///home/alex/Desktop/CSC2005Z/NAIM/src/main/java/aim4/ScoreCalculator.java&#10;scorecal&#9;PSI&#9;JAVA://aim4.ScoreCalculator&#10;CANVAS&#9;FILE&#9;file:///home/alex/Desktop/CSC2005Z/NAIM/src/main/java/aim4/gui/Canvas.java&#10;neatse&#9;PSI&#9;JAVA://aim4.vehicle.NeatSensor&#10;dataco&#9;FILE&#9;file:///home/alex/Desktop/CSC2005Z/NAIM/src/main/java/aim4/map/DataCollectionLine.java&#10;autodriveronlys&#9;PSI&#9;JAVA://aim4.sim.AutoDriverOnlySimulator&#10;config&#9;FILE&#9;file:///home/alex/Desktop/CSC2005Z/NAIM/config.txt" />
+    <property name="SearchEverywhereHistoryKey" value="request&#9;PSI&#9;JAVA://aim4.msg.v2i.Request&#10;viewer&#9;FILE&#9;file:///home/alex/Desktop/CSC2005Z/NAIM/src/main/java/aim4/gui/Viewer.java&#10;config&#9;FILE&#9;file:///home/alex/Desktop/CSC2005Z/NAIM/config.txt&#10;neatse&#9;FILE&#9;file:///home/alex/Desktop/CSC2005Z/NAIM/src/main/java/aim4/vehicle/NeatSensor.java&#10;neatcon&#9;FILE&#9;file:///home/alex/Desktop/CSC2005Z/NAIM/src/main/java/aim4/vehicle/NEATController.java&#10;neats&#9;FILE&#9;file:///home/alex/Desktop/CSC2005Z/NAIM/src/main/java/aim4/vehicle/NeatSensor.java&#10;sensor&#9;FILE&#9;file:///home/alex/Desktop/CSC2005Z/NAIM/src/main/java/aim4/vehicle/Sensor.java&#10;printsim&#9;PSI&#9;JAVA://aim4.sim.AutoDriverOnlySimulator#printSimResults&#10;gridm&#9;FILE&#9;file:///home/alex/Desktop/CSC2005Z/NAIM/src/main/java/aim4/map/GridMap.java&#10;neuro&#9;FILE&#9;file:///home/alex/Desktop/CSC2005Z/NAIM/src/main/java/aim4/Neuroevolution.java&#10;gridmap&#9;FILE&#9;file:///home/alex/Desktop/CSC2005Z/NAIM/src/main/java/aim4/map/GridMap.java&#10;main&#9;FILE&#9;file:///home/alex/Desktop/CSC2005Z/NAIM/src/main/java/aim4/Main.java&#10;canvas&#9;FILE&#9;file:///home/alex/Desktop/CSC2005Z/NAIM/src/main/java/aim4/gui/Canvas.java&#10;neatcontr&#9;PSI&#9;JAVA://aim4.vehicle.NEATController&#10;neat&#9;FILE&#9;file:///home/alex/Desktop/CSC2005Z/NAIM/src/main/java/org/encog/neural/neat/NEATPopulation.java&#10;speci&#9;FILE&#9;file:///home/alex/Desktop/CSC2005Z/NAIM/src/main/java/org/encog/neural/neat/training/species/OriginalNEATSpeciation.java&#10;simru&#9;FILE&#9;file:///home/alex/Desktop/CSC2005Z/NAIM/src/main/java/aim4/SimRunner.java&#10;boxes&#9;FILE&#9;file:///home/alex/Desktop/CSC2005Z/NAIM/src/main/java/aim4/ignore/boxes/VisualizeBoxesMain.java&#10;encogut&#9;PSI&#9;JAVA://org.encog.util.simple.EncogUtility&#10;datacoll&#9;FILE&#9;file:///home/alex/Desktop/CSC2005Z/NAIM/src/main/java/aim4/map/DataCollectionLine.java&#10;sens&#9;FILE&#9;file:///home/alex/Desktop/CSC2005Z/NAIM/src/main/java/aim4/vehicle/Sensor.java&#10;score&#9;FILE&#9;file:///home/alex/Desktop/CSC2005Z/NAIM/src/main/java/aim4/ScoreCalculator.java&#10;scorecal&#9;PSI&#9;JAVA://aim4.ScoreCalculator&#10;CANVAS&#9;FILE&#9;file:///home/alex/Desktop/CSC2005Z/NAIM/src/main/java/aim4/gui/Canvas.java&#10;dataco&#9;FILE&#9;file:///home/alex/Desktop/CSC2005Z/NAIM/src/main/java/aim4/map/DataCollectionLine.java&#10;autodriveronlys&#9;PSI&#9;JAVA://aim4.sim.AutoDriverOnlySimulator" />
     <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
-  </component>
-  <component name="RestoreUpdateTree" date="Moments ago" ActionInfo="_Update">
-    <UpdatedFiles>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Updated from server" />
-        <option name="myStatusName" value="Changed on server" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="CHANGED_ON_SERVER" />
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Updated" />
-          <option name="myStatusName" value="Changed" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="UPDATED" />
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/.idea/workspace.xml</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/config.txt</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/aim4/sim/AutoDriverOnlySimulator.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/target/classes/aim4/Main.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/target/classes/aim4/Neuroevolution.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/target/classes/aim4/driver/CrashTestDummy.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/target/classes/aim4/driver/Driver.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/target/classes/aim4/gui/Canvas$1.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/target/classes/aim4/gui/Canvas.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/target/classes/aim4/im/v2i/reservation/AczManager.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/target/classes/aim4/im/v2i/reservation/ReservationGrid$TimeTile.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/target/classes/aim4/im/v2i/reservation/ReservationGridManager.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/target/classes/aim4/map/GridMap.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/target/classes/aim4/map/TrafficVolume.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/target/classes/aim4/map/lane/LaneIM.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/target/classes/aim4/map/lane/LineSegmentLane.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/target/classes/aim4/map/track/ArcTrack$Position.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/target/classes/aim4/map/track/LineTrack$Position.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/target/classes/aim4/msg/i2v/Confirm.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/target/classes/aim4/msg/i2v/Reject.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/target/classes/aim4/msg/v2i/Request$Proposal.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/target/classes/aim4/msg/v2i/Request.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/target/classes/aim4/sim/AutoDriverOnlySimulator$1.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/target/classes/aim4/sim/AutoDriverOnlySimulator$AutoDriverOnlySimStepResult.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/target/classes/aim4/sim/AutoDriverOnlySimulator.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/target/classes/aim4/util/GeomMath.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/target/classes/aim4/vehicle/AccelSchedule$TimeAccel.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/target/classes/aim4/vehicle/BasicVehicle$AccelScheduleMovement.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/target/classes/aim4/vehicle/BasicVehicle$MoveToTargetVelocityMovement.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/target/classes/aim4/vehicle/BasicVehicle$NonAccelMovement.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/target/classes/aim4/vehicle/BasicVehicle$PhysicalMovement.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/target/classes/aim4/vehicle/BasicVehicle$SteeringMovement.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/target/classes/aim4/vehicle/BasicVehicle$TrackMovement.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/target/classes/aim4/vehicle/VehicleSpec.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/target/classes/aim4/vehicle/VehicleUtil.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/target/classes/org/encog/app/analyst/script/AnalystScript.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/target/classes/org/encog/app/analyst/util/AnalystUtility.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/target/classes/org/encog/mathutil/ComplexNumber.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/target/classes/org/encog/ml/bayesian/bif/BIFUtil.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/target/classes/org/encog/ml/data/market/TickerSymbol.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/target/classes/org/encog/ml/data/temporal/TemporalMLDataSet.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/target/classes/org/encog/ml/hmm/HiddenMarkovModel.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/target/classes/org/encog/ml/hmm/distributions/ContinousDistribution.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/target/classes/org/encog/ml/hmm/train/bw/TrainBaumWelch.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/target/classes/org/encog/ml/hmm/train/bw/TrainBaumWelchScaled.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/target/classes/org/encog/ml/prg/expvalue/EvaluateExpr.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/target/classes/org/encog/ml/prg/extension/StandardExtensions$10.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/target/classes/org/encog/ml/prg/extension/StandardExtensions$11.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/target/classes/org/encog/ml/prg/extension/StandardExtensions$12.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/target/classes/org/encog/ml/prg/extension/StandardExtensions$15.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/target/classes/org/encog/ml/prg/extension/StandardExtensions$16.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/target/classes/org/encog/ml/prg/extension/StandardExtensions$17.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/target/classes/org/encog/ml/prg/extension/StandardExtensions$18.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/target/classes/org/encog/ml/prg/extension/StandardExtensions$3.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/target/classes/org/encog/ml/prg/extension/StandardExtensions$43.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/target/classes/org/encog/ml/prg/extension/StandardExtensions$44.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/target/classes/org/encog/ml/prg/extension/StandardExtensions$47.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/target/classes/org/encog/ml/prg/extension/StandardExtensions$48.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/target/classes/org/encog/ml/prg/extension/StandardExtensions$49.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/target/classes/org/encog/ml/prg/extension/StandardExtensions$50.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/target/classes/org/encog/neural/flat/FlatLayer.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/target/classes/org/encog/neural/hyperneat/substrate/Substrate.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/target/classes/org/encog/neural/networks/BasicNetwork.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/target/classes/org/encog/neural/networks/training/anneal/NeuralSimulatedAnnealing.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/target/classes/org/encog/neural/networks/training/concurrent/ConcurrentTrainingManager.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/target/classes/org/encog/persist/EncogDirectoryPersistence.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/target/classes/org/encog/persist/EncogFileSection.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/target/classes/org/encog/util/ResourceLoader.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/target/classes/org/encog/util/concurrency/TaskGroup.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/target/classes/org/encog/util/file/FileUtil.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/target/classes/org/encog/util/http/FormUtility.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/target/classes/org/encog/util/normalize/output/OutputFieldRangeMapped.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/target/classes/org/encog/util/normalize/output/multiplicative/OutputFieldMultiplicative.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/target/classes/org/encog/util/normalize/output/zaxis/OutputFieldZAxis.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/target/classes/org/encog/util/obj/ObjectCloner.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/target/classes/org/encog/util/time/NumericDateUtil.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/target/classes/org/encog/util/time/TimeSpan.class</PATH>
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Created" />
-          <option name="myStatusName" value="Created" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="CREATED" />
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Deleted" />
-          <option name="myStatusName" value="Deleted" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="true" />
-          <option name="myId" value="REMOVED_FROM_REPOSITORY" />
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/TrainingResults/Population.eg</PATH>
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Restored" />
-          <option name="myStatusName" value="Will be restored" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="RESTORED" />
-        </FILE-GROUP>
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Modified" />
-        <option name="myStatusName" value="Modified" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="MODIFIED" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Skipped" />
-        <option name="myStatusName" value="Skipped" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="SKIPPED" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Merged with conflicts" />
-        <option name="myStatusName" value="Will be merged with conflicts" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="MERGED_WITH_CONFLICTS" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Merged with tree conflicts" />
-        <option name="myStatusName" value="Merged with tree conflicts" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="MERGED_WITH_TREE_CONFLICT" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Merged with property conflicts" />
-        <option name="myStatusName" value="Will be merged with property conflicts" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="MERGED_WITH_PROPERTY_CONFLICT" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Merged" />
-        <option name="myStatusName" value="Will be merged" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="MERGED" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Not in repository" />
-        <option name="myStatusName" value="Not in repository" />
-        <option name="mySupportsDeletion" value="true" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="UNKNOWN" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Locally added" />
-        <option name="myStatusName" value="Locally added" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="LOCALLY_ADDED" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Locally removed" />
-        <option name="myStatusName" value="Locally removed" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="LOCALLY_REMOVED" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Switched" />
-        <option name="myStatusName" value="Switched" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="SWITCHED" />
-      </FILE-GROUP>
-    </UpdatedFiles>
   </component>
   <component name="RunManager" selected="Application.Main">
     <configuration default="false" name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
@@ -893,31 +684,38 @@
       <option name="project" value="LOCAL" />
       <updated>1482261922891</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="Added the following post-simulation statistics:&#10;* Percentage throughput of intersection&#10;* Average vehicle traversal time through intersection">
+      <created>1482316383311</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1482316383311</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="65" y="24" width="1535" height="876" extended-state="6" />
+    <frame x="65" y="-4" width="1535" height="904" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.10796915" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.27120823" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.20565553" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.27506426" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.37275064" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.12982005" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.018132975" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.018132975" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.20437019" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.0" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.0053727333" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.09640103" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.18508998" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -925,6 +723,32 @@
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
     </layout>
+    <layout-to-restore>
+      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.10796915" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="true" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.20565553" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3714653" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.12982005" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.018132975" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.20437019" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.0053727333" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.18508998" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
+    </layout-to-restore>
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -973,7 +797,9 @@
     <MESSAGE value="Changed some code in the moveVehicles() method in AutoDriverOnlySimulator such that vehicles are only registered as having passed checkpoints (DataCollectionLines) if they haven't had an accident. This way, DataCollectionLines can be used to measure throughput of the intersection - but ignoring all crashed vehicles." />
     <MESSAGE value="Added option to make pedestrians stop walking and stand still in the intersection after some number of timesteps have passed." />
     <MESSAGE value="added option to toggle AIM anti-crash heuristic (slow down for obstruction) to config" />
-    <option name="LAST_COMMIT_MESSAGE" value="added option to toggle AIM anti-crash heuristic (slow down for obstruction) to config" />
+    <MESSAGE value="Added the following post-simulation statistics:&#10;* throughput of intersection&#10;* average vehicle traversal time through intersection" />
+    <MESSAGE value="Added the following post-simulation statistics:&#10;* Percentage throughput of intersection&#10;* Average vehicle traversal time through intersection" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added the following post-simulation statistics:&#10;* Percentage throughput of intersection&#10;* Average vehicle traversal time through intersection" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XDebuggerManager">
@@ -981,7 +807,7 @@
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
-      <option name="time" value="1" />
+      <option name="time" value="14" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -990,168 +816,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/aim4/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="59" column="12" selection-start-line="59" selection-start-column="12" selection-end-line="59" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/aim4/im/v2i/reservation/ReservationGridManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="380">
-          <caret line="76" column="22" selection-start-line="76" selection-start-column="22" selection-end-line="76" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Makefile">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/target/classes/aim4/Main.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1197">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/aim4/im/v2i/reservation/ReservationGridManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1273">
-          <caret line="76" column="22" selection-start-line="76" selection-start-column="22" selection-end-line="76" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/aim4/driver/navigator/BasicNavigator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1077">
-          <caret line="105" column="11" selection-start-line="105" selection-start-column="11" selection-end-line="105" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/aim4/vehicle/BasicVehicle.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="28082">
-          <caret line="1598" column="3" selection-start-line="1598" selection-start-column="3" selection-end-line="1598" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/aim4/im/v2i/V2IManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="6802">
-          <caret line="438" column="41" selection-start-line="438" selection-start-column="41" selection-end-line="438" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/encog/ml/world/grid/GridWorld.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="836">
-          <caret line="77" column="30" selection-start-line="77" selection-start-column="30" selection-end-line="77" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/aim4/sim/setup/BasicSimSetup.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1577">
-          <caret line="112" column="56" selection-start-line="112" selection-start-column="56" selection-end-line="112" selection-end-column="56" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/aim4/map/GridMapUtil.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="171">
-          <caret line="68" column="0" selection-start-line="68" selection-start-column="0" selection-end-line="68" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/aim4/gui/SimSetupPanel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="388">
-          <caret line="145" column="52" selection-start-line="145" selection-start-column="52" selection-end-line="145" selection-end-column="52" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/aim4/gui/parampanel/AutoDriverOnlyParamPanel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="114">
-          <caret line="39" column="57" selection-start-line="39" selection-start-column="56" selection-end-line="39" selection-end-column="57" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/aim4/map/BasicMap.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="196">
-          <caret line="117" column="27" selection-start-line="117" selection-start-column="27" selection-end-line="117" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/aim4/map/Road.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="152">
-          <caret line="41" column="13" selection-start-line="41" selection-start-column="13" selection-end-line="41" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/encog/neural/neat/NEATUtil.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-877">
-          <caret line="76" column="45" selection-start-line="76" selection-start-column="45" selection-end-line="76" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/encog/ml/ea/opp/selection/TournamentSelection.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-627">
-          <caret line="35" column="3" selection-start-line="35" selection-start-column="3" selection-end-line="35" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar:///usr/lib/jvm/java-8-openjdk-amd64/jre/lib/rt.jar!/sun/misc/Unsafe.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="373">
-          <caret line="354" column="23" selection-start-line="354" selection-start-column="23" selection-end-line="354" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/encog/neural/neat/training/opp/NEATMutation.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-152">
-          <caret line="53" column="26" selection-start-line="53" selection-start-column="26" selection-end-line="53" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/encog/ml/genetic/mutate/MutatePerturb.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="361">
-          <caret line="46" column="11" selection-start-line="46" selection-start-column="11" selection-end-line="46" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/encog/ml/ea/train/basic/BasicEA.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="214">
-          <caret line="309" column="16" selection-start-line="309" selection-start-column="16" selection-end-line="309" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/encog/util/logging/EncogLogging.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-771">
-          <caret line="33" column="13" selection-start-line="33" selection-start-column="13" selection-end-line="33" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/org/encog/ml/genetic/MLMethodGeneticAlgorithm.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="309">
@@ -1215,20 +879,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/aim4/im/IntersectionManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="178">
-          <caret line="237" column="17" selection-start-line="237" selection-start-column="17" selection-end-line="237" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/aim4/driver/AutoDriver.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="203">
-          <caret line="239" column="17" selection-start-line="239" selection-start-column="17" selection-end-line="239" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/aim4/ScoreCalculator.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="247">
@@ -1236,27 +886,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/aim4/vehicle/VehicleSimView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="402">
-          <caret line="201" column="7" selection-start-line="201" selection-start-column="7" selection-end-line="201" selection-end-column="7" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/aim4/gui/statuspanel/SimControlPanel.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="144">
           <caret line="127" column="0" selection-start-line="127" selection-start-column="0" selection-end-line="127" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/aim4/vehicle/VehicleUtil.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="262">
-          <caret line="604" column="47" selection-start-line="604" selection-start-column="47" selection-end-line="604" selection-end-column="47" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1264,23 +897,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="285">
           <caret line="130" column="19" selection-start-line="130" selection-start-column="19" selection-end-line="130" selection-end-column="19" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/aim4/config/SimConfig.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="265">
-          <caret line="45" column="50" selection-start-line="45" selection-start-column="50" selection-end-line="45" selection-end-column="50" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/aim4/vehicle/NeatSensor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1988">
-          <caret line="130" column="21" selection-start-line="130" selection-start-column="21" selection-end-line="130" selection-end-column="21" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1296,31 +912,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-6414">
           <caret line="54" column="0" selection-start-line="54" selection-start-column="0" selection-end-line="54" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/aim4/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="58">
-          <caret line="161" column="139" selection-start-line="161" selection-start-column="139" selection-end-line="161" selection-end-column="139" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/aim4/vehicle/NEATController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
-          <caret line="72" column="18" selection-start-line="72" selection-start-column="18" selection-end-line="72" selection-end-column="18" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/aim4/gui/Viewer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="334">
-          <caret line="1172" column="110" selection-start-line="1172" selection-start-column="110" selection-end-line="1172" selection-end-column="110" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1328,17 +919,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="432">
           <caret line="624" column="33" selection-start-line="624" selection-start-column="33" selection-end-line="624" selection-end-column="33" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/aim4/Neuroevolution.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="182">
-          <caret line="133" column="21" selection-start-line="133" selection-start-column="17" selection-end-line="133" selection-end-column="21" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1346,30 +926,304 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="254">
           <caret line="111" column="5" selection-start-line="111" selection-start-column="5" selection-end-line="111" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/aim4/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="58">
+          <caret line="158" column="139" selection-start-line="158" selection-start-column="139" selection-end-line="158" selection-end-column="139" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/aim4/map/track/LineTrack.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="140">
+          <caret line="120" column="7" selection-start-line="120" selection-start-column="7" selection-end-line="120" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/aim4/map/track/WayPoint.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-138">
+          <caret line="35" column="5" selection-start-line="35" selection-start-column="5" selection-end-line="35" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/aim4/driver/navigator/BasicNavigator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-4154">
+          <caret line="82" column="30" selection-start-line="82" selection-start-column="19" selection-end-line="82" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/aim4/im/IntersectionManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="211">
+          <caret line="237" column="17" selection-start-line="237" selection-start-column="17" selection-end-line="237" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/aim4/Neuroevolution.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="182">
+          <caret line="133" column="21" selection-start-line="133" selection-start-column="17" selection-end-line="133" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///usr/lib/jvm/java-8-openjdk-amd64/jre/lib/rt.jar!/java/awt/geom/Point2D.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="149">
+          <caret line="54" column="0" selection-start-line="54" selection-start-column="0" selection-end-line="54" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///usr/lib/jvm/java-8-openjdk-amd64/jre/lib/rt.jar!/sun/misc/Unsafe.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="373">
+          <caret line="354" column="23" selection-start-line="354" selection-start-column="23" selection-end-line="354" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/aim4/im/Intersection.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2527">
+          <caret line="170" column="20" selection-start-line="170" selection-start-column="14" selection-end-line="170" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/aim4/vehicle/NeatSensor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="159">
+          <caret line="71" column="0" selection-start-line="71" selection-start-column="0" selection-end-line="71" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/aim4/vehicle/NEATController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="116">
+          <caret line="22" column="6" selection-start-line="22" selection-start-column="6" selection-end-line="22" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/aim4/vehicle/ProxyVehicle.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="183">
+          <caret line="326" column="13" selection-start-line="326" selection-start-column="13" selection-end-line="326" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/aim4/vehicle/BasicVehicle.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-387">
+          <caret line="304" column="34" selection-start-line="304" selection-start-column="29" selection-end-line="304" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/docs/user.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1000">
+          <caret line="575" column="16" selection-start-line="575" selection-start-column="16" selection-end-line="575" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/aim4/im/v2i/reservation/ReservationArray.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="202">
+          <caret line="394" column="24" selection-start-line="394" selection-start-column="24" selection-end-line="394" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/aim4/driver/AutoDriverCoordinatorView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="400">
+          <caret line="129" column="27" selection-start-line="129" selection-start-column="27" selection-end-line="129" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/aim4/gui/Viewer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="366">
+          <caret line="611" column="22" selection-start-line="611" selection-start-column="22" selection-end-line="611" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/aim4/driver/pilot/V2IPilot.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="156">
+          <caret line="255" column="9" selection-start-line="255" selection-start-column="9" selection-end-line="255" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/aim4/map/SpawnPoint.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1239">
+          <caret line="112" column="26" selection-start-line="112" selection-start-column="26" selection-end-line="112" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/aim4/driver/Driver.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2546">
+          <caret line="178" column="45" selection-start-line="178" selection-start-column="34" selection-end-line="178" selection-end-column="45" />
           <folding>
-            <element signature="e#6610#6611#0" expanded="true" />
-            <element signature="e#6682#6683#0" expanded="true" />
+            <element signature="e#0#8027#0" expanded="false" />
+            <element signature="imports" expanded="false" />
+            <element signature="e#4840#4841#0" expanded="false" />
+            <element signature="e#4878#4879#0" expanded="false" />
+            <element signature="e#5275#5276#0" expanded="false" />
+            <element signature="e#5315#5316#0" expanded="false" />
+            <element signature="e#5602#5603#0" expanded="false" />
+            <element signature="e#5630#5631#0" expanded="false" />
+            <element signature="e#6145#6146#0" expanded="false" />
+            <element signature="e#6213#6214#0" expanded="false" />
+            <element signature="e#6424#6425#0" expanded="false" />
+            <element signature="e#6466#6467#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/config.txt">
+    <entry file="file://$PROJECT_DIR$/src/main/java/aim4/vehicle/VehicleUtil.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="380">
-          <caret line="20" column="44" selection-start-line="20" selection-start-column="44" selection-end-line="20" selection-end-column="44" />
+        <state relative-caret-position="154">
+          <caret line="142" column="0" selection-start-line="142" selection-start-column="0" selection-end-line="142" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/aim4/driver/pilot/BasicPilot.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="186">
+          <caret line="21" column="29" selection-start-line="21" selection-start-column="25" selection-end-line="21" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/aim4/msg/v2i/Request.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="171">
+          <caret line="68" column="7" selection-start-line="68" selection-start-column="7" selection-end-line="68" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/aim4/driver/CrashTestDummy.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2512">
+          <caret line="174" column="3" selection-start-line="174" selection-start-column="3" selection-end-line="174" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/aim4/vehicle/VehicleSimView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="175">
+          <caret line="113" column="9" selection-start-line="113" selection-start-column="8" selection-end-line="113" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/aim4/im/v2i/reservation/ReservationGridManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4979">
+          <caret line="779" column="12" selection-start-line="779" selection-start-column="12" selection-end-line="779" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/aim4/driver/coordinator/ArrivalEstimationResult.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="174">
+          <caret line="97" column="3" selection-start-line="97" selection-start-column="3" selection-end-line="97" selection-end-column="3" />
+          <folding>
+            <element signature="e#2989#2990#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/aim4/im/v2i/RequestHandler/FCFSRequestHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-23">
+          <caret line="106" column="0" selection-start-line="106" selection-start-column="0" selection-end-line="106" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/aim4/im/v2i/policy/BasePolicy.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="8265">
+          <caret line="517" column="0" selection-start-line="517" selection-start-column="0" selection-end-line="517" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/aim4/sim/AutoDriverOnlySimulator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2014">
-          <caret line="197" column="7" selection-start-line="197" selection-start-column="7" selection-end-line="197" selection-end-column="7" />
+        <state relative-caret-position="23655">
+          <caret line="1328" column="5" selection-start-line="1328" selection-start-column="5" selection-end-line="1328" selection-end-column="5" />
           <folding>
-            <element signature="e#9600#9601#0" expanded="true" />
-            <element signature="e#9628#9629#0" expanded="true" />
-            <marker date="1482315753412" expanded="false" signature="9479:9486" ph=" { " />
+            <element signature="e#3157#3158#0" expanded="false" />
+            <element signature="e#3205#3206#0" expanded="false" />
+            <element signature="e#3381#3382#0" expanded="false" />
+            <element signature="e#3415#3416#0" expanded="false" />
+            <element signature="e#9492#9493#0" expanded="false" />
+            <element signature="e#9517#9518#0" expanded="false" />
+            <element signature="e#9612#9613#0" expanded="false" />
+            <element signature="e#9640#9641#0" expanded="false" />
+            <element signature="e#9705#9706#0" expanded="false" />
+            <element signature="e#9739#9740#0" expanded="false" />
+            <element signature="e#9791#9792#0" expanded="false" />
+            <element signature="e#9822#9823#0" expanded="false" />
+            <element signature="e#9920#9921#0" expanded="false" />
+            <element signature="e#9959#9960#0" expanded="false" />
+            <element signature="e#10624#10625#0" expanded="false" />
+            <element signature="e#10662#10663#0" expanded="false" />
+            <element signature="e#11707#11708#0" expanded="false" />
+            <element signature="e#11746#11747#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/aim4/util/Util.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="161">
+          <caret line="161" column="24" selection-start-line="161" selection-start-column="24" selection-end-line="161" selection-end-column="24" />
+          <folding>
+            <element signature="e#5492#5493#0" expanded="true" />
+            <element signature="e#5535#5536#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/aim4/driver/coordinator/V2ICoordinator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1147">
+          <caret line="1153" column="21" selection-start-line="1153" selection-start-column="21" selection-end-line="1153" selection-end-column="21" />
+          <folding>
+            <element signature="e#0#71685#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="178">
+          <caret line="11" column="45" selection-start-line="11" selection-start-column="45" selection-end-line="11" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/aim4/config/SimConfig.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="266">
+          <caret line="51" column="2" selection-start-line="51" selection-start-column="2" selection-end-line="51" selection-end-column="2" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/aim4/driver/AutoDriver.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="240" column="40" selection-start-line="240" selection-start-column="40" selection-end-line="240" selection-end-column="40" />
+          <folding />
         </state>
       </provider>
     </entry>

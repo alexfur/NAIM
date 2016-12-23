@@ -30,15 +30,10 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 package aim4.driver.coordinator;
 
-import java.util.ArrayList;
-import java.util.EnumMap;
-import java.util.List;
-import java.util.Queue;
-
 import aim4.Main;
+import aim4.config.Constants.TurnDirection;
 import aim4.config.Debug;
 import aim4.config.SimConfig;
-import aim4.config.Constants.TurnDirection;
 import aim4.driver.AutoDriver;
 import aim4.driver.AutoDriverCoordinatorView;
 import aim4.driver.DriverUtil;
@@ -61,6 +56,11 @@ import aim4.util.Util;
 import aim4.vehicle.AccelSchedule;
 import aim4.vehicle.AutoVehicleDriverView;
 import aim4.vehicle.VehicleUtil;
+
+import java.util.ArrayList;
+import java.util.EnumMap;
+import java.util.List;
+import java.util.Queue;
 
 /**
  * An agent that autonomously controls the coordination of a
@@ -150,7 +150,7 @@ public class V2ICoordinator implements Coordinator {
   /**
    * An interface of the state handler.
    */
-  private static interface StateHandler {
+  private interface StateHandler {
     /**
      * Perform the action defined by the state handler at the driver state.
      *
@@ -499,7 +499,7 @@ public class V2ICoordinator implements Coordinator {
      * @param navigator  the navigator
      * @return the turning direction.
      */
-    public TurnDirection getTurnDirection(Navigator navigator)    //rudolf - changed to private - 16/10/16
+    public TurnDirection getTurnDirection(Navigator navigator)
     {
       IntersectionManager im = driver.nextIntersectionManager();
       Lane currentLane = driver.getCurrentLane();
@@ -540,11 +540,8 @@ public class V2ICoordinator implements Coordinator {
             return false;
           }
           double d2 = vehicle.getRearVehicleDistanceSensor().read();
-          if (d2 < vehicle.getSpec().getLength() +
-                  MIN_LANE_CHANGE_FOLLOWING_DISTANCE) {
-            return false;
-          }
-          return true;
+          return d2 >= vehicle.getSpec().getLength() +
+                  MIN_LANE_CHANGE_FOLLOWING_DISTANCE;
         } else {
           return false;
         }
@@ -1539,7 +1536,8 @@ public class V2ICoordinator implements Coordinator {
       double minArrivalTime =
         vehicle.gaugeTime() + MINIMUM_FUTURE_RESERVATION_TIME;
 
-      for (int i = 0; i < n; i++) {
+      for (int i = 0; i < n; i++)
+      {
         ArrivalEstimationResult result =
           estimateArrival(maximumVelocities.get(i));
         arrivalVelocities.add(result.getArrivalVelocity());
@@ -1622,6 +1620,8 @@ public class V2ICoordinator implements Coordinator {
       // TODO: change it later to make it possible to make use of
       // prior acceleration schedule
 
+
+
       if(Main.cfgController.equals("AIM"))
       {
         if (vehicle.getAccelSchedule() != null) {
@@ -1663,10 +1663,17 @@ public class V2ICoordinator implements Coordinator {
       List<Request.Proposal> proposals = null;
       if (isLaneClearToIntersection())
       {
-        if(Main.cfgController.equals("AIM"))    //10/16/10
+        //if(Main.cfgController.equals("AIM"))    //10/16/10
+        try     //rudolf: try-catch added to account for the many, many null pointers of AIM4
         {
           proposals = prepareProposals();
         }
+        catch(Exception e)
+        {
+          //do nothing - just let the null pointers flow - simulation seems to run fine regardless
+          //e.printStackTrace();
+        }
+
         if (isDebugging && proposals == null) {
           System.err.printf("At time %.2f, vin %d failed to prepare " +
                             "a proposal: no feasible proposal.\n",
@@ -1681,7 +1688,8 @@ public class V2ICoordinator implements Coordinator {
                             vehicle.getVIN());
         }
       }
-      if (proposals != null) {
+      if (proposals != null)
+      {
         sendRequestMessage(proposals);
         setState(State.V2I_AWAITING_RESPONSE);
         return true;  // let the state controller for V2I_AWAITING_RESPONSE

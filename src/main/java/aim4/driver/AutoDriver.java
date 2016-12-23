@@ -30,14 +30,15 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 package aim4.driver;
 
-import java.awt.geom.Area;
-
+import aim4.Main;
+import aim4.driver.coordinator.Coordinator;
 import aim4.driver.coordinator.NoIntersectionCoordinator;
 import aim4.driver.coordinator.V2ICoordinator;
-import aim4.driver.coordinator.Coordinator;
 import aim4.im.IntersectionManager;
 import aim4.map.BasicMap;
 import aim4.vehicle.AutoVehicleDriverView;
+
+import java.awt.geom.Area;
 
 /**
  * An agent that drives a {@link AutoVehicleDriverView} while coordinating with
@@ -239,10 +240,14 @@ public class AutoDriver extends Driver
   @Override
   public boolean inCurrentIntersection()
   {
-    if(memoInCurrentIntersection == null) {
+    if(Main.cfgController.equals("NEAT")) return true;
+    if(memoInCurrentIntersection == null)
+    {
       memoInCurrentIntersection =
         intersects(getVehicle(), currentIM.getIntersection().getAreaPlus());
         //intersects(getVehicle(), currentIM.getIntersection().getArea());
+
+        //memoInCurrentIntersection = true;   //Rudolf: added this instead --> prevents null pointer - allows for turning
     }
     return memoInCurrentIntersection;
   }

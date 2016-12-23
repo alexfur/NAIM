@@ -30,14 +30,14 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 package aim4.driver.pilot;
 
-import java.awt.Color;
-import java.awt.geom.Point2D;
-
 import aim4.config.Debug;
 import aim4.config.DebugPoint;
 import aim4.driver.Driver;
 import aim4.driver.DriverUtil;
 import aim4.vehicle.VehicleDriverView;
+
+import java.awt.*;
+import java.awt.geom.Point2D;
 
 /**
  * The basic pilot agent.
@@ -90,6 +90,7 @@ public abstract class BasicPilot {
       Debug.addShortTermDebugPoint(new DebugPoint(aimPoint, getVehicle()
         .gaugePointBetweenFrontWheels(), "shift", Color.GREEN.brighter()));
     }
+
     getVehicle().turnTowardPoint(aimPoint);
   }
 

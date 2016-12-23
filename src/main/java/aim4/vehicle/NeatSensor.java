@@ -19,6 +19,8 @@ public class NeatSensor extends Sensor
     volatile private double degreesBetweenPtsFOV = Main.cfgDegreesBetweenPtsFOV;
     volatile private double distanceToIntersectionEdge = 0; //default
     private AtomicBoolean inIntersection = new AtomicBoolean(false);
+    volatile private double distToIntersectionExitPoint;
+    volatile private Point2D.Double intersectionExitPoint;
 
 
     public NeatSensor(VehicleSimView vehicle)
@@ -32,6 +34,26 @@ public class NeatSensor extends Sensor
     public NeatSensor(VehicleSimView vehicle, double width, double height, double angleStart, double angleExtent)
     {
         super(vehicle,width,height,angleStart,angleExtent);
+    }
+
+    synchronized public void setIntersectionExitPoint(Point2D.Double intersectionExitPoint)
+    {
+        this.intersectionExitPoint = new Point2D.Double(intersectionExitPoint.getX(),intersectionExitPoint.getY());
+    }
+
+    synchronized public Point2D.Double getIntersectionExitPoint()
+    {
+        return intersectionExitPoint;
+    }
+
+    synchronized public void setDistToIntersectionExitPoint(double distanceToIntersectionExitPoint)
+    {
+        this.distToIntersectionExitPoint = distanceToIntersectionExitPoint;
+    }
+
+    synchronized public double getDistToIntersectionExitPoint()
+    {
+        return distToIntersectionExitPoint;
     }
 
     synchronized public double getAcceleration()

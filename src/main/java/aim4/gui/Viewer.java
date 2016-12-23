@@ -594,7 +594,7 @@ public class Viewer extends JFrame implements ActionListener, KeyListener,
     JMenu menu;
     JMenuItem menuItem;
 
-    //setJMenuBar(menuBar); //#rudolf
+    setJMenuBar(menuBar); //#rudolf
 
     // The File menu exists only on non-Mac OS X environment
     if (!System.getProperty("os.name").equals("Mac OS X")) {
