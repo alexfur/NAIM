@@ -149,7 +149,10 @@ public class AutoDriverOnlySimulator implements Simulator
 
   private volatile boolean printSimResults = true;
 
-    /////////////////////////////////
+  ArrayList<Point2D.Double[]> pedestrianWaypoints = Main.cfgPedestrianWaypoints;
+
+
+  /////////////////////////////////
     // CLASS CONSTRUCTORS
     /////////////////////////////////
 
@@ -175,6 +178,11 @@ public class AutoDriverOnlySimulator implements Simulator
 
     numIntersectionTraversals = 0;
     score = 0;
+
+    if(Main.cfgNEATSetting.equals("Train"))
+      printSimResults = false;
+    if(Main.cfgNEATSetting.equals("Demo"))
+      printSimResults = true;
   }
 
   /////////////////////////////////
@@ -491,11 +499,15 @@ public class AutoDriverOnlySimulator implements Simulator
   /**
    * Spawn drunk pedestrians at the spawnpoints entered in config.txt
    */
-  synchronized private void spawnDrunkPedestrians()                           // - rudolf
+  synchronized private void spawnDrunkPedestrians()                     // - rudolf
   {
-    if(Main.cfgNumPedestrians > 0)                                      //if there are more than 0 pedestrians on the screen
-      for(Point2D.Double[] waypoint : Main.cfgPedestrianWaypoints)
-        drunkPedestrians.add(new DrunkPedestrian(atomicRef.getAndIncrement(), waypoint[0], waypoint[1]));
+    Collections.shuffle(pedestrianWaypoints);        //shuffle the waypoints list
+
+    for(int i = 0; i < Main.cfgNumPedestrians; i++)
+    {
+      drunkPedestrians.add(new DrunkPedestrian(atomicRef.getAndIncrement(), pedestrianWaypoints.get(i)[0], pedestrianWaypoints.get(i)[1]));  //new waypoint from the list for each pedestrian that will be on screen
+    }
+
   }
 
   /**
@@ -921,29 +933,33 @@ public class AutoDriverOnlySimulator implements Simulator
         {
           for (VehicleSimView vehicle2 : getActiveVehicles())                             //loop through all vehicle objects on screen except the one calling this method
           {
-            if (!sensorOn(vehicle1).hasCrashed().get() && !sensorOn(vehicle2).hasCrashed().get())   //if we aren't dealing with an already crashed vehicle
+            Sensor sensorV1 = sensorOn(vehicle1);
+            Sensor sensorV2 = sensorOn(vehicle2);
+            if(!sensorV1.getPassedCheckPointTwo() && !sensorV2.getPassedCheckPointTwo())
             {
-              if (VehicleUtil.intersects(vehicle2, new Area(vehicle1.getShape())) && vehicle1.getVIN() != vehicle2.getVIN())              //if vehicle1 and vehicle2 crash
+              if (!sensorV1.hasCrashed().get() && !sensorV2.hasCrashed().get())   //if we aren't dealing with an already crashed vehicle
               {
-
-                if (!crashedVehicles.contains(vehicle1))                                   //make extra sure the vehicle hasn't already crashed prior to this
+                if (VehicleUtil.intersects(vehicle2, new Area(vehicle1.getShape())) && vehicle1.getVIN() != vehicle2.getVIN())              //if vehicle1 and vehicle2 crash
                 {
-                  sensorOn(vehicle1).setObstructionDetected(false);                        //we're not detecting the obstruction because we hit the obstruction !
-                  sensorOn(vehicle1).setHasCrashed(true);
-                  crashedVehicles.add(vehicle1);
-                  if(Main.cfgNEATSetting.equals("Train"))
-                    score -= 0.025;                                        //deduct 2 points for crashing into car
-                }
+                  if (!crashedVehicles.contains(vehicle1))                                   //make extra sure the vehicle hasn't already crashed prior to this
+                  {
+                    sensorOn(vehicle1).setObstructionDetected(false);                        //we're not detecting the obstruction because we hit the obstruction !
+                    sensorOn(vehicle1).setHasCrashed(true);
+                    crashedVehicles.add(vehicle1);
+                    if (Main.cfgNEATSetting.equals("Train"))
+                      score -= 0.025;                                        //deduct 2 points for crashing into car
+                  }
 
-                if (!crashedVehicles.contains(vehicle2))                                   //make extra sure the vehicle hasn't already crashed prior to this
-                {
-                  sensorOn(vehicle2).setObstructionDetected(false);                        //we're not detecting the obstruction because we hit the obstruction !
-                  sensorOn(vehicle2).setHasCrashed(true);
-                  crashedVehicles.add(vehicle2);
-                  if(Main.cfgController.equals("Train"))
-                    score -= 0.025;                                        //deduct 2 points for crashing into car
-                }
+                  if (!crashedVehicles.contains(vehicle2))                                   //make extra sure the vehicle hasn't already crashed prior to this
+                  {
+                    sensorOn(vehicle2).setObstructionDetected(false);                        //we're not detecting the obstruction because we hit the obstruction !
+                    sensorOn(vehicle2).setHasCrashed(true);
+                    crashedVehicles.add(vehicle2);
+                    if (Main.cfgController.equals("Train"))
+                      score -= 0.025;                                        //deduct 2 points for crashing into car
+                  }
 
+                }
               }
             }
           }
@@ -1044,7 +1060,7 @@ public class AutoDriverOnlySimulator implements Simulator
 
   synchronized private void checkSensorsAIM()
   {
-    /*
+
     //          SENSORS SCANNING FOR VEHICLES
     //--------------------------------------------------------
       for (VehicleSimView vehicle1 : getActiveVehicles())
@@ -1066,7 +1082,7 @@ public class AutoDriverOnlySimulator implements Simulator
             }
           }
       }
-    */
+
 
     /*          SENSORS SCANNING FOR PEDESTRIANS
     --------------------------------------------------------*/
@@ -1412,9 +1428,7 @@ public class AutoDriverOnlySimulator implements Simulator
     }
   }
 
-  /**
-   * Deduct points for every timestep that a vehicle is touching the grass or is out of its correct lane
-   */
+
   public synchronized void deductPointsForLeavingTrack()      // - rudolf
   {
     for(VehicleSimView vehicle : getActiveVehicles())
@@ -1432,9 +1446,9 @@ public class AutoDriverOnlySimulator implements Simulator
             {
               if (!sensor.getPassedCheckPointTwo())     //if it hasn't reached checkpoint two
               {
-                score -= 0.025;                               //deduct points for leaving intersection illegally
+                score -= 0.025;                         //deduct points for leaving intersection illegally
                 sensorOn(vehicle).setHasCrashed(true);
-                crashedVehicles.add(vehicle);
+                crashedVehicles.add(vehicle);             //leave track (ie: go on grass) = crash
               }
             }
           }

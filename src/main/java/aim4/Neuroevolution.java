@@ -98,7 +98,6 @@ public class Neuroevolution
             try
             {
                 EncogDirectoryPersistence.saveObject(new File(resultsDir+"/Population.eg"), pop);      //save population of NNs to file (can later load it and extract best NN)
-                EncogDirectoryPersistence.saveObject(new File(resultsDir+"/BestANN.eg"), bestPerformingNetwork);         //save best ANN to file
                 PrintStream logStream = new PrintStream(new File(resultsDir+"/NetworkLog.txt"));       //save the training log (details) of this training session to file
                 System.setOut(logStream);                                                             //redirect 'System.out' to the log file
                 System.out.println(trainingLog);                                                      //write to log file

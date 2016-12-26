@@ -228,17 +228,52 @@ public class Main
           cfgPedestrianWidth = Double.parseDouble(s.split(":")[1].replace(" ",""));
         if(s.contains("Show vehicle VINs on screen:"))
           cfgShowVin = (s.split(":")[1].replace(" ","")).equalsIgnoreCase("Yes");
-        if(s.contains("Pedestrian waypoint:"))
+        if(s.contains("Waypoints (1 lane):") && cfgLanesPerRoad == 1)
         {
-          s = s.split(":")[1].replace(" ","").replace("(","").replace(")","");
-          double x1 = Double.parseDouble(s.split(",")[0]);
-          double y1 = Double.parseDouble(s.split(",")[1]);
-          double x2 = Double.parseDouble(s.split(",")[2]);
-          double y2 = Double.parseDouble(s.split(",")[3]);
-          Point2D.Double[] waypoint = {new Point2D.Double(x1,y1),new Point2D.Double(x2,y2)};
-          cfgPedestrianWaypoints.add(waypoint);
-          cfgNumPedestrians = cfgPedestrianWaypoints.size();
+          s = s.split(":")[1].replace(" ","");
+          String unparsedWaypoints[] = s.split(";");
+          for(String unparsedWaypoint : unparsedWaypoints)
+          {
+            unparsedWaypoint = unparsedWaypoint.replace("(","").replace(")","");
+            double x1 = Double.parseDouble(unparsedWaypoint.split(",")[0]);
+            double y1 = Double.parseDouble(unparsedWaypoint.split(",")[1]);
+            double x2 = Double.parseDouble(unparsedWaypoint.split(",")[2]);
+            double y2 = Double.parseDouble(unparsedWaypoint.split(",")[3]);
+            Point2D.Double[] waypoint = {new Point2D.Double(x1,y1),new Point2D.Double(x2,y2)};
+            cfgPedestrianWaypoints.add(waypoint);
+          }
         }
+        if(s.contains("Waypoints (2 lanes):") && cfgLanesPerRoad == 2)
+        {
+          s = s.split(":")[1].replace(" ","");
+          String unparsedWaypoints[] = s.split(";");
+          for(String unparsedWaypoint : unparsedWaypoints)
+          {
+            unparsedWaypoint = unparsedWaypoint.replace("(","").replace(")","");
+            double x1 = Double.parseDouble(unparsedWaypoint.split(",")[0]);
+            double y1 = Double.parseDouble(unparsedWaypoint.split(",")[1]);
+            double x2 = Double.parseDouble(unparsedWaypoint.split(",")[2]);
+            double y2 = Double.parseDouble(unparsedWaypoint.split(",")[3]);
+            Point2D.Double[] waypoint = {new Point2D.Double(x1,y1),new Point2D.Double(x2,y2)};
+            cfgPedestrianWaypoints.add(waypoint);
+          }
+        }
+        if(s.contains("Waypoints (3 lanes):") && cfgLanesPerRoad == 3)
+        {
+          s = s.split(":")[1].replace(" ","");
+          String unparsedWaypoints[] = s.split(";");
+          for(String unparsedWaypoint : unparsedWaypoints)
+          {
+            unparsedWaypoint = unparsedWaypoint.replace("(","").replace(")","");
+            double x1 = Double.parseDouble(unparsedWaypoint.split(",")[0]);
+            double y1 = Double.parseDouble(unparsedWaypoint.split(",")[1]);
+            double x2 = Double.parseDouble(unparsedWaypoint.split(",")[2]);
+            double y2 = Double.parseDouble(unparsedWaypoint.split(",")[3]);
+            Point2D.Double[] waypoint = {new Point2D.Double(x1,y1),new Point2D.Double(x2,y2)};
+            cfgPedestrianWaypoints.add(waypoint);
+          }
+        }
+
         if(s.contains("Degrees between each FOV point:"))
           cfgDegreesBetweenPtsFOV = Double.parseDouble(s.split(":")[1].replace(" ",""));
         if(s.contains("Number of simulations:"))
@@ -284,7 +319,8 @@ public class Main
           else if ((s.split(":")[1].replace(" ","")).contains("no"))
             cfgAIMAntiCrashHeuristicEnabled = false;
         }
-
+        if(s.contains("Number of pedestrians:"))
+          cfgNumPedestrians = Integer.parseInt(s.split(":")[1].replace(" ",""));
 
 
 

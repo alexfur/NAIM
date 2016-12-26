@@ -240,14 +240,12 @@ public class AutoDriver extends Driver
   @Override
   public boolean inCurrentIntersection()
   {
-    if(Main.cfgController.equals("NEAT")) return true;
+    if(Main.cfgController.equals("NEAT")) return true;    //rudolf: added this line
     if(memoInCurrentIntersection == null)
     {
       memoInCurrentIntersection =
         intersects(getVehicle(), currentIM.getIntersection().getAreaPlus());
         //intersects(getVehicle(), currentIM.getIntersection().getArea());
-
-        //memoInCurrentIntersection = true;   //Rudolf: added this instead --> prevents null pointer - allows for turning
     }
     return memoInCurrentIntersection;
   }
