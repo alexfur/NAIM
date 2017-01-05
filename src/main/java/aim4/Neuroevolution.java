@@ -38,7 +38,7 @@ public class Neuroevolution
     {
         ScoreCalculator scoreCalculator = new ScoreCalculator();                         //fitness function
 
-        NEATPopulation pop = new NEATPopulation(3,2,POPULATION_SIZE);                    //inputs, outputs, population size
+        NEATPopulation pop = new NEATPopulation(5,2,POPULATION_SIZE);                    //inputs, outputs, population size
         pop.setInitialConnectionDensity(INITIAL_POP_DENSITY);
         pop.reset();
 

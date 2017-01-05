@@ -117,7 +117,6 @@ public class Main
 
   public synchronized void start()
   {
-
     if(cfgController.equals("NEAT"))
     {
       if(cfgNEATSetting.equals("Train"))
@@ -312,7 +311,7 @@ public class Main
         }
         if(s.contains("Stop walking after this many timesteps:"))
           cfgTimeStepsPedestriansWalk = Double.parseDouble(s.split(":")[1].replace(" ",""));
-        if(s.contains("Enable AIM anti-crash heuristic: (yes/no):"))
+        if(s.contains("Enable AIM anti-crash heuristic (yes/no):"))
         {
           if ((s.split(":")[1].replace(" ","")).contains("yes"))
             cfgAIMAntiCrashHeuristicEnabled = true;

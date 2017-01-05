@@ -43,11 +43,17 @@ public class ScoreCalculator implements CalculateScore
         network = (NEATNetwork)mlMethod;                                            //a NEAT neural network
         SimRunner trainer = new SimRunner(network);
 
-        double score = trainer.run(network);
+        double score1 = trainer.run(network);
+        double score2 = trainer.run(network);
+        double score3 = trainer.run(network);
+        double score4 = trainer.run(network);
+        double score5 = trainer.run(network);
 
-        System.out.println("NN score: "+score);                                     //fitness score of the neural network that just had its turn
+        double finalScore = (score1+score2+score3+score4+score5)/5;   //final score is average score over three trials
 
-        return score;
+        System.out.println("NN score: "+finalScore);  //fitness score of the neural network that just had its turn (averaged over three trials)
+
+        return finalScore;
     }
 
     @Override

@@ -1,7 +1,6 @@
 package aim4.vehicle;
 
 import aim4.Main;
-import aim4.config.Constants;
 import aim4.obstructions.DrunkPedestrian;
 import aim4.util.ShapeUtils;
 
@@ -35,12 +34,13 @@ public class Sensor
     private AtomicBoolean passedCheckPointTwo = new AtomicBoolean(false);
     private double timePassedCheckPointOne;
     private double timePassedCheckPointTwo;
-    private double timeTakenToTraverseCheckPoints;
+    private double rad;                                             //used to choose whether it's a front, left or right FOV
+
 
     private volatile boolean successfulTraversal;             //boolean which tells NEAT if the car successfully traversed the intersection and reached its destination
 
     //constructor allowing to alter some properties of sensor's arc shape
-    public Sensor(VehicleSimView vehicle, double width, double height, double angleStart, double angleExtent)
+    public Sensor(VehicleSimView vehicle, double width, double height, double angleStart, double angleExtent, Point2D.Double pointForDistFOV, double rad)
     {
             this.v = vehicle; //set the Sensor's vehicle object reference to the one being plugged into the constructor
             this.x = vehicle.getCenterPoint().getX(); //set y coordinate of sensor to y coordinate of front of vehicle
@@ -57,13 +57,16 @@ public class Sensor
             this.area = new Area(shape);                                                                                    //convert sensor cone to an area
             this.successfulTraversal = true;
             this.angleExtent = undoShiftAngleExtent(this.angleExtent);
+            this.rad = rad;
 
-            this.distanceFOV = getUpperMid().distance(getVehicle().getPointAtMiddleFront(Constants.DOUBLE_EQUAL_PRECISION));
+            this.distanceFOV = getUpperMid().distance(pointForDistFOV);
     }
 
 
+    //getVehicle().getPointAtMiddleFront(Constants.DOUBLE_EQUAL_PRECISION)
+
     //constructor with default arc shape properties - simply plug in a vehicle
-    public Sensor(VehicleSimView vehicle)
+    public Sensor(VehicleSimView vehicle, Point2D.Double pointForDistFOV, double rad)
     {
             this.angleExtent = shiftAngleExtent(this.angleExtent);
             this.v = vehicle; //set the Sensor's vehicle object reference to the one being plugged into the constructor
@@ -77,17 +80,13 @@ public class Sensor
             area = new Area(shape);                                                                                        //convert sensor cone shape to an area
             this.successfulTraversal = true;
             this.angleExtent = undoShiftAngleExtent(this.angleExtent);
+            this.rad = rad;
 
-            this.distanceFOV = getUpperMid().distance(getVehicle().getPointAtMiddleFront(Constants.DOUBLE_EQUAL_PRECISION));
+            this.distanceFOV = getUpperMid().distance(pointForDistFOV);
     }
 
     public Sensor()                                                     //no argument constructor
     {}
-
-    public Sensor(Sensor sensor) //copy constructor
-    {
-        this(sensor.getVehicle(),sensor.getWidth(),sensor.getHeight(),sensor.getAngleStart(),sensor.getAngleExtent());
-    }
 
     synchronized public boolean getPassedCheckPointOne()
     {
@@ -124,8 +123,11 @@ public class Sensor
         if(obstruction.getClass().equals(BasicAutoVehicle.class))
         {
             VehicleSimView vehicleB = (VehicleSimView)obstruction;
-            if(vehicleB.getVIN() == getVehicleVin()) return false;          //vehicle detected itself, so ignore
-            if(sensorOn(vehicleB).hasCrashed().get()) return false;         //detected vehicle has crashed already, so ignore
+            if(vehicleB.getVIN() == getVehicleVin()) return false;               //vehicle detected itself, so ignore
+            if(frontSensorOn(vehicleB).hasCrashed().get()) return false;         //detected vehicle has crashed already, so ignore
+
+            if(vehicleB.getCenterPoint().distance(getVehicle().getCenterPoint()) >= 10) return false;  //only start checking for intersection if vehicle and obstruction are close enough (this is a bit of a cheat, but it's necessary as it makes things faster
+
             Area vehicleBAreaCopy = new Area(vehicleB.getShape());
             vehicleBAreaCopy.intersect(new Area(this.area));
             if(!vehicleBAreaCopy.isEmpty()) obstructionsInFOV.add(obstruction);
@@ -135,24 +137,20 @@ public class Sensor
         if(obstruction.getClass().equals(DrunkPedestrian.class))
         {
             DrunkPedestrian drunkPedestrian = (DrunkPedestrian)obstruction;
+
+            if(drunkPedestrian.getCurrentPos().distance(getVehicle().getCenterPoint()) >= 10) return false;
+
             Area pedestrianAreaCopy = new Area(drunkPedestrian.getBody());
             pedestrianAreaCopy.intersect(new Area(this.area));
             if(!pedestrianAreaCopy.isEmpty()) obstructionsInFOV.add(obstruction);
             return !pedestrianAreaCopy.isEmpty();
         }
 
-        /*
-        if(obstruction.getClass().equals(RoadBasedIntersection.class))
-        {
-            RoadBasedIntersection intersection = (RoadBasedIntersection) obstruction;
-            Area intersectionAreaCopy = new Area(intersection.getArea());
-            intersectionAreaCopy.intersect(new Area(this.area));
-            if(!intersectionAreaCopy.isEmpty()) obstructionsInFOV.add(obstruction);
-            return !intersectionAreaCopy.isEmpty();
-        }
-        */
-
         return false;
+    }
+
+    synchronized public VehicleSimView dumb(Object obstruction){
+        return (VehicleSimView)obstruction;
     }
 
     synchronized public List<Object> getObstructionsInFOV()
@@ -170,6 +168,11 @@ public class Sensor
         this.obstructionDetected.set(obstructionDetected);
     }
 
+    synchronized public double getRad()
+    {
+        return rad;
+    }
+
     synchronized public void moveWithVehicle()   //make this sensor move with its housing vehicle
     {
         this.angleExtent = shiftAngleExtent(this.angleExtent);
@@ -181,7 +184,7 @@ public class Sensor
         Arc2D.Double sensorConeOfSight = new Arc2D.Double(centX,centY,width,height,angleStart,angleExtent,Arc2D.PIE);                                //create a new sensor cone with the corrected centre coordinate
         this.shape = sensorConeOfSight;
         this.area = new Area(shape);
-        ShapeUtils.rotateArea(area,v.getHeading(),v.getCenterPoint());     //rotate the sensor cone in its housing vehicle's direction
+        ShapeUtils.rotateArea(area,v.getHeading() + rad,v.getCenterPoint());     //rotate the sensor cone in its housing vehicle's direction
         this.angleExtent = undoShiftAngleExtent(this.angleExtent);
     }
 
@@ -298,10 +301,21 @@ public class Sensor
         return this.distanceFOV;
     }
 
-    synchronized public static Sensor sensorOn(VehicleSimView vehicle)  //return a car's basic sensor (without aim or neat functionality)
+    synchronized public static Sensor frontSensorOn(VehicleSimView vehicle)  //return a car's basic sensor (without aim or neat functionality)
     {
-        return ((BasicAutoVehicle) vehicle).getSensor();
+        return ((BasicAutoVehicle) vehicle).getFrontSensor();
     }
+
+    synchronized public static Sensor leftSensorOn(VehicleSimView vehicle)  //return a car's basic sensor (without aim or neat functionality)
+    {
+        return ((BasicAutoVehicle) vehicle).getLeftSensor();
+    }
+
+    synchronized public static Sensor rightSensorOn(VehicleSimView vehicle)  //return a car's basic sensor (without aim or neat functionality)
+    {
+        return ((BasicAutoVehicle) vehicle).getRightSensor();
+    }
+
 
 
 }

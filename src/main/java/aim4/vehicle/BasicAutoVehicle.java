@@ -30,21 +30,18 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 package aim4.vehicle;
 
+import aim4.config.Debug;
+import aim4.driver.AutoDriver;
+import aim4.map.lane.Lane;
+import aim4.msg.i2v.I2VMessage;
+import aim4.msg.v2i.V2IMessage;
+import aim4.noise.DoubleGauge;
+
 import java.awt.geom.Point2D;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
-
-import aim4.Main;
-import aim4.config.Debug;
-import aim4.driver.AutoDriver;
-import aim4.driver.DriverSimView;
-import aim4.map.lane.Lane;
-import aim4.msg.i2v.I2VMessage;
-import aim4.msg.v2i.V2IMessage;
-import aim4.noise.DoubleGauge;
-import aim4.vehicle.AutoVehicleDriverView.LRFMode;
 
 
 /**
@@ -86,7 +83,11 @@ public class BasicAutoVehicle extends BasicVehicle
    * Sensor placed on the front of this vehicle, giving this vehicle a cone of view to detect other incoming vehicles and dodge collisions
    */
 
-  private Sensor sensor;
+  private Sensor frontSensor;
+
+  private Sensor leftSensor;
+
+  private Sensor rightSensor;
 
   private Controller controller;
 
@@ -320,16 +321,42 @@ public class BasicAutoVehicle extends BasicVehicle
     this.spawnTime = spawnTime;
   }
 
-  public synchronized void installSensor(Sensor sensor)                //install a sensor into this vehicle //rudolf method
+  public synchronized void installFrontSensor(Sensor sensor)                //install a front sensor into this vehicle //rudolf method
   {
     if(sensor.getClass().equals(AimSensor.class))
     {
-        this.sensor = (AimSensor)sensor;
+        this.frontSensor = sensor;
     }
 
     if(sensor.getClass().equals(NeatSensor.class))
     {
-        this.sensor = (NeatSensor)sensor;
+        this.frontSensor = sensor;
+    }
+  }
+
+  public synchronized void installLeftSensor(Sensor sensor)                //install a left sensor into this vehicle //rudolf method
+  {
+    if(sensor.getClass().equals(AimSensor.class))
+    {
+      this.leftSensor = sensor;
+    }
+
+    if(sensor.getClass().equals(NeatSensor.class))
+    {
+      this.leftSensor = sensor;
+    }
+  }
+
+  public synchronized void installRightSensor(Sensor sensor)                //install a right sensor into this vehicle //rudolf method
+  {
+    if(sensor.getClass().equals(AimSensor.class))
+    {
+      this.rightSensor = sensor;
+    }
+
+    if(sensor.getClass().equals(NeatSensor.class))
+    {
+      this.rightSensor = sensor;
     }
   }
 
@@ -337,22 +364,33 @@ public class BasicAutoVehicle extends BasicVehicle
   {
     if(controller.getClass().equals(AIMController.class))
     {
-      this.controller = (AIMController)controller;
+      this.controller = controller;
     }
 
     if(controller.getClass().equals(NEATController.class))
     {
-      this.controller = (NEATController)controller;
+      this.controller = controller;
     }
   }
 
   public synchronized Controller getController() {return this.controller;}
 
 
-  public synchronized Sensor getSensor()
+  public synchronized Sensor getFrontSensor()
   {
-      return this.sensor;
+      return this.frontSensor;
   }
+
+  public synchronized Sensor getLeftSensor()
+  {
+    return this.leftSensor;
+  }
+
+  public synchronized Sensor getRightSensor()
+  {
+    return this.rightSensor;
+  }
+
 
   public synchronized String getDestination()  //rudolf - getter for thie vehicle's destination
   {

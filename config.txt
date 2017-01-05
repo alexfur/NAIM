@@ -5,18 +5,18 @@
            ~~~~~~~~~~~~~~~~
 --------------------------------------------
 Controller (AIM/NEAT):                      NEAT
-Enable AIM anti-crash heuristic: (yes/no):  yes
+Enable AIM anti-crash heuristic (yes/no):   no
 NEAT setting (Demo/Train):                  Demo
 Network to use:                             TrainingResults/Population.eg
 Simulation speed:                           14
-Lanes per road:                             3
+Lanes per road:                             2
 Size of GridMap (COLSxROWS):                1x1
 Traffic level (max 0.7):                    0.7
 Show vehicle VINs on screen:                No
-Number of cars per simulation:              25
+Number of cars per simulation:              2
 Number of simulations:                      -1
-Timesteps per sim (-1 = unlimited):         30
-Metres along lane to draw checkpoint line:  125
+Timesteps per sim (-1 = unlimited):         50
+Metres along lane to draw checkpoint line:  130
 Draw Sensor FOVs (yes/no):                  yes
 --------------------------------------------
 
@@ -24,13 +24,12 @@ Draw Sensor FOVs (yes/no):                  yes
         ~~ Drunk Pedestrians ~~
         ~~~~~~~~~~~~~~~~~~~~~~~
 --------------------------------------
-Number of pedestrians:                  3
+Number of pedestrians:                  0
 Height of drunk pedestrian:             1
 Width of drunk pedestrian:              1
 Waypoints (1 lane):                    (152,148),(152,154);(161,151),(161,158);(150,154),(157,154);(155,161),(165,161);(157,147),(157,166);(147,156),(166,156)
 Waypoints (2 lanes):                   (154,149),(154,160);(148,170),(162,170);(171,150),(171,161);(162,171),(174,171);(162,151),(162,174);(149,162),(176,162)
 Waypoints (3 lanes):                   (156,150),(156,165);(154,172),(154,185);(182,149),(182,165);(182,172),(182,186);(150,161),(169,161);(173,162),(190,162);(148,180),(167,180);(172,181),(188,181);(168,149),(168,187);(149,169),(188,169)
-Random positions (yes/no):               yes
 Stop walking after this many timesteps: -1
 ...
 --------------------------------------
@@ -40,26 +39,25 @@ Stop walking after this many timesteps: -1
         ~~~~~~~~~~~~~~~~~~~~~~~
 --------------------------------------
 *** speciation ***
-compatibilityThreshold:              0.65
+compatibilityThreshold:              0.60
 numGensAllowedNoImprovement:         15
-maxNumberOfSpecies:                  5
+maxNumberOfSpecies:                  40
 
 *** training ***
-POPULATION_SIZE:                     100
-NUMBER_OF_GENERATIONS:               100
+POPULATION_SIZE:                     2
+NUMBER_OF_GENERATIONS:               2
 INITIAL_POP_DENSITY:                 0.75
 ...
 --------------------------------------
-
 
         ~~~~~~~~~~~~~~~~~~~
         ~~ Vehicle Specs ~~
         ~~~~~~~~~~~~~~~~~~~
 --------------------------------------
 Custom or Random? (C / R):          C
-Max acceleration:                  100
-Max deceleration:                 -85
-Max velocity:                      80
+Max acceleration:                  40
+Max deceleration:                 -35
+Max velocity:                      60
 Min velocity:                   -17.0
 Length of car:                    4.0
 Width of car:                    1.75
@@ -75,13 +73,11 @@ Width of car:                    1.75
 -----------------------------------------------
 Height of FOV:                              8
 Width of FOV:                               8
-Angle start:                                270
-Angle end:                                  90
+Angle start:                                315
+Angle end:                                  45
 Degrees between each FOV point:             5
 Nearest obstruction precision (best = 0):   0.1
 -----------------------------------------------
-
-
 
 
 # decent FOV values for AIM: 10, 10, 340, 20, 10

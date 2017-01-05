@@ -1,42 +1,21 @@
 package aim4.vehicle;
 
-import java.awt.geom.*;
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Queue;
-import java.util.*;
-import java.awt.Shape;
-
-import aim4.Main;
-import aim4.util.ShapeUtils;
-import aim4.config.Debug;
-import aim4.driver.AutoDriver;
-import aim4.driver.DriverSimView;
-import aim4.map.lane.Lane;
-import aim4.msg.i2v.I2VMessage;
-import aim4.msg.v2i.V2IMessage;
-import aim4.noise.DoubleGauge;
-import aim4.obstructions.DrunkPedestrian;
-import aim4.util.GeomMath;
-import aim4.util.GeomUtil;
-import aim4.vehicle.AutoVehicleDriverView.LRFMode;
-import java.awt.*;
+import java.awt.geom.Point2D;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 public class AimSensor extends Sensor
 {
     private AtomicBoolean waitingForObstruction;
 
-    public AimSensor(VehicleSimView vehicle)
+    public AimSensor(VehicleSimView vehicle, Point2D.Double pointForDistFOV, double rad)
     {
-        super(vehicle);
+        super(vehicle, pointForDistFOV, rad);
         this.waitingForObstruction = new AtomicBoolean(false);
     }
 
-    public AimSensor(VehicleSimView vehicle, double width, double height, double angleStart, double angleExtent)
+    public AimSensor(VehicleSimView vehicle, double width, double height, double angleStart, double angleExtent, Point2D.Double pointForDistFOV, double rad)
     {
-        super(vehicle,width,height,angleStart,angleExtent);
+        super(vehicle,width,height,angleStart,angleExtent,pointForDistFOV, rad);
         this.waitingForObstruction = new AtomicBoolean(false);
     }
 
@@ -53,10 +32,21 @@ public class AimSensor extends Sensor
         getVehicle().slowToStop();
     }
 
-    synchronized public static AimSensor sensorOn(VehicleSimView vehicle)  //return a car's basic sensor (without aim or neat functionality)
+    synchronized public static AimSensor frontAimSensorOn(VehicleSimView vehicle)
     {
-        return (AimSensor) ((BasicAutoVehicle) vehicle).getSensor();
+        return (AimSensor) ((BasicAutoVehicle) vehicle).getFrontSensor();
     }
+
+    synchronized public static AimSensor leftAimSensorOn(VehicleSimView vehicle)
+    {
+        return (AimSensor) ((BasicAutoVehicle) vehicle).getLeftSensor();
+    }
+
+    synchronized public static AimSensor rightAimSensorOn(VehicleSimView vehicle)
+    {
+        return (AimSensor) ((BasicAutoVehicle) vehicle).getRightSensor();
+    }
+
 
     synchronized public AtomicBoolean isWaitingForObstruction()
     {

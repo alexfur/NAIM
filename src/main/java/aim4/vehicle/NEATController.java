@@ -1,7 +1,6 @@
 package aim4.vehicle;
 
 import aim4.Main;
-import aim4.config.Constants;
 import aim4.util.GeomMath;
 import org.encog.ml.data.MLData;
 import org.encog.ml.data.basic.BasicMLData;
@@ -12,13 +11,17 @@ import org.encog.util.arrayutil.NormalizedField;
 public class NEATController extends Controller
 {
     private VehicleSimView vehicle;
-    private NeatSensor sensor;
+    private NeatSensor frontSensor;
+    private NeatSensor leftSensor;
+    private NeatSensor rightSensor;
+
     private NEATNetwork network;
 
-    private NormalizedField inputDistToObstr;                       //distance from car to obstruction
-    private NormalizedField inputAngleToObstr;                      //angle from front of car to obstruction
+    private NormalizedField inputDistToObstrFrontSensor;            //distance from car to obstruction front sensor
+    private NormalizedField inputDistToObstrLeftSensor;             //distance from car to obstruction left sensor
+    private NormalizedField inputDistToObstrRightSensor;            //distance from car to obstruction right sensor
+    private NormalizedField inputAngleToObstrFrontSensor;           //angle from front of car to obstruction
     private NormalizedField inputDistToIntersectionEdge;            //distance from car to intersection (from POV of car inside intersection)
-    //private NormalizedField inputDistToIntersectionExitPoint;       //distance from centre of a car to the intersection exit point that it must reach
 
     private NormalizedField outputSteeringAngle;
     private NormalizedField outputAccel;
@@ -27,7 +30,9 @@ public class NEATController extends Controller
     {
         super(vehicle);
         this.vehicle = vehicle;
-        this.sensor = NeatSensor.sensorOn(vehicle);
+        this.frontSensor = NeatSensor.frontNeatSensorOn(vehicle);
+        this.leftSensor = NeatSensor.leftNeatSensorOn(vehicle);
+        this.rightSensor = NeatSensor.rightNeatSensorOn(vehicle);
         this.network = network;
         setupNormalizers();
     }
@@ -35,7 +40,7 @@ public class NEATController extends Controller
     public synchronized void control()
     {
         MLData networkOutput = network.compute(getInputs());
-        if(sensor.getInIntersection())
+        if(frontSensor.getInIntersection())
         {
             turnToAngleInFOV(networkOutput.getData(0));             //NEAT can only steer inside the intersection
         }
@@ -44,13 +49,25 @@ public class NEATController extends Controller
 
     public synchronized BasicMLData getInputs()
     {
-        double[] networkInputs = new double[4];
+        double[] networkInputs = new double[5];
 
-        networkInputs[0] = inputDistToObstr.normalize(sensor.getDistanceToNearestObstruction());
-        networkInputs[1] = inputAngleToObstr.normalize(GeomMath.getAngleBetweenObjects(vehicle.getPointAtMiddleFront(Constants.DOUBLE_EQUAL_PRECISION),vehicle.getHeading(),sensor.getPositionOfNearestObstruction()));
-        networkInputs[2] = inputDistToIntersectionEdge.normalize(sensor.getDistanceToIntersectionEdge());
+        if(frontSensor.getObstructionDetected())
+        {
+            networkInputs[0] = inputDistToObstrFrontSensor.normalize(frontSensor.getDistanceToNearestObstruction());
+            networkInputs[1] = inputAngleToObstrFrontSensor.normalize(GeomMath.getAngleBetweenObjects(frontSensor.getRayToNearestObstruction().getP1(),vehicle.getHeading(),frontSensor.getRayToNearestObstruction().getP2()));
+        }
 
-        //networkInputs[3] = inputDistToIntersectionExitPoint.normalize(sensor.getDistToIntersectionExitPoint());
+        networkInputs[2] = inputDistToIntersectionEdge.normalize(frontSensor.getDistanceToIntersectionEdge());
+
+        if(leftSensor.getObstructionDetected())
+        {
+            networkInputs[3] = inputDistToObstrLeftSensor.normalize(leftSensor.getDistanceToNearestObstruction());
+        }
+
+        if(rightSensor.getObstructionDetected())
+        {
+            networkInputs[4] = inputDistToObstrRightSensor.normalize(rightSensor.getDistanceToNearestObstruction());
+        }
 
         return new BasicMLData(networkInputs);
     }
@@ -60,43 +77,49 @@ public class NEATController extends Controller
         /*      INPUTS
          --------------------*/
 
-        inputDistToObstr = new NormalizedField(NormalizationAction.SingleField,
-                "distance to obstruction in FOV",
-                sensor.getDistanceFOV(),
+        inputDistToObstrFrontSensor = new NormalizedField(NormalizationAction.SingleField,
+                "distance to obstruction in front sensor FOV",
+                frontSensor.getDistanceFOV(),
                 0,
                 1,
                 0);
 
-        inputAngleToObstr = new NormalizedField(NormalizationAction.SingleField,
+        inputDistToObstrLeftSensor = new NormalizedField(NormalizationAction.SingleField,
+                "distance to obstruction in left sensor FOV",
+                frontSensor.getDistanceFOV(),   //TODO: make it leftSensor.getDistanceFOV() - they're the same size so it doesn't really matter tho
+                0,
+                1,
+                0);
+
+        inputDistToObstrRightSensor = new NormalizedField(NormalizationAction.SingleField,
+                "distance to obstruction in right sensor FOV",
+                frontSensor.getDistanceFOV(),   //TODO: make it rightSensor.getDistanceFOV() - they're the same size so it doesn't really matter tho
+                0,
+                1,
+                0);
+
+        inputAngleToObstrFrontSensor = new NormalizedField(NormalizationAction.SingleField,
                 "angle to obstruction in FOV",
                 Math.PI,
                 -1*Math.PI,
+                //Math.toRadians(Main.cfgSensorAngleEnd),
+                //Math.toRadians(Main.cfgSensorAngleStart),
                 1,
                 -1);
 
         inputDistToIntersectionEdge = new NormalizedField(NormalizationAction.SingleField,
                 "distance to edge of intersection (from POV of vehicle inside intersection",
-                sensor.getDistanceFOV(),
+                frontSensor.getDistanceFOV(),
                 0,
                 1,
                 0);
-
-        /*
-        inputDistToIntersectionExitPoint = new NormalizedField(NormalizationAction.SingleField,
-                "distance from centre of a car to the intersection exit point that it must reach",
-                //vehicle.getDriver().getSpawnPoint().getPosition().distance(sensor.getIntersectionExitPoint()), //max real distance from vehicle to its exit point in intersection is the distance from that vehicle's spawnpoint to the intersection exit point
-                179,
-                0,          //min real distance from vehicle to its intersection exit point is 0
-                1,          //max normalised distance from vehicle to its intersection exit point is 1
-                0);         //min normalised distance from vehicle to its intersection exit point is 0
-        */
 
 
         /*      OUTPUTS
          --------------------*/
         outputSteeringAngle = new NormalizedField(NormalizationAction.SingleField,
                 "steering angle to turn to",
-                sensor.getFOVTurnPoints().size()-1,
+                frontSensor.getFOVTurnPoints().size()-1,
                 0,
                 1,
                 0);
@@ -107,21 +130,20 @@ public class NEATController extends Controller
                 Main.cfgMaxDecel,
                 1,
                 0);
-
     }
 
     public synchronized void turnToAngleInFOV(double normNetOutput)   //turn towards one of the NN-input points on the arc of the FOV
     {
         double denormalisedOutput = outputSteeringAngle.deNormalize(normNetOutput);
         //System.out.println((int)denormalisedOutput);
-        sensor.turnToAngleInFOV((int)denormalisedOutput);
+        frontSensor.turnToAngleInFOV((int)denormalisedOutput);
     }
 
     public synchronized void setAcceleration(double normNetOutput)
     {
         double denormalisedOutput = outputAccel.deNormalize(normNetOutput);
         //System.out.println(denormalisedOutput);
-        sensor.setAccelWithMaxTargetVelocity((int)denormalisedOutput);
+        frontSensor.setAccelWithMaxTargetVelocity((int)denormalisedOutput);
     }
 
 }

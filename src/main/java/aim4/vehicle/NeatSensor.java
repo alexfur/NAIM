@@ -23,37 +23,16 @@ public class NeatSensor extends Sensor
     volatile private Point2D.Double intersectionExitPoint;
 
 
-    public NeatSensor(VehicleSimView vehicle)
+    public NeatSensor(VehicleSimView vehicle, Point2D.Double pointForDistFOV, double rad)
     {
-        super(vehicle);
+        super(vehicle, pointForDistFOV, rad);
     }
-
 
     public NeatSensor(){}          //no arg constructor
 
-    public NeatSensor(VehicleSimView vehicle, double width, double height, double angleStart, double angleExtent)
+    public NeatSensor(VehicleSimView vehicle, double width, double height, double angleStart, double angleExtent, Point2D.Double pointForDistFOV, double rad)
     {
-        super(vehicle,width,height,angleStart,angleExtent);
-    }
-
-    synchronized public void setIntersectionExitPoint(Point2D.Double intersectionExitPoint)
-    {
-        this.intersectionExitPoint = new Point2D.Double(intersectionExitPoint.getX(),intersectionExitPoint.getY());
-    }
-
-    synchronized public Point2D.Double getIntersectionExitPoint()
-    {
-        return intersectionExitPoint;
-    }
-
-    synchronized public void setDistToIntersectionExitPoint(double distanceToIntersectionExitPoint)
-    {
-        this.distToIntersectionExitPoint = distanceToIntersectionExitPoint;
-    }
-
-    synchronized public double getDistToIntersectionExitPoint()
-    {
-        return distToIntersectionExitPoint;
+        super(vehicle,width,height,angleStart,angleExtent, pointForDistFOV, rad);
     }
 
     synchronized public double getAcceleration()
@@ -68,6 +47,8 @@ public class NeatSensor extends Sensor
 
     public synchronized double getDistanceToNearestObstruction()
     {
+        if(getObstructionsInFOV().isEmpty()) return 0;  //todo: return 0 or 1 ???
+
         double shortestDistance = getDistanceToObstruction(getObstructionsInFOV().get(0));
         for(Object obstruction : getObstructionsInFOV())
         {
@@ -78,7 +59,7 @@ public class NeatSensor extends Sensor
         return shortestDistance;
     }
 
-    public synchronized Point2D getPositionOfNearestObstruction()   //get the nearest point on the obstruction w.r.t the middle front point of housing vehicle
+    public synchronized Line2D getRayToNearestObstruction()   //get the nearest point on the obstruction w.r.t the middle front point of housing vehicle
     {
         int index = 0;
         int i = 0;
@@ -103,12 +84,12 @@ public class NeatSensor extends Sensor
 
         if(obstruction.getClass().equals(DrunkPedestrian.class))
         {
-            return ray.getP2();                                         //p1 = front mid of vehicle, p2 = nearest point on nearest obstruction
+            return ray;                                         //p1 = front mid of vehicle, p2 = nearest point on nearest obstruction
         }
 
         if(obstruction.getClass().equals(BasicAutoVehicle.class))
         {
-            return ray.getP2();                                         //p1 = front mid of vehicle, p2 = nearest point on nearest obstruction
+            return ray;                                         //p1 = front mid of vehicle, p2 = nearest point on nearest obstruction
         }
 
         return null;
@@ -122,33 +103,65 @@ public class NeatSensor extends Sensor
 
     public synchronized Line2D.Double getRayToObstruction(Object obstruction)  //should I get nearest point on housing vehicle too?
     {
-        double x1 = getVehicle().getPointAtMiddleFront(Constants.DOUBLE_EQUAL_PRECISION).getX();
-        double y1 = getVehicle().getPointAtMiddleFront(Constants.DOUBLE_EQUAL_PRECISION).getY();
+        double x1 = getRad()==0 ? getVehicle().getPointAtMiddleFront(Constants.DOUBLE_EQUAL_PRECISION).getX() : -(Main.cfgVehicleWidth/2)*Math.sin(getVehicle().getHeading())+getVehicle().getCenterPoint().getX();
+        double y1 = getRad()==0 ? getVehicle().getPointAtMiddleFront(Constants.DOUBLE_EQUAL_PRECISION).getY() : (Main.cfgVehicleWidth/2)*Math.cos(getVehicle().getHeading())+getVehicle().getCenterPoint().getY();
         double x2 = x1;  //this value will update if we find nearest distance to any obstructions
         double y2 = y1;  //this value will update if we find nearest distance to any obstructions
 
-        Point2D.Double p1 = new Point2D.Double(x1,y1);  //point from middle front of vehicle
-        Point2D.Double p2;                              //nearest point on obstruction (which we will find in the next few lines of code)
+        Point2D rayStartPoint = new Point2D.Double(x1,y1);  //point from middle front of vehicle
+        Point2D p2;                                         //nearest point on obstruction (which we will find in the next few lines of code)
+
+        Point2D frontCornerRight = getVehicle().getCornerPoints()[0];
+        Point2D frontCornerLeft = getVehicle().getCornerPoints()[3];
 
         if(obstruction.getClass().equals(BasicAutoVehicle.class))
         {
             BasicAutoVehicle vehicleB = (BasicAutoVehicle)obstruction;
             if (vehicleB.getVIN() != getVehicleVin())
             {
-                Point2D middleFrontOfVehicle = getVehicle().getPointAtMiddleFront(Constants.DOUBLE_EQUAL_PRECISION);           //get front middle point on sensor-housing vehicle
                 ConcurrentHashMap<Double, Point2D> distancesPointsMap = new ConcurrentHashMap<Double, Point2D>();                             //distance between front of sensor-housing vehicle and nearest point on obstructing/detected vehicle
                 for (Line2D edge : vehicleB.getEdges())
                 {
                     Point2D currentPoint;
-                    double distance;
+                    double distanceMiddle;
                     for (Iterator<Point2D> iter = new LineIterator(edge, Main.cfgNearestObstructionPrecision); iter.hasNext(); )                                    //iterate through points on edge
                     {
-                        if (iter.hasNext())                                                                                   //if there are more points on this edge to traverse
+                        if (iter.hasNext())                                                                                 //if there are more points on this edge to traverse
                         {
-                            currentPoint = iter.next();                                                                      //get the next point along the edge
-                            distance = middleFrontOfVehicle.distance(currentPoint);                                          //get the euclidean distance from middle front of vehicle to the current point on edge
-                            if (getArea().contains(currentPoint))                                                             //make sure the point is in the FOV area
-                                distancesPointsMap.put(distance, currentPoint);
+                            //if(getRad()!=0)
+                            {
+                                currentPoint = iter.next();                                                                      //get the next point along the edge
+                                distanceMiddle = rayStartPoint.distance(currentPoint);                                           //get the euclidean distance from middle front of vehicle to the current point on edge
+                                if(getArea().contains(currentPoint))
+                                    distancesPointsMap.put(distanceMiddle, currentPoint);
+                            }
+                            /*
+                            else
+                            {
+                                double distanceLeft;
+                                double distanceRight;
+
+                                currentPoint = iter.next();                                                                      //get the next point along the edge
+                                distanceMiddle = rayStartPoint.distance(currentPoint);                                           //get the euclidean distance from middle front of vehicle to the current point on edge
+                                distanceLeft = frontCornerLeft.distance(currentPoint);
+                                distanceRight = frontCornerRight.distance(currentPoint);
+                                if (getArea().contains(currentPoint))
+                                {
+                                    if (distanceMiddle < distanceLeft && distanceMiddle < distanceRight)
+                                    {
+                                        distancesPointsMap.put(distanceMiddle, currentPoint);
+                                    } else if (distanceLeft < distanceMiddle && distanceLeft < distanceRight)
+                                    {
+                                        distancesPointsMap.put(distanceLeft, currentPoint);
+                                        rayStartPoint = frontCornerLeft;
+                                    } else if (distanceRight < distanceMiddle && distanceRight < distanceLeft)
+                                    {
+                                        distancesPointsMap.put(distanceRight, currentPoint);
+                                        rayStartPoint = frontCornerRight;
+                                    }
+                                }
+                            }
+                            */
                         }
                     }
                 }
@@ -161,28 +174,58 @@ public class NeatSensor extends Sensor
                 } catch (Exception e){}
 
                 p2 = new Point2D.Double(x2,y2);
-                return new Line2D.Double(p1,p2);
+                return new Line2D.Double(rayStartPoint,p2);
             }
         }
 
         if(obstruction.getClass().equals(DrunkPedestrian.class))
         {
             DrunkPedestrian drunkPedestrian = (DrunkPedestrian) obstruction;
-            Point2D middleFrontOfVehicle = getVehicle().getPointAtMiddleFront(Constants.DOUBLE_EQUAL_PRECISION);            //get front middle point on sensor-housing vehicle
             ConcurrentHashMap<Double,Point2D> distancesPointsMap = new ConcurrentHashMap<Double, Point2D>();                //distance between front of sensor-housing vehicle and nearest point on obstruction
 
             for(Line2D edge : drunkPedestrian.getEdges())
             {
                 Point2D currentPoint;
-                double distance;
+                double distanceMiddle;
+
                 for(Iterator<Point2D> iter = new LineIterator(edge,Main.cfgNearestObstructionPrecision); iter.hasNext();)                                    //iterate through points on edge
                 {
                     if(iter.hasNext())                                                                                   //if there are more points on this edge to traverse
                     {
-                        currentPoint = iter.next();                                                                      //get the next point along the edge
-                        distance = middleFrontOfVehicle.distance(currentPoint);                                          //get the euclidean distance from middle front of vehicle to the current point on edge
-                        if(getArea().contains(currentPoint))                                                             //make sure the point is in the FOV area
-                            distancesPointsMap.put(distance, currentPoint);
+                        //if(getRad()!=0)
+                        {
+                            currentPoint = iter.next();                                                                      //get the next point along the edge
+                            distanceMiddle = rayStartPoint.distance(currentPoint);                                           //get the euclidean distance from middle front of vehicle to the current point on edge
+                            if(getArea().contains(currentPoint))
+                                distancesPointsMap.put(distanceMiddle, currentPoint);
+                        }
+                        /*
+                        else
+                        {
+                            double distanceLeft;
+                            double distanceRight;
+
+                            currentPoint = iter.next();                                                                      //get the next point along the edge
+                            distanceMiddle = rayStartPoint.distance(currentPoint);                                           //get the euclidean distance from middle front of vehicle to the current point on edge
+                            distanceLeft = frontCornerLeft.distance(currentPoint);
+                            distanceRight = frontCornerRight.distance(currentPoint);
+                            if (getArea().contains(currentPoint))
+                            {
+                                if (distanceMiddle < distanceLeft && distanceMiddle < distanceRight)
+                                {
+                                    distancesPointsMap.put(distanceMiddle, currentPoint);
+                                } else if (distanceLeft < distanceMiddle && distanceLeft < distanceRight)
+                                {
+                                    distancesPointsMap.put(distanceLeft, currentPoint);
+                                    rayStartPoint = frontCornerLeft;
+                                } else if (distanceRight < distanceMiddle && distanceRight < distanceLeft)
+                                {
+                                    distancesPointsMap.put(distanceRight, currentPoint);
+                                    rayStartPoint = frontCornerRight;
+                                }
+                            }
+                        }
+                        */
                     }
                 }
             }
@@ -196,14 +239,13 @@ public class NeatSensor extends Sensor
             catch(Exception e){}
 
             p2 = new Point2D.Double(x2,y2);
-            return new Line2D.Double(p1,p2);
+            return new Line2D.Double(rayStartPoint,p2);
         }
 
 
         if(obstruction instanceof RoadBasedIntersection) //nearest distance to edges of intersection (once inside intersection) --> use to prevent from driving out of intersection onto grass
         {
             RoadBasedIntersection intersection = (RoadBasedIntersection) obstruction;
-            Point2D middleFrontOfVehicle = getVehicle().getPointAtMiddleFront(Constants.DOUBLE_EQUAL_PRECISION);            //get front middle point on sensor-housing vehicle
             ConcurrentHashMap<Double,Point2D> distancesPointsMap = new ConcurrentHashMap<Double, Point2D>();                //distance between front of sensor-housing vehicle and nearest point on obstruction
 
             for(Line2D edge : intersection.getLineEdges())
@@ -215,7 +257,7 @@ public class NeatSensor extends Sensor
                     if(iter.hasNext())                                                                                   //if there are more points on this edge to traverse
                     {
                         currentPoint = iter.next();                                                                      //get the next point along the edge
-                        distance = middleFrontOfVehicle.distance(currentPoint);                                          //get the euclidean distance from middle front of vehicle to the current point on edge
+                        distance = rayStartPoint.distance(currentPoint);                                          //get the euclidean distance from middle front of vehicle to the current point on edge
                         if(getArea().contains(currentPoint))                                                             //make sure the point is in the FOV area
                             distancesPointsMap.put(distance, currentPoint);
                     }
@@ -231,11 +273,11 @@ public class NeatSensor extends Sensor
             catch(Exception e){}
 
             p2 = new Point2D.Double(x2,y2);
-            return new Line2D.Double(p1,p2);
+            return new Line2D.Double(rayStartPoint,p2);
         }
 
         p2 = new Point2D.Double(x2,y2);  //if we got this point, there weren't any obstructions in FOV - so both start & end points are the middle front of the vehicle, so distance = 0
-        return new Line2D.Double(p1,p2); //p1 == p2 if we got to this point
+        return new Line2D.Double(rayStartPoint,p2); //p1 == p2 if we got to this point
     }
 
     // traverse the arc of the FOV in steps of X degrees, add each current point to an array, and finally return the array
@@ -286,9 +328,19 @@ public class NeatSensor extends Sensor
         getVehicle().turnTowardPoint(getFOVTurnPoints().get(pointIndex));
     }
 
-    synchronized public static NeatSensor sensorOn(VehicleSimView vehicle)  //return a car's basic sensor (without aim or neat functionality)
+    synchronized public static NeatSensor frontNeatSensorOn(VehicleSimView vehicle)
     {
-        return (NeatSensor) ((BasicAutoVehicle) vehicle).getSensor();
+        return (NeatSensor) ((BasicAutoVehicle) vehicle).getFrontSensor();
+    }
+
+    synchronized public static NeatSensor leftNeatSensorOn(VehicleSimView vehicle)
+    {
+        return (NeatSensor) ((BasicAutoVehicle) vehicle).getLeftSensor();
+    }
+
+    synchronized public static NeatSensor rightNeatSensorOn(VehicleSimView vehicle)
+    {
+        return (NeatSensor) ((BasicAutoVehicle) vehicle).getRightSensor();
     }
 
     public synchronized void setInIntersection(boolean inIntersection)  //set whether or not this sensor's car is in an intersection

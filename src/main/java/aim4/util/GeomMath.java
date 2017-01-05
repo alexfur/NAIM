@@ -30,13 +30,8 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 package aim4.util;
 
-import java.awt.geom.AffineTransform;
-import java.awt.geom.Area;
-import java.awt.geom.GeneralPath;
-import java.awt.geom.Line2D;
-import java.awt.geom.PathIterator;
-import java.awt.geom.Point2D;
-import java.awt.Shape;
+import java.awt.*;
+import java.awt.geom.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -618,7 +613,6 @@ public final class GeomMath {
     return (ang < 0 ? ang % 2 * Math.PI + 2 * Math.PI : ang % 2 * Math.PI);
   }
 
-
   public static double getAngleBetweenObjects(Point2D mainObject, double heading, Point2D otherObject)  //rudolf
   {
     double x = otherObject.getX() - mainObject.getX();
@@ -643,12 +637,11 @@ public final class GeomMath {
   }
 
 
-
   /////////////////////////////////
   // CLASS CONSTRUCTORS
   /////////////////////////////////
 
   /** This class should never be instantiated. */
-  private GeomMath(){};
+  private GeomMath(){}
 
 }

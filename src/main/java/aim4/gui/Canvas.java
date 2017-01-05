@@ -875,19 +875,29 @@ public class Canvas extends JPanel implements ComponentListener,
       buffer.setPaint(VEHICLE_COLOR);  // the default color
     }
 
-        Sensor sensor = Sensor.sensorOn(vehicle);
+
+    //DRAW NEXT AIMPOINT (NEXT WAYPOINT ON VEHICLE'S PATH THROUGH INTERSECTION)
+    /*
+    Point2D aimPoint = vehicle.getDriver().getCurrentLane().getLeadPoint(vehicle.gaugePosition(),5);
+    Rectangle2D r = new Rectangle2D.Double(aimPoint.getX(),aimPoint.getY(),5,5);
+    buffer.fill(r);
+    */
+
+        Sensor sensor = Sensor.frontSensorOn(vehicle);
         if(!sensor.hasCrashed().get())                                            //if vehicle hasn't crashed
         {
           if(sensor.getPassedCheckPointOne() && (!sensor.getPassedCheckPointTwo())) //if vehicle has passed the 1st (but not 2nd) checkpoint, its sensor FOV is activated
           {
             if(Main.cfgDrawSensorFOVs)
             {
-              drawSensorFOV(vehicle, buffer);
-              if (Main.cfgController.equals("NEAT"))                                 //if NEAT is the controller, draw these extra sensor features that NEAT has
+              drawFrontSensorFOV(vehicle, buffer);
+              if (Main.cfgController.equals("NEAT"))                                //if NEAT is the controller, draw these extra sensor features that NEAT has
               {
+                drawLeftSensorFOV(vehicle, buffer);
+                drawRightSensorFOV(vehicle, buffer);
                 drawFOVSlices(vehicle, buffer);                                     //draw lines separating the FOV into slices
                 drawRaysToObstructions(vehicle, buffer);                            //draw rays from the vehicle to all obstructions it's detecting
-                drawRaysToIntersectionEdges(vehicle, basicMap, buffer);               //(distance to intersection fed as input to NN)
+                drawRaysToIntersectionEdges(vehicle, basicMap, buffer);             //(distance to intersection fed as input to NN)
               }
             }
           }
@@ -903,9 +913,6 @@ public class Canvas extends JPanel implements ComponentListener,
     buffer.draw(vehicle.getDriver().);
     buffer.setColor(temp);
     */
-
-
-
 
     // Now draw the vehicle's shape
 
@@ -924,28 +931,73 @@ public class Canvas extends JPanel implements ComponentListener,
 
   }
 
-  public synchronized void drawSensorFOV(VehicleSimView vehicle, Graphics2D buffer)
+  public synchronized void drawFrontSensorFOV(VehicleSimView vehicle, Graphics2D buffer)
   {
     buffer.setPaint(Color.lightGray);
-    buffer.draw(Sensor.sensorOn(vehicle).getArea());  //draw the outline of the sensor FOV
+    buffer.draw(Sensor.frontSensorOn(vehicle).getArea());  //draw the outline of the sensor FOV
+    buffer.setColor(VEHICLE_COLOR);
+  }
+
+  public synchronized void drawLeftSensorFOV(VehicleSimView vehicle, Graphics2D buffer)
+  {
+    buffer.setPaint(Color.lightGray);
+    buffer.draw(Sensor.leftSensorOn(vehicle).getArea());  //draw the outline of the sensor FOV
+    buffer.setColor(VEHICLE_COLOR);
+  }
+
+  public synchronized void drawRightSensorFOV(VehicleSimView vehicle, Graphics2D buffer)
+  {
+    buffer.setPaint(Color.lightGray);
+    buffer.draw(Sensor.rightSensorOn(vehicle).getArea());  //draw the outline of the sensor FOV
     buffer.setColor(VEHICLE_COLOR);
   }
 
   public synchronized void drawRaysToObstructions(VehicleSimView vehicle, Graphics2D buffer)
   {
-    for (Object obstruction : NeatSensor.sensorOn(vehicle).getObstructionsInFOV())
+    /*
+    buffer.setColor(Color.GREEN);
+    Rectangle r = new Rectangle((int)vehicle.getPosition().getX(),(int)vehicle.getPosition().getY(),2,2);
+    buffer.fill(r);
+    */
+
+    NeatSensor frontSensor = NeatSensor.frontNeatSensorOn(vehicle);
+    List<Object> obstructionsInFrontFOV = frontSensor.getObstructionsInFOV();
+
+    NeatSensor leftSensor = NeatSensor.leftNeatSensorOn(vehicle);
+    List<Object> obstructionsInLeftFOV = leftSensor.getObstructionsInFOV();
+
+    NeatSensor rightSensor = NeatSensor.rightNeatSensorOn(vehicle);
+    List<Object> obstructionsInRightFOV = rightSensor.getObstructionsInFOV();
+
+    buffer.setPaint(Color.GREEN.brighter().brighter());
+
+    for (Object obstruction : obstructionsInFrontFOV)
     {
       buffer.setPaint(Color.GREEN.brighter().brighter());
-      buffer.draw(NeatSensor.sensorOn(vehicle).getRayToObstruction(obstruction));
-      buffer.setPaint(VEHICLE_COLOR);
+      buffer.draw(frontSensor.getRayToObstruction(obstruction));
     }
+
+    for (Object obstruction : obstructionsInLeftFOV)
+    {
+      buffer.setPaint(Color.YELLOW.brighter().brighter());
+      buffer.draw(leftSensor.getRayToObstruction(obstruction));
+    }
+
+    for (Object obstruction : obstructionsInRightFOV)
+    {
+      buffer.setPaint(Color.BLUE.brighter().brighter());
+      buffer.draw(rightSensor.getRayToObstruction(obstruction));
+    }
+
+    buffer.setPaint(VEHICLE_COLOR);
+
   }
 
   public synchronized boolean intersectionInFOV(VehicleSimView vehicle)
   {
       for (int i = 0; i < basicMap.getIntersectionManagers().size(); i++)
       {
-        Area FOV = new Area(Sensor.sensorOn(vehicle).getArea());
+        Area FOV = new Area(Sensor.frontSensorOn(vehicle).getArea());
         FOV.intersect(new Area(basicMap.getIntersectionManagers().get(i).getIntersection().getArea()));
         return !FOV.isEmpty();
       }
@@ -954,7 +1006,7 @@ public class Canvas extends JPanel implements ComponentListener,
 
   public synchronized void drawRaysToIntersectionEdges(VehicleSimView vehicle, BasicMap basicMap, Graphics2D buffer)  // - rudolf
   {
-    NeatSensor sensor = NeatSensor.sensorOn(vehicle);
+    NeatSensor sensor = NeatSensor.frontNeatSensorOn(vehicle);
     for(IntersectionManager im : basicMap.getIntersectionManagers())
     {
       if(im.contains(vehicle))
@@ -974,7 +1026,7 @@ public class Canvas extends JPanel implements ComponentListener,
 
   public synchronized void drawFOVSlices(VehicleSimView vehicle, Graphics2D buffer)  //rudolf
   {
-    Sensor sensor = Sensor.sensorOn(vehicle);
+    Sensor sensor = Sensor.frontSensorOn(vehicle);
 
     double x = vehicle.getCenterPoint().getX();
     double y = vehicle.getCenterPoint().getY();

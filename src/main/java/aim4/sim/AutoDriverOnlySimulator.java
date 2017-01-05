@@ -31,6 +31,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 package aim4.sim;
 
 import aim4.Main;
+import aim4.config.Constants;
 import aim4.config.Debug;
 import aim4.config.DebugPoint;
 import aim4.driver.AutoDriver;
@@ -197,6 +198,7 @@ public class AutoDriverOnlySimulator implements Simulator
   @Override
   public synchronized AutoDriverOnlySimStepResult step(double timeStep)
   {
+
     if(printSimResults)                                                         //if sim results still need to be printed (ie: the simulation hasn't finished yet)
     {
       if((numIntersectionTraversals + crashedVehicles.size()) == numVehiclesToSpawn.get())
@@ -264,7 +266,7 @@ public class AutoDriverOnlySimulator implements Simulator
       System.err.printf("------SIM:moveVehicles---------------\n");
     }
 
-      if(Main.cfgController.equals("AIM"))
+      if(Main.cfgController.equals("AIM") && Main.cfgAIMAntiCrashHeuristicEnabled)  //no need to use AIM sensors if the heuristic is disabled
       {
           checkSensorsAIM();
       }
@@ -273,7 +275,6 @@ public class AutoDriverOnlySimulator implements Simulator
         checkSensorsNEAT();
         checkDistancesToIntersectionEdges();
         deductPointsForLeavingTrack();
-        //calcDistancesOfVehiclesToIntersectionExitPoints();
       }
 
     moveVehicles(timeStep);
@@ -463,21 +464,27 @@ public class AutoDriverOnlySimulator implements Simulator
             VehicleSimView vehicle = makeVehicle(spawnPoint, spawnSpec);
             ((BasicAutoVehicle)vehicle).setSpawnTime(spawnSpec.getSpawnTime());                         //store vehicle's spawntime in the vehicle itself
 
-            Sensor sensor;
+            Sensor frontSensor;
+            Sensor leftSensor;
+            Sensor rightSensor;
             Controller controller;
 
             if(Main.cfgController.equals("AIM"))
             {
-              sensor = new AimSensor(vehicle);
-              ((BasicAutoVehicle)vehicle).installSensor(sensor);
+              frontSensor = new AimSensor(vehicle, (Point2D.Double)(vehicle.getPointAtMiddleFront(Constants.DOUBLE_EQUAL_PRECISION)),0);
+              ((BasicAutoVehicle)vehicle).installFrontSensor(frontSensor);
               controller = new AIMController(vehicle);
               ((BasicAutoVehicle)vehicle).installController(controller);
             }
 
             if(Main.cfgController.equals("NEAT"))
             {
-              sensor = new NeatSensor(vehicle);
-              ((BasicAutoVehicle)vehicle).installSensor(sensor);
+              frontSensor = new NeatSensor(vehicle, (Point2D.Double)(vehicle.getPointAtMiddleFront(Constants.DOUBLE_EQUAL_PRECISION)),0);
+              ((BasicAutoVehicle)vehicle).installFrontSensor(frontSensor);
+              leftSensor = new NeatSensor(vehicle, (Point2D.Double)(vehicle.getCenterPoint()),-Math.PI/2);
+              ((BasicAutoVehicle)vehicle).installLeftSensor(leftSensor);
+              rightSensor = new NeatSensor(vehicle, (Point2D.Double)(vehicle.getCenterPoint()),Math.PI/2);
+              ((BasicAutoVehicle)vehicle).installRightSensor(rightSensor);
               controller = new NEATController(vehicle, network);
               ((BasicAutoVehicle)vehicle).installController(controller);
             }
@@ -493,7 +500,6 @@ public class AutoDriverOnlySimulator implements Simulator
       }
     }
   }
-
 
 
   /**
@@ -933,8 +939,8 @@ public class AutoDriverOnlySimulator implements Simulator
         {
           for (VehicleSimView vehicle2 : getActiveVehicles())                             //loop through all vehicle objects on screen except the one calling this method
           {
-            Sensor sensorV1 = sensorOn(vehicle1);
-            Sensor sensorV2 = sensorOn(vehicle2);
+            Sensor sensorV1 = Sensor.frontSensorOn(vehicle1);
+            Sensor sensorV2 = Sensor.frontSensorOn(vehicle2);
             if(!sensorV1.getPassedCheckPointTwo() && !sensorV2.getPassedCheckPointTwo())
             {
               if (!sensorV1.hasCrashed().get() && !sensorV2.hasCrashed().get())   //if we aren't dealing with an already crashed vehicle
@@ -943,8 +949,8 @@ public class AutoDriverOnlySimulator implements Simulator
                 {
                   if (!crashedVehicles.contains(vehicle1))                                   //make extra sure the vehicle hasn't already crashed prior to this
                   {
-                    sensorOn(vehicle1).setObstructionDetected(false);                        //we're not detecting the obstruction because we hit the obstruction !
-                    sensorOn(vehicle1).setHasCrashed(true);
+                    sensorV1.setObstructionDetected(false);                        //we're not detecting the obstruction because we hit the obstruction !
+                    sensorV1.setHasCrashed(true);
                     crashedVehicles.add(vehicle1);
                     if (Main.cfgNEATSetting.equals("Train"))
                       score -= 0.025;                                        //deduct 2 points for crashing into car
@@ -952,8 +958,8 @@ public class AutoDriverOnlySimulator implements Simulator
 
                   if (!crashedVehicles.contains(vehicle2))                                   //make extra sure the vehicle hasn't already crashed prior to this
                   {
-                    sensorOn(vehicle2).setObstructionDetected(false);                        //we're not detecting the obstruction because we hit the obstruction !
-                    sensorOn(vehicle2).setHasCrashed(true);
+                    sensorV2.setObstructionDetected(false);                        //we're not detecting the obstruction because we hit the obstruction !
+                    sensorV2.setHasCrashed(true);
                     crashedVehicles.add(vehicle2);
                     if (Main.cfgController.equals("Train"))
                       score -= 0.025;                                        //deduct 2 points for crashing into car
@@ -970,14 +976,15 @@ public class AutoDriverOnlySimulator implements Simulator
     --------------------------------------------------------*/
       for(VehicleSimView vehicle : getActiveVehicles())
       {
+        Sensor frontSensor = Sensor.frontSensorOn(vehicle);
         for(DrunkPedestrian drunkPedestrian : getActiveDrunkPedestrians())
         {
-          if (! sensorOn(vehicle).hasCrashed().get())   //if we aren't dealing with an already crashed vehicle
+          if (! frontSensor.hasCrashed().get())   //if we aren't dealing with an already crashed vehicle
           {
             if (VehicleUtil.intersects(vehicle, new Area(drunkPedestrian.getBody())) && vehicle.getVelocity() > 0.3)  //if car and pedestrian are touching, AND if the car is moving fast enough to kill someone
             {
-              sensorOn(vehicle).setObstructionDetected(false);                        //we're not detecting the obstruction because we hit the obstruction !
-              sensorOn(vehicle).setHasCrashed(true);
+              frontSensor.setObstructionDetected(false);                        //we're not detecting the obstruction because we hit the obstruction !
+              frontSensor.setHasCrashed(true);
               if (!crashedVehicles.contains(vehicle))
               {
                 crashedVehicles.add(vehicle);
@@ -995,13 +1002,23 @@ public class AutoDriverOnlySimulator implements Simulator
     --------------------------------------------------------*/
       for (VehicleSimView vehicle1 : getActiveVehicles())
       {
-        NeatSensor sensor1 = neatSensorOn(vehicle1);
-        if(sensor1.getPassedCheckPointOne())                                          //sensors only turn on after hitting first checkpoint
+        NeatSensor frontSensor1 = NeatSensor.frontNeatSensorOn(vehicle1);
+        if(frontSensor1.getPassedCheckPointOne())                                          //sensors only turn on after hitting first checkpoint
           {
+            NeatSensor leftSensor1 = NeatSensor.leftNeatSensorOn(vehicle1);
+            NeatSensor rightSensor1 = NeatSensor.rightNeatSensorOn(vehicle1);
             for (VehicleSimView vehicle2 : getActiveVehicles())
             {
-              if (sensor1.detects(vehicle2) && vehicle1.getVIN() != vehicle2.getVIN())  //if vehicle 1 detects vehicle 2 (but doesn't detect itself!)
-                sensor1.setObstructionDetected(true);
+              if(vehicle1.getVIN() != vehicle2.getVIN()) //if vehicle isn't detecting itself
+              {
+                if (frontSensor1.detects(vehicle2))
+                  frontSensor1.setObstructionDetected(true);
+                if (leftSensor1.detects(vehicle2))
+                  leftSensor1.setObstructionDetected(true);
+                if (rightSensor1.detects(vehicle2))
+                  rightSensor1.setObstructionDetected(true);
+              }
+
             }
           }
       }
@@ -1012,13 +1029,21 @@ public class AutoDriverOnlySimulator implements Simulator
     {
       for(VehicleSimView vehicle : getActiveVehicles())
       {
-        NeatSensor sensor = neatSensorOn(vehicle);
-        if(sensor.getPassedCheckPointOne())                                          //sensors only turn on after hitting first checkpoint
+        NeatSensor frontSensor = NeatSensor.frontNeatSensorOn(vehicle);
+          if(frontSensor.getPassedCheckPointOne())                                  //sensors only turn on after hitting first checkpoint
           {
+            NeatSensor leftSensor = NeatSensor.leftNeatSensorOn(vehicle);
+            NeatSensor rightSensor = NeatSensor.rightNeatSensorOn(vehicle);
             for(DrunkPedestrian drunkPedestrian : getActiveDrunkPedestrians())
             {
-              if(sensor.detects(drunkPedestrian))
-                sensor.setObstructionDetected(true);
+              if(frontSensor.detects(drunkPedestrian))
+                frontSensor.setObstructionDetected(true);
+
+              if(leftSensor.detects(drunkPedestrian))
+                  leftSensor.setObstructionDetected(true);
+
+              if(rightSensor.detects(drunkPedestrian))
+                  rightSensor.setObstructionDetected(true);
             }
           }
       }
@@ -1035,7 +1060,7 @@ public class AutoDriverOnlySimulator implements Simulator
   {
     for (VehicleSimView vehicle : getActiveVehicles())
     {
-      NeatSensor sensor = NeatSensor.sensorOn(vehicle);
+      NeatSensor sensor = NeatSensor.frontNeatSensorOn(vehicle);
       for(IntersectionManager im : basicMap.getIntersectionManagers())
       {
         if(im.semiContains(vehicle))
@@ -1063,24 +1088,24 @@ public class AutoDriverOnlySimulator implements Simulator
 
     //          SENSORS SCANNING FOR VEHICLES
     //--------------------------------------------------------
+
       for (VehicleSimView vehicle1 : getActiveVehicles())
       {
-        AimSensor sensor1 = aimSensorOn(vehicle1);
-        if(sensor1.getPassedCheckPointOne())                                              //sensors only turn on after hitting first checkpoint
+        AimSensor sensor1 = AimSensor.frontAimSensorOn(vehicle1);
+        if (sensor1.getPassedCheckPointOne())                                              //sensors only turn on after hitting first checkpoint
         {
-            for (VehicleSimView vehicle2 : getActiveVehicles())                           //loop through all vehicle objects active on screen
+          for (VehicleSimView vehicle2 : getActiveVehicles())                           //loop through all vehicle objects active on screen
+          {
+            if (sensor1.detects(vehicle2) && vehicle2.getVIN() != vehicle1.getVIN())    //if vehicle1 and vehicle2 crash
             {
-              if (sensor1.detects(vehicle2) && vehicle2.getVIN() != vehicle1.getVIN())    //if vehicle1 and vehicle2 crash
-              {
-                sensor1.setWaitingForObstruction(new AtomicBoolean(true));
-              }
-              else
-              {
-                if(!sensor1.isWaitingForObstruction().get())
-                  sensor1.setWaitingForObstruction(new AtomicBoolean(false));
-              }
+              sensor1.setWaitingForObstruction(new AtomicBoolean(true));
+            } else
+            {
+              if (!sensor1.isWaitingForObstruction().get())
+                sensor1.setWaitingForObstruction(new AtomicBoolean(false));
             }
           }
+        }
       }
 
 
@@ -1090,7 +1115,7 @@ public class AutoDriverOnlySimulator implements Simulator
     {
       for(VehicleSimView vehicle : getActiveVehicles())
       {
-        AimSensor sensor = aimSensorOn(vehicle);
+        AimSensor sensor = AimSensor.frontAimSensorOn(vehicle);
         if(sensor.getPassedCheckPointOne())                                          //sensors only turn on after hitting first checkpoint
         {
             for(DrunkPedestrian drunkPedestrian : getActiveDrunkPedestrians())
@@ -1119,7 +1144,7 @@ public class AutoDriverOnlySimulator implements Simulator
   {
     for (int i = 0; i < basicMap.getIntersectionManagers().size(); i++)
     {
-      Area FOV = new Area(Sensor.sensorOn(vehicle).getArea());
+      Area FOV = new Area(Sensor.frontSensorOn(vehicle).getArea());
       FOV.intersect(new Area(basicMap.getIntersectionManagers().get(i).getShape()));
       return !FOV.isEmpty();
     }
@@ -1136,30 +1161,23 @@ public class AutoDriverOnlySimulator implements Simulator
     return false;
   }
 
+  /*
   synchronized public Sensor sensorOn(VehicleSimView vehicle)  //return a basic sensor (without aim or neat functionality)
   {
-      return ((BasicAutoVehicle) vehicle).getSensor();
+      return ((BasicAutoVehicle) vehicle).getFrontSensor();
   }
 
   synchronized public NeatSensor neatSensorOn(VehicleSimView vehicle) //return a NEAT sensor (without aim or neat functionality)
     {
-      return (((NeatSensor)((BasicAutoVehicle) vehicle).getSensor()));
+      return (((NeatSensor)((BasicAutoVehicle) vehicle).getFrontSensor()));
     }
 
     synchronized public AimSensor aimSensorOn(VehicleSimView vehicle) //return an AIM sensor
     {
-        return (((AimSensor)((BasicAutoVehicle) vehicle).getSensor()));
+        return (((AimSensor)((BasicAutoVehicle) vehicle).getFrontSensor()));
     }
 
-  synchronized public Controller generalControllerIn(VehicleSimView vehicle)
-  {
-    return ((BasicAutoVehicle) vehicle).getController();
-  }
-
-  synchronized public AIMController aimControllerIn(VehicleSimView vehicle)
-  {
-    return (((AIMController) ((BasicAutoVehicle) vehicle).getController()));
-  }
+  */
 
   synchronized public NEATController NEATControllerIn(VehicleSimView vehicle)
   {
@@ -1315,29 +1333,6 @@ public class AutoDriverOnlySimulator implements Simulator
   /////////////////////////////////
 
 
-    //Calculate the distance from the centres of vehicles to the intersection exit points that they must reach
-    //NEAT will try to minimise this value - ie: try get vehicles as close to their destinations as possible
-    synchronized public void calcDistancesOfVehiclesToIntersectionExitPoints()
-    {
-        for(VehicleSimView vehicle : vinToVehicles.values())
-        {
-            for(IntersectionManager im : basicMap.getIntersectionManagers())
-            {
-                //if(im.semiContains(vehicle))
-                {
-                    NeatSensor sensor = NeatSensor.sensorOn(vehicle);
-                    Point2D.Double intersectionExitPoint = (im.getIntersection().getExitPoint(vehicle.getDriver().getCurrentLane()));
-                    double distanceToIntersectionExit = intersectionExitPoint.distance(vehicle.getPosition());                        //vehicles want to minimise this distance
-                    sensor.setDistToIntersectionExitPoint(distanceToIntersectionExit);
-                    sensor.setIntersectionExitPoint(intersectionExitPoint);
-                }
-            }
-
-        }
-
-    }
-
-
   /**
    * Move all the vehicles.
    *
@@ -1349,13 +1344,18 @@ public class AutoDriverOnlySimulator implements Simulator
         {
          if (Main.cfgController.equals("NEAT"))
           {
-            NeatSensor sensor = neatSensorOn(vehicle);
-            if (!sensor.hasCrashed().get())            //only use NEAT controller if vehicle hasn't crashed
+            NeatSensor frontSensor = NeatSensor.frontNeatSensorOn(vehicle);
+            NeatSensor leftSensor = NeatSensor.leftNeatSensorOn(vehicle);
+            NeatSensor rightSensor = NeatSensor.rightNeatSensorOn(vehicle);
+
+            if (!frontSensor.hasCrashed().get())            //only use NEAT controller if vehicle hasn't crashed
             {
-              if (sensor.getObstructionDetected())
+              if (frontSensor.getObstructionDetected() || leftSensor.getObstructionDetected() || rightSensor.getObstructionDetected())
               {
                 NEATControllerIn(vehicle).control();
-                sensor.setObstructionDetected(false);  //we'll check obstructions from a "clean slate" in next timestep
+                frontSensor.setObstructionDetected(false);  //we'll check obstructions from a "clean slate" in next timestep
+                leftSensor.setObstructionDetected(false);  //we'll check obstructions from a "clean slate" in next timestep
+                rightSensor.setObstructionDetected(false);  //we'll check obstructions from a "clean slate" in next timestep
               }
             }
           }
@@ -1364,12 +1364,13 @@ public class AutoDriverOnlySimulator implements Simulator
           {
             for (VehicleSimView v : getActiveVehicles())
             {
-              if (aimSensorOn(v).isWaitingForObstruction().get() && intersectionInFOV(v))
+              AimSensor frontSensor = AimSensor.frontAimSensorOn(v);
+              if (frontSensor.isWaitingForObstruction().get() && intersectionInFOV(v))
               {
                 if (Main.cfgAIMAntiCrashHeuristicEnabled)
                 {
-                  aimSensorOn(v).avoidCollisionHeuristic();                            //slow down to stop --> heuristic to avoid crashing
-                  aimSensorOn(v).setWaitingForObstruction(new AtomicBoolean(false));
+                  frontSensor.avoidCollisionHeuristic();                            //slow down to stop --> heuristic to avoid crashing
+                  frontSensor.setWaitingForObstruction(new AtomicBoolean(false));
                 }
               }
             }
@@ -1377,10 +1378,14 @@ public class AutoDriverOnlySimulator implements Simulator
 
           Point2D posBeforeMove = vehicle.getPosition();                          //Vehicle's position before moving
           vehicle.move(timeStep);
-          sensorOn(vehicle).moveWithVehicle();                                    //make sensor move with vehicle
+          Sensor.frontSensorOn(vehicle).moveWithVehicle();                        //make sensor move with vehicle
+          if(Main.cfgController.equals("NEAT"))
+          {
+            Sensor.leftSensorOn(vehicle).moveWithVehicle();                         //make sensor move with vehicle
+            Sensor.rightSensorOn(vehicle).moveWithVehicle();                        //make sensor move with vehicle
+          }
           Point2D posAfterMove = vehicle.getPosition();                           //vehicle's position after moving
-
-          Sensor sensor = sensorOn(vehicle);                                      //has general sensor functionality (that both AIM and NEAT have)
+          Sensor sensor = Sensor.frontSensorOn(vehicle);                                      //has general sensor functionality (that both AIM and NEAT have)
 
           for (DataCollectionLine line : basicMap.getDataCollectionLines())       //checkpoint lines on the map (1 at each end of each lane)
           {
@@ -1434,7 +1439,7 @@ public class AutoDriverOnlySimulator implements Simulator
     for(VehicleSimView vehicle : getActiveVehicles())
     {
       AutoDriver driver = (AutoDriver) vehicle.getDriver();
-      Sensor sensor = sensorOn(vehicle);
+      Sensor sensor = Sensor.frontSensorOn(vehicle);
 
       if (sensor.getPassedCheckPointOne())                //if the car has passed checkpoint one
       {
@@ -1447,7 +1452,7 @@ public class AutoDriverOnlySimulator implements Simulator
               if (!sensor.getPassedCheckPointTwo())     //if it hasn't reached checkpoint two
               {
                 score -= 0.025;                         //deduct points for leaving intersection illegally
-                sensorOn(vehicle).setHasCrashed(true);
+                Sensor.frontSensorOn(vehicle).setHasCrashed(true);
                 crashedVehicles.add(vehicle);             //leave track (ie: go on grass) = crash
               }
             }
