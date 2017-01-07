@@ -23,9 +23,6 @@
  */
 package org.encog.neural.neat;
 
-import java.io.Serializable;
-import java.util.Random;
-
 import org.encog.Encog;
 import org.encog.engine.network.activation.ActivationFunction;
 import org.encog.engine.network.activation.ActivationSteepenedSigmoid;
@@ -48,6 +45,9 @@ import org.encog.neural.neat.training.NEATInnovationList;
 import org.encog.util.identity.BasicGenerateID;
 import org.encog.util.identity.GenerateID;
 import org.encog.util.obj.ChooseObject;
+
+import java.io.Serializable;
+import java.util.Random;
 
 /**
  * A population for a NEAT or HyperNEAT system. This population holds the
@@ -198,7 +198,7 @@ public class NEATPopulation extends BasicPopulation implements Serializable,
 	 * The initial connection density for the initial random population of
 	 * genomes.
 	 */
-	private double initialConnectionDensity = 0.1;
+	private double initialConnectionDensity = 0.7;
 
 	/**
 	 * A factory to create random number generators.

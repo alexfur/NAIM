@@ -4,8 +4,8 @@
            ~~ Simulation ~~
            ~~~~~~~~~~~~~~~~
 --------------------------------------------
-Controller (AIM/NEAT):                      NEAT
-Enable AIM anti-crash heuristic (yes/no):   no
+Controller (AIM/NEAT):                      AIM
+Enable AIM anti-crash heuristic (yes/no):   yes
 NEAT setting (Demo/Train):                  Demo
 Network to use:                             TrainingResults/Population.eg
 Simulation speed:                           14
@@ -13,9 +13,9 @@ Lanes per road:                             2
 Size of GridMap (COLSxROWS):                1x1
 Traffic level (max 0.7):                    0.7
 Show vehicle VINs on screen:                No
-Number of cars per simulation:              2
+Number of cars per simulation:              10
 Number of simulations:                      -1
-Timesteps per sim (-1 = unlimited):         50
+Timesteps per sim (-1 = unlimited):         42
 Metres along lane to draw checkpoint line:  130
 Draw Sensor FOVs (yes/no):                  yes
 --------------------------------------------
@@ -24,7 +24,7 @@ Draw Sensor FOVs (yes/no):                  yes
         ~~ Drunk Pedestrians ~~
         ~~~~~~~~~~~~~~~~~~~~~~~
 --------------------------------------
-Number of pedestrians:                  0
+Number of pedestrians:                  1
 Height of drunk pedestrian:             1
 Width of drunk pedestrian:              1
 Waypoints (1 lane):                    (152,148),(152,154);(161,151),(161,158);(150,154),(157,154);(155,161),(165,161);(157,147),(157,166);(147,156),(166,156)
@@ -39,13 +39,13 @@ Stop walking after this many timesteps: -1
         ~~~~~~~~~~~~~~~~~~~~~~~
 --------------------------------------
 *** speciation ***
-compatibilityThreshold:              0.60
+compatibilityThreshold:              0.65
 numGensAllowedNoImprovement:         15
 maxNumberOfSpecies:                  40
 
 *** training ***
-POPULATION_SIZE:                     2
-NUMBER_OF_GENERATIONS:               2
+POPULATION_SIZE:                     100
+NUMBER_OF_GENERATIONS:               50
 INITIAL_POP_DENSITY:                 0.75
 ...
 --------------------------------------

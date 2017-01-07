@@ -199,27 +199,6 @@ public class AutoDriverOnlySimulator implements Simulator
   public synchronized AutoDriverOnlySimStepResult step(double timeStep)
   {
 
-    if(printSimResults)                                                         //if sim results still need to be printed (ie: the simulation hasn't finished yet)
-    {
-      if((numIntersectionTraversals + crashedVehicles.size()) == numVehiclesToSpawn.get())
-      {
-        double averageTraversalTime = 0;
-        for (double traversalTime : traversalTimes)
-        {
-          averageTraversalTime += traversalTime;
-        }
-        averageTraversalTime /= numIntersectionTraversals;
-
-        System.out.println("Average timesteps taken for a vehicle to traverse intersection: " + averageTraversalTime);
-
-        double x = numIntersectionTraversals;
-        double y = numVehiclesToSpawn.get();
-        double percentageThroughput =  ((x / y) * 100);
-        System.out.println("Percentage throughput of intersection: " + percentageThroughput);
-        printSimResults = false;                                    //don't print sim results again for this simulation
-      }
-    }
-
     this.timestep = timeStep;
 
     if (Debug.PRINT_SIMULATOR_STAGE)
@@ -283,6 +262,27 @@ public class AutoDriverOnlySimulator implements Simulator
     List<Integer> completedVINs = Collections.synchronizedList(cleanUpCompletedVehicles());
     currentTime += timeStep;
     checkClocks();
+
+    if(printSimResults)                                                         //if sim results still need to be printed (ie: the simulation hasn't finished yet)
+    {
+        if(getSimulationTime() >= Main.cfgTimestepsPerSim)
+        {
+          double averageTraversalTime = 0;
+          for (double traversalTime : traversalTimes)
+          {
+            averageTraversalTime += traversalTime;
+          }
+          averageTraversalTime /= numIntersectionTraversals;
+
+          System.out.println("Average timesteps taken for a vehicle to traverse intersection: " + averageTraversalTime);
+
+          double x = numIntersectionTraversals;
+          double y = numVehiclesToSpawn.get();
+          double percentageThroughput =  ((x / y) * 100);
+          System.out.println("Percentage throughput of intersection: " + percentageThroughput);
+          printSimResults = false;                                    //don't print sim results again for this simulation
+        }
+    }
 
     return new AutoDriverOnlySimStepResult(completedVINs);
   }

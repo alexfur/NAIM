@@ -155,6 +155,8 @@ public class Main
 
     NEATPopulation pop = (NEATPopulation) EncogDirectoryPersistence.loadObject(new File(cfgNetwork));  //get saved population
 
+
+
     NEATNetwork bestNetwork = (NEATNetwork) new NEATCODEC().decode(pop.getBestGenome());        //extract best genome from saved population
 
     new Viewer(simSetup,bestNetwork,true).runSim();                                             //convert best genome to NEATNetwork that can control a vehicle

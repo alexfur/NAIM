@@ -43,6 +43,7 @@ public class ScoreCalculator implements CalculateScore
         network = (NEATNetwork)mlMethod;                                            //a NEAT neural network
         SimRunner trainer = new SimRunner(network);
 
+        //5 task trials per genome
         double score1 = trainer.run(network);
         double score2 = trainer.run(network);
         double score3 = trainer.run(network);
