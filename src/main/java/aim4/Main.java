@@ -99,6 +99,10 @@ public class Main
   public static boolean cfgDrawSensorFOVs;
   public static double cfgTimeStepsPedestriansWalk;
   public static boolean cfgAIMAntiCrashHeuristicEnabled;
+  public static boolean cfgWriteStatsToCSV;
+
+  public static boolean foundDemoResultsFilename = false;
+  public static int resultSet;
 
   public static double cfgCompatibilityThreshold;
   public static int cfgNumGensAllowedNoImprovement;
@@ -322,6 +326,14 @@ public class Main
         }
         if(s.contains("Number of pedestrians:"))
           cfgNumPedestrians = Integer.parseInt(s.split(":")[1].replace(" ",""));
+        if(s.contains("Write stats to CSV:"))
+        {
+          if ((s.split(":")[1].replace(" ","")).contains("yes"))
+            cfgWriteStatsToCSV = true;
+          else if ((s.split(":")[1].replace(" ","")).contains("no"))
+            cfgWriteStatsToCSV = false;
+        }
+
 
 
 

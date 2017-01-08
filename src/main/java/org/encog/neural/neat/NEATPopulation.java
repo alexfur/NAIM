@@ -198,7 +198,7 @@ public class NEATPopulation extends BasicPopulation implements Serializable,
 	 * The initial connection density for the initial random population of
 	 * genomes.
 	 */
-	private double initialConnectionDensity = 0.7;
+	private double initialConnectionDensity = 0.5;
 
 	/**
 	 * A factory to create random number generators.

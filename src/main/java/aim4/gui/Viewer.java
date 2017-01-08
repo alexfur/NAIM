@@ -362,8 +362,8 @@ public class Viewer extends JFrame implements ActionListener, KeyListener,
     {
         if (numSimulations.get() == Main.cfgNumSimulations)  //kill thread and dispose of GUI when we've completed the desired number of simulations
         {
-          terminate();
-          dispose();
+            terminate();
+            dispose();
         }
 
       long nextInvokeTime = System.currentTimeMillis() + timeDelay;
@@ -897,6 +897,7 @@ public class Viewer extends JFrame implements ActionListener, KeyListener,
    */
   public synchronized void startButtonHandler()
   {
+    System.out.println("Task trial " + (numSimulations.get()+1) + ": ");
     startButtonHandler(simSetupPanel.getSimSetup());
   }
 
@@ -1126,21 +1127,41 @@ public class Viewer extends JFrame implements ActionListener, KeyListener,
    */
   private synchronized void runSimulationStep()  //rudolf - run sim step
   {
-    tempSim = ((AutoDriverOnlySimulator)getSimulator());
+    tempSim = ((AutoDriverOnlySimulator) getSimulator());
 
-      if(Main.cfgTimestepsPerSim == -1)   //if user chose unlimited timesteps per round
+    if (Main.cfgTimestepsPerSim == -1)   //if user chose unlimited timesteps per round
+    {
+      if (tempSim.getActiveVehicles().isEmpty() && tempSim.getNoMoreVehiclesToSpawn().get()) //if no active vehicles on screen and no more vehicles that need to be spawned
       {
-          if(tempSim.getActiveVehicles().isEmpty() && tempSim.getNoMoreVehiclesToSpawn().get()) //if no active vehicles on screen and no more vehicles that need to be spawned
-          {
-              //tell trainer it's time for new round
-              runNewSimIteration();
-          }
+        //tell trainer it's time for new round
+        runNewSimIteration();
       }
+    } else if (tempSim.getSimulationTime() >= Main.cfgTimestepsPerSim)
+    {
+      runNewSimIteration();
+    }
+    /*
+    else if(Main.cfgWriteStatsToCSV)
+    {
+      int resultsSet = 1;
+      String fileName = "DemoResults/Results"+resultsSet+".csv";
 
-      else if(tempSim.getSimulationTime() > Main.cfgTimestepsPerSim)
+      File demoResultsDir = new File("DemoResults");
+      if(! (demoResultsDir.listFiles() == null))
       {
-         runNewSimIteration();
+        final int resultsNum = demoResultsDir.listFiles().length + 1;
+        fileName = "DemoResults/Results"+(resultsNum)+".csv";
       }
+      try
+      {
+        BufferedWriter w = new BufferedWriter(new FileWriter(fileName, true));
+        w.write(1 + "," + 2);
+        w.newLine();
+        w.close();
+      }
+      catch(Exception e) {e.printStackTrace();}
+    }
+    */
 
     Debug.clearShortTermDebugPoints();
     SimStepResult simStepResult = sim.step(SimConfig.TIME_STEP);        //run another timestep of the current simulation

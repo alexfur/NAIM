@@ -57,6 +57,9 @@ import java.awt.geom.Area;
 import java.awt.geom.Line2D;
 import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
 import java.text.DecimalFormat;
 import java.util.*;
 import java.util.List;
@@ -151,6 +154,11 @@ public class AutoDriverOnlySimulator implements Simulator
   private volatile boolean printSimResults = true;
 
   ArrayList<Point2D.Double[]> pedestrianWaypoints = Main.cfgPedestrianWaypoints;
+
+  private boolean foundDemoResultsFilename = false;
+
+  public double finalAverageTraversalTime;
+  public double finalPercentageThroughput;
 
 
   /////////////////////////////////
@@ -274,13 +282,41 @@ public class AutoDriverOnlySimulator implements Simulator
           }
           averageTraversalTime /= numIntersectionTraversals;
 
+
           System.out.println("Average timesteps taken for a vehicle to traverse intersection: " + averageTraversalTime);
 
           double x = numIntersectionTraversals;
           double y = numVehiclesToSpawn.get();
           double percentageThroughput =  ((x / y) * 100);
           System.out.println("Percentage throughput of intersection: " + percentageThroughput);
+          System.out.println("-----------------------------------------");
           printSimResults = false;                                    //don't print sim results again for this simulation
+
+          if(Main.cfgWriteStatsToCSV)
+          {
+            try
+            {
+              String path = "DemoResults/Results"+Main.resultSet+".csv";
+              if(! Main.foundDemoResultsFilename)
+              {
+                File demoResultsDir = new File("DemoResults");
+                int resultSet = 1;
+                path = "DemoResults/Results"+resultSet+".csv";
+                if (!(demoResultsDir.listFiles() == null))
+                {
+                  Main.resultSet = demoResultsDir.listFiles().length+1;
+                  path = "DemoResults/Results"+Main.resultSet+".csv";
+                }
+                Main.foundDemoResultsFilename = true;
+              }
+
+              BufferedWriter w = new BufferedWriter(new FileWriter(path,true));
+              w.write(averageTraversalTime+","+percentageThroughput);
+              w.newLine();
+              w.close();
+            }
+            catch(Exception e) {e.printStackTrace();}
+          }
         }
     }
 
@@ -292,6 +328,7 @@ public class AutoDriverOnlySimulator implements Simulator
   /////////////////////////////////
 
   // information retrieval
+
 
   /**
    * {@inheritDoc}
