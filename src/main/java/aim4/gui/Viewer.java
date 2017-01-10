@@ -368,7 +368,16 @@ public class Viewer extends JFrame implements ActionListener, KeyListener,
 
       long nextInvokeTime = System.currentTimeMillis() + timeDelay;
       // Advance the simulation for one step
+      try
+      {
       runSimulationStep();
+      }
+      catch(Exception e)
+      {
+        numSimulations.decrementAndGet();
+        if(numSimulations.get()<0) numSimulations.set(0);
+        runNewSimIteration();
+      }
       if(GUIenabled.get())
       {
         // give GUI a chance to update the screen
