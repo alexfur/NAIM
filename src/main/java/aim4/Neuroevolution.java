@@ -24,7 +24,7 @@ public class Neuroevolution
 
     final static private int POPULATION_SIZE = Main.cfgPOPULATION_SIZE;
     final static private int NUMBER_OF_GENERATIONS = Main.cfgNUMBER_OF_GENERATIONS;
-    final static private double INITIAL_POP_DENSITY = Main.cfgINITIAL_POP_DENSITY;
+    final static private double INITIAL_POP_DENSITY = Main.cfgINITIAL_CONN_DENSITY;
 
     public Neuroevolution()
     {
@@ -115,6 +115,7 @@ public class Neuroevolution
                         "Timesteps per simulation: " + Main.cfgTimestepsPerSim+"\n"+
                         "Number of cars per simulation: " + Main.cfgNumVehicles+"\n"+
                         "Best genome was "+evolution.getBestGenome();
+
 
         System.out.println(trainingLog);                                                       //print results of training session (append to ConsoleOutput.txt)
 

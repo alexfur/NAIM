@@ -206,7 +206,6 @@ public class AutoDriverOnlySimulator implements Simulator
   @Override
   public synchronized AutoDriverOnlySimStepResult step(double timeStep)
   {
-
     this.timestep = timeStep;
 
     if (Debug.PRINT_SIMULATOR_STAGE)
@@ -1318,15 +1317,18 @@ public class AutoDriverOnlySimulator implements Simulator
           (AutoVehicleSimView)VinRegistry.getVehicleFromVIN(
             msg.getVin());
 
-
         // Calculate the distance the message must travel
         double txDistance;
 
 
         if(Main.cfgController.equals("NEAT"))       //rudolf - added this in
-          {
+        {
           txDistance = 1;
         }
+        //else if(1==1)
+        //{
+        //    txDistance = 1;
+        //}
         else
         {
            txDistance =

@@ -4,20 +4,20 @@
            ~~ Simulation ~~
            ~~~~~~~~~~~~~~~~
 --------------------------------------------
-Controller (AIM/NEAT):                      NEAT
-Enable AIM anti-crash heuristic (yes/no):   no
+Controller (AIM/NEAT):                      AIM
+Enable AIM anti-crash heuristic (yes/no):   yes
 NEAT setting (Demo/Train):                  Demo
 Network to use:                             TrainingResults/Population.eg
 Simulation speed:                           14
-Lanes per road:                             2
+Lanes per road:                             1
 Size of GridMap (COLSxROWS):                1x1
 Traffic level (max 0.7):                    0.7
 Show vehicle VINs on screen:                No
-Number of cars per simulation:              1
-Number of simulations:                      10
-Timesteps per sim (-1 = unlimited):         30
-Metres along lane to draw checkpoint line:  120
-Draw Sensor FOVs (yes/no):                  yes
+Number of cars per simulation:              25
+Number of simulations:                      100
+Timesteps per sim (-1 = unlimited):         50
+Metres along lane to draw checkpoint line:  135
+Draw Sensor FOVs (yes/no):                  no
 Write stats to CSV:                         yes
 --------------------------------------------
 
@@ -25,7 +25,7 @@ Write stats to CSV:                         yes
         ~~ Drunk Pedestrians ~~
         ~~~~~~~~~~~~~~~~~~~~~~~
 --------------------------------------
-Number of pedestrians:                  0
+Number of pedestrians:                  2
 Height of drunk pedestrian:             1
 Width of drunk pedestrian:              1
 Waypoints (1 lane):                    (152,148),(152,154);(161,151),(161,158);(150,154),(157,154);(155,161),(165,161);(157,147),(157,166);(147,156),(166,156)
@@ -45,9 +45,9 @@ numGensAllowedNoImprovement:         15
 maxNumberOfSpecies:                  40
 
 *** training ***
-POPULATION_SIZE:                     2
-NUMBER_OF_GENERATIONS:               2
-INITIAL_POP_DENSITY:                 0.75
+POPULATION_SIZE:                     200
+NUMBER_OF_GENERATIONS:               50
+INITIAL_CONN_DENSITY:                0.4
 ...
 --------------------------------------
 
@@ -74,25 +74,15 @@ Width of car:                    1.75
 -----------------------------------------------
 Height of FOV:                              8
 Width of FOV:                               8
-Angle start:                                315
-Angle end:                                  45
+NEAT Angle start:                           315
+NEAT Angle end:                             45
+AIM Angle start:                            345
+AIM Angle end:                              15
 Degrees between each FOV point:             5
 Nearest obstruction precision (best = 0):   0.1
 -----------------------------------------------
 
 
-# decent FOV values for AIM: 10, 10, 340, 20, 10
+# decent FOV values for AIM: 10, 10, 345, 15, 5
 
-# decent FOV values for NEAT: 20, 20, 315, 45, 15
-
-# the lower you set nearest obstruction precision, the slower the simulation --> decent value = 0.6
-
-# nice pedestrian waypoints for single intersection: (167,155),(146,155)
-                                                     (157,147),(157,167)
-
-# checkpoint at end of each road:           (28,150),(28,156)
-                                            (157,28),(163,28)
-                                            (285,157),(285,163)
-                                            (150,285),(156,285)
-
-270,90
+# decent FOV values for NEAT: 20, 20, 315, 45, 5

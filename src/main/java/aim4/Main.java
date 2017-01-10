@@ -109,7 +109,7 @@ public class Main
   public static int cfgMaxNumberOfSpecies;
   public static int cfgPOPULATION_SIZE;
   public static int cfgNUMBER_OF_GENERATIONS;
-  public static double cfgINITIAL_POP_DENSITY;
+  public static double cfgINITIAL_CONN_DENSITY;
 
 
 
@@ -158,8 +158,6 @@ public class Main
     );
 
     NEATPopulation pop = (NEATPopulation) EncogDirectoryPersistence.loadObject(new File(cfgNetwork));  //get saved population
-
-
 
     NEATNetwork bestNetwork = (NEATNetwork) new NEATCODEC().decode(pop.getBestGenome());        //extract best genome from saved population
 
@@ -211,12 +209,16 @@ public class Main
           cfgSensorHeight = Double.parseDouble(s.split(":")[1].replace(" ",""));
         if(s.contains("Width of FOV:"))
           cfgSensorWidth = Double.parseDouble(s.split(":")[1].replace(" ",""));
-        if(s.contains("Angle start:"))
-          cfgSensorAngleStart = Double.parseDouble(s.split(":")[1].replace(" ",""));
-        if(s.contains("Angle end:"))
-          cfgSensorAngleEnd = Double.parseDouble(s.split(":")[1].replace(" ",""));
         if(s.contains("Controller (AIM/NEAT):"))
           cfgController = s.split(":")[1].replace(" ", "");
+        if(s.contains("NEAT Angle start:") && cfgController.equals("NEAT"))
+          cfgSensorAngleStart = Double.parseDouble(s.split(":")[1].replace(" ",""));
+        if(s.contains("NEAT Angle end:") && cfgController.equals("NEAT"))
+          cfgSensorAngleEnd = Double.parseDouble(s.split(":")[1].replace(" ",""));
+        if(s.contains("AIM Angle start:") && cfgController.equals("AIM"))
+            cfgSensorAngleStart = Double.parseDouble(s.split(":")[1].replace(" ",""));
+        if(s.contains("AIM Angle end:") && cfgController.equals("AIM"))
+          cfgSensorAngleEnd = Double.parseDouble(s.split(":")[1].replace(" ",""));
         if(s.contains("Size of GridMap (COLSxROWS):"))
           cfgColumns = Integer.parseInt((s.split(":")[1].replace(" ", "")).split("x")[0]);
         if(s.contains("Size of GridMap (COLSxROWS):"))
@@ -305,8 +307,8 @@ public class Main
           cfgPOPULATION_SIZE = Integer.parseInt(s.split(":")[1].replace(" ",""));
         if(s.contains("NUMBER_OF_GENERATIONS:"))
           cfgNUMBER_OF_GENERATIONS = Integer.parseInt(s.split(":")[1].replace(" ",""));
-        if(s.contains("INITIAL_POP_DENSITY:"))
-          cfgINITIAL_POP_DENSITY = Double.parseDouble(s.split(":")[1].replace(" ",""));
+        if(s.contains("INITIAL_CONN_DENSITY:"))
+          cfgINITIAL_CONN_DENSITY = Double.parseDouble(s.split(":")[1].replace(" ",""));
         if(s.contains("Draw Sensor FOVs (yes/no):"))
         {
           if ((s.split(":")[1].replace(" ","")).contains("yes"))
