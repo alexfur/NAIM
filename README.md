@@ -1,6 +1,6 @@
-# Project Name
+# Neuroevolution for Autonomous Intersection Management
 
-TODO: Write a project description
+This project extends the AIM4 simulator to support decentralised Artifical Neural Network vehicle controllers evolved using neuroevolution.
 
 ## Installation
 
