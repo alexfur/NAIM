@@ -1,0 +1,40 @@
+\begin{table}[h!]
+\centering
+\caption{Simulation and NEAT Parameters for controller evolution}
+\label{my-label}
+\begin{tabular}{@{}ll@{}}
+\toprule
+\multicolumn{2}{l}{Simulation Parameters}                         \\ \midrule
+Environment size                               & 250 x 250        \\
+Traffic Level                                  & 0.7              \\
+Number of vehicles per task (simulation) trial & 30               \\
+Time steps per task (simulation) trial         & 50               \\
+Max vehicle acceleration                       & 40               \\
+Max vehicle deceleration                       & -35              \\
+Max vehicle velocity                           & 60               \\
+Min vehicle velocity                           & -17              \\
+Vehicle length                                 & 4                \\
+Vehicle width                                  & 1.75             \\
+Vehicle sensors                                & 3                \\
+Height of each sensor view field	           & 4                \\
+Width of each sensor view field                & 4                \\
+Span of each sensor view field                 & 90 degrees       \\
+Number of sensors							   & 3			      \\
+Pedestrian height                              & 1                \\
+Pedestrian width                               & 1                \\ \midrule
+\multicolumn{2}{l}{NEAT Parameters}                               \\ \midrule
+Population size                                & 150              \\
+Number of generations                          & 75               \\
+Task trials per genome                         & 10               \\
+Initial population density                     & 0.75             \\
+Compatibility threshold                        & 0.65             \\
+Generations allowed without improvement        & 15               \\
+Target number of species                       & 40               \\
+Default survival rate                          & 0.2              \\
+Number of activation cycles                    & 4                \\
+Weight range                                   & {[}-5,5{]}       \\
+Activation function                            & Steepend Sigmoid \\
+Sensory input nodes                            & 5                \\
+Sensory output nodes                           & 2                \\ \bottomrule
+\end{tabular}
+\end{table}    
