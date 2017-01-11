@@ -4,12 +4,12 @@
            ~~ Simulation ~~
            ~~~~~~~~~~~~~~~~
 --------------------------------------------
-Controller (AIM/NEAT):                      AIM
+Controller (AIM/NEAT):                      NEAT
 Enable AIM anti-crash heuristic (yes/no):   yes
-NEAT setting (Demo/Train):                  Demo
+NEAT setting (Demo/Train):                  Train
 Network to use:                             TrainingResults/Population.eg
 Simulation speed:                           14
-Lanes per road:                             3
+Lanes per road:                             2
 Size of GridMap (COLSxROWS):                1x1
 Traffic level (max 0.7):                    0.7
 Show vehicle VINs on screen:                No
@@ -25,7 +25,7 @@ Write stats to CSV:                         yes
         ~~ Drunk Pedestrians ~~
         ~~~~~~~~~~~~~~~~~~~~~~~
 --------------------------------------
-Number of pedestrians:                  2
+Number of pedestrians:                  1
 Height of drunk pedestrian:             1
 Width of drunk pedestrian:              1
 Waypoints (1 lane):                    (152,148),(152,154);(161,151),(161,158);(150,154),(157,154);(155,161),(165,161);(157,147),(157,166);(147,156),(166,156)
@@ -45,8 +45,8 @@ numGensAllowedNoImprovement:         15
 maxNumberOfSpecies:                  40
 
 *** training ***
-POPULATION_SIZE:                     200
-NUMBER_OF_GENERATIONS:               50
+POPULATION_SIZE:                     50
+NUMBER_OF_GENERATIONS:               25
 INITIAL_CONN_DENSITY:                0.4
 ...
 --------------------------------------

@@ -33,6 +33,7 @@ package aim4;
 import aim4.gui.Viewer;
 import aim4.sim.setup.AutoDriverOnlySimSetup;
 import aim4.sim.setup.BasicSimSetup;
+import org.encog.engine.network.activation.ActivationTANH;
 import org.encog.neural.neat.NEATCODEC;
 import org.encog.neural.neat.NEATNetwork;
 import org.encog.neural.neat.NEATPopulation;
@@ -158,6 +159,9 @@ public class Main
     );
 
     NEATPopulation pop = (NEATPopulation) EncogDirectoryPersistence.loadObject(new File(cfgNetwork));  //get saved population
+
+    ActivationTANH tanh = new ActivationTANH();
+    pop.setNEATActivationFunction(tanh);
 
     NEATNetwork bestNetwork = (NEATNetwork) new NEATCODEC().decode(pop.getBestGenome());        //extract best genome from saved population
 

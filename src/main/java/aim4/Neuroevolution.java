@@ -42,6 +42,7 @@ public class Neuroevolution
         pop.setInitialConnectionDensity(INITIAL_POP_DENSITY);
         pop.reset();
 
+
         TrainEA evolution = NEATUtil.constructNEATTrainer(pop,scoreCalculator);
 
         Stopwatch stopwatch = new Stopwatch();
