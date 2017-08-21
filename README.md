@@ -11,4 +11,4 @@ The AIM project homepage can be found at http://www.cs.utexas.edu/~aim/
 \nThe Encog project homepage can be found at http://www.heatonresearch.com/encog/
 The paper written along with this project can be found at 
 
-![Alt text](https://raw.github.com/rudolfbono/NAIM/master/NEAT%20demo.gif "Optional Title")
+![Alt text](https://github.com/rudolfbono/NAIM/blob/master/NEAT%20demo.gif)
