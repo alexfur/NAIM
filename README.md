@@ -7,8 +7,6 @@ A future in which driverless cars standardise the vehicle industry appears to be
 This project explores the effect of replacing AIM's centralised arbiter model with a decentralised model in which each vehicle coordinates itself using a neural network controller evolved via neuroevolution (Encog-NEAT).
 
 
-The AIM project homepage can be found at http://www.cs.utexas.edu/~aim/
-\nThe Encog project homepage can be found at http://www.heatonresearch.com/encog/
-The paper written along with this project can be found at 
+The AIM project homepage can be found at http://www.cs.utexas.edu/~aim/, the Encog project homepage can be found at http://www.heatonresearch.com/encog, this project's corresponding paper can be found at https://github.com/rudolfbono/NAIM/blob/master/FINAL-REPORT.pdf and a demonstration of the best evolved neuroevoltution controller can be observed below:
 
 ![Alt text](https://github.com/rudolfbono/NAIM/blob/master/NEAT%20demo.gif)
