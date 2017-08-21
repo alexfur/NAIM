@@ -8,7 +8,7 @@ This project explores the effect of replacing AIM's centralised arbiter model wi
 
 
 The AIM project homepage can be found at http://www.cs.utexas.edu/~aim/
-The Encog project homepage can be found at http://www.heatonresearch.com/encog/
+\nThe Encog project homepage can be found at http://www.heatonresearch.com/encog/
 The paper written along with this project can be found at 
 
 ![alt text]()
