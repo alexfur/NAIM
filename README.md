@@ -1,12 +1,35 @@
 # Neuroevolution for Autonomous Intersection Management
 
-This project extends the AIM4 simulator to support decentralised Artifical Neural Network vehicle controllers evolved using neuroevolution.
+## What is this?
 
-AIM (Autonomous Intersection Management) is a multiagent intersection control paradigm designed to maximise efficiency on the roads by removing traditional control mechanisms, such as traffic lights, from intersections and coordinating driverless cars using centralised wireless arbiter systems installed at every intersection.
+This is the codebase I extended and used for an independent research programme I took part in during the second year of my degree. 
 
-This project explores the effect of replacing AIM's centralised arbiter model with a decentralised model in which each vehicle coordinates itself using a neural network controller evolved via neuroevolution (Encog-NEAT).
+* It is based on the [AIM Project](http://www.cs.utexas.edu/~aim/), a centralised intersection management policy for autonomous vehicles.
+* AIM uses a reservation system to coordinate intersections without traffic lights or other traditional coordination mechanisms.
+* The goal of my project was to investigate a decentralised alternative to AIM. Namely, I used *Neuro-Evolution of Augmenting Topologies (NEAT)* for evolving individual vehicle control policies, so all that is needed is the control policy and vehicle sensors rather than relying on a centralised system.
+* You can check out the [final paper](https://github.com/rudolfbono/NAIM/blob/master/FINAL-REPORT.pdf) I wrote for this.
 
+## Tech
 
-The AIM project homepage can be found at http://www.cs.utexas.edu/~aim/, the Encog project homepage can be found at http://www.heatonresearch.com/encog, this project's corresponding paper can be found at https://github.com/rudolfbono/NAIM/blob/master/FINAL-REPORT.pdf and a demonstration of the best evolved neuroevolution controller can be observed below:
+NAIM uses the following open source projects (all Java-based):
+
+* [Encog] - Machine Learning Suite with support for Neuro-Evolution of Augmenting Topologies (NEAT)
+* [AIM] - Simulator for research on autonomous management and coordination of vehicles at intersections.
+
+## Setting up and Running
+
+_Note that Gradle is used for management of dependencies and running._
+
+ Clone and cd into this repository, then run it with Gradle:
+
+```sh
+$ ./gradlew run
+```
+
+By default, this will run evolution (NEAT) with the paramaters in the *config* file in the root of this project. To change these parameters, edit the config file.
+
+## Best Solution I evolved
+
+This gif shows the best control policy I evolved in action (150 individuals in population, 150 generations).
 
 ![Alt text](https://github.com/rudolfbono/NAIM/blob/master/NEAT%20demo.gif)
